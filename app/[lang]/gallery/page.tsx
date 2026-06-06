@@ -21,10 +21,10 @@ export async function generateMetadata({
     return {};
   }
 
-  return getLocalizedMetadata(lang, "home");
+  return getLocalizedMetadata(lang, "gallery");
 }
 
-export default async function LocaleHomePage({ params }: PageProps) {
+export default async function GalleryPage({ params }: PageProps) {
   const { lang } = await params;
 
   if (!isLocale(lang)) {
@@ -33,5 +33,5 @@ export default async function LocaleHomePage({ params }: PageProps) {
 
   const dictionary = getDictionary(lang);
 
-  return <PageShell title={dictionary.home.title} />;
+  return <PageShell title={dictionary.gallery.title} />;
 }

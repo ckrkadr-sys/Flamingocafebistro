@@ -1,13 +1,15 @@
 {
   "name": "flamingo",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "lint": "eslint .",
     "typecheck": "tsc --noEmit",
+    "validate:content": "node --experimental-strip-types scripts/validate-content.ts",
     "build": "next build",
-    "quality:check": "npm run lint && npm run typecheck && npm run build"
+    "quality:check": "npm run lint && npm run typecheck && npm run validate:content && npm run build"
   },
   "dependencies": {
     "next": "^16.2.7",
