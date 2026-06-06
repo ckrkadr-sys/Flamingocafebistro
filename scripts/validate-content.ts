@@ -1,4 +1,6 @@
+import { galleryCategories, galleryItems } from "../data/gallery.ts";
 import { menuCategories, menuItems } from "../data/menu.ts";
+import { siteConfig, weekdays } from "../data/site.ts";
 import { dictionaries, requiredDictionarySections } from "../lib/i18n/dictionaries.ts";
 import { localeLabels, supportedLocales } from "../lib/i18n/locales.ts";
 import { routeKeys } from "../lib/i18n/routes.ts";
@@ -99,6 +101,128 @@ for (const item of menuItems) {
 
     if (!translation.name.trim()) {
       failures.push(`Missing menu item "${item.id}" name for locale: ${locale}`);
+    }
+  }
+}
+
+function validateRequiredText(name: string, value: string) {
+  if (!value.trim()) {
+    failures.push(`Missing site data field: ${name}`);
+  }
+}
+
+function validateSiteFact(name: string, fact: { value: string | null; isPlaceholder: boolean; note?: string }) {
+  if (fact.isPlaceholder && !fact.note?.trim()) {
+    failures.push(`Site data field "${name}" is placeholder but has no note`);
+  }
+
+  if (fact.value === null) {
+    return;
+  }
+
+  if (!fact.value.trim()) {
+    failures.push(`Missing site data field: ${name}`);
+  }
+
+  if (fact.value.includes("PLACEHOLDER") && !fact.isPlaceholder) {
+    failures.push(`Site data field "${name}" uses a placeholder value but is not marked as placeholder`);
+  }
+
+}
+
+validateRequiredText("businessName", siteConfig.businessName);
+validateRequiredText("shortBrandName", siteConfig.shortBrandName);
+validateRequiredText("logoPath", siteConfig.logoPath);
+validateRequiredText("defaultHeroImagePath", siteConfig.defaultHeroImagePath);
+
+if (!siteConfig.logoPath.startsWith("/")) {
+  failures.push("Site logoPath must start with /");
+}
+
+if (!siteConfig.defaultHeroImagePath.startsWith("/")) {
+  failures.push("Site defaultHeroImagePath must start with /");
+}
+
+validateSiteFact("address", siteConfig.address);
+validateSiteFact("phoneNumber", siteConfig.phoneNumber);
+validateSiteFact("whatsAppNumber", siteConfig.whatsAppNumber);
+validateSiteFact("email", siteConfig.email);
+validateSiteFact("instagram.handle", siteConfig.instagram.handle);
+validateSiteFact("instagram.url", siteConfig.instagram.url);
+validateSiteFact("googleMapsUrl", siteConfig.googleMapsUrl);
+validateSiteFact("googleMapsEmbedUrl", siteConfig.googleMapsEmbedUrl);
+
+if (siteConfig.openingHours.days.length !== 7) {
+  failures.push("Site opening hours must define all 7 weekdays");
+}
+
+const openingHourDays = new Set(siteConfig.openingHours.days.map((day) => day.day));
+
+for (const weekday of weekdays) {
+  if (!openingHourDays.has(weekday)) {
+    failures.push(`Site opening hours missing weekday: ${weekday}`);
+  }
+}
+
+for (const day of siteConfig.openingHours.days) {
+  if (day.ranges.length === 0 && !day.isClosed && !day.isPlaceholder) {
+    failures.push(`Opening hours for "${day.day}" need ranges, closed state, or placeholder marking`);
+  }
+
+  if (day.isPlaceholder && !day.note?.trim()) {
+    failures.push(`Opening hours for "${day.day}" are placeholder but have no note`);
+  }
+}
+
+for (const socialLink of siteConfig.socialLinks) {
+  validateRequiredText(`social link id ${socialLink.id}`, socialLink.id);
+  validateSiteFact(`social link ${socialLink.id} url`, socialLink.url);
+}
+
+for (const action of siteConfig.primaryContactActions) {
+  validateRequiredText(`contact action id ${action.id}`, action.id);
+  validateSiteFact(`contact action ${action.id} href`, action.href);
+
+  if (action.value) {
+    validateSiteFact(`contact action ${action.id} value`, action.value);
+  }
+}
+
+const galleryIds = new Set<string>();
+const galleryOrders = new Set<number>();
+
+for (const item of galleryItems) {
+  if (galleryIds.has(item.id)) {
+    failures.push(`Duplicate gallery item id: ${item.id}`);
+  }
+
+  galleryIds.add(item.id);
+
+  if (!item.src.startsWith("/")) {
+    failures.push(`Gallery item "${item.id}" src must start with /`);
+  }
+
+  if (!galleryCategories.includes(item.category)) {
+    failures.push(`Gallery item "${item.id}" uses invalid category: ${item.category}`);
+  }
+
+  if (typeof item.order === "number") {
+    if (!Number.isFinite(item.order)) {
+      failures.push(`Gallery item "${item.id}" order must be a finite number`);
+    }
+
+    if (galleryOrders.has(item.order)) {
+      failures.push(`Duplicate gallery item order: ${item.order}`);
+    }
+
+    galleryOrders.add(item.order);
+  }
+
+  for (const locale of supportedLocales) {
+    const alt = item.alt[locale];
+
+    if (!alt?.trim()) {
+      failures.push(`Missing gallery item "${item.id}" alt text for locale: ${locale}`);
     }
   }
 }
