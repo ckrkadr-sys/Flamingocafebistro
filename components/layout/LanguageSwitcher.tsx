@@ -24,12 +24,13 @@ export function LanguageSwitcher({
   const pathname = usePathname();
 
   return (
-    <nav aria-label={ariaLabel}>
-      <ul>
+    <nav aria-label={ariaLabel} className="language-switcher">
+      <ul className="language-switcher__list">
         {supportedLocales.map((locale) => (
           <li key={locale}>
             <Link
               aria-current={locale === currentLocale ? "true" : undefined}
+              className="language-switcher__link"
               href={getEquivalentLocalizedPath(pathname, locale)}
               hrefLang={locale}
               lang={locale}

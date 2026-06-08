@@ -1,5 +1,7 @@
 import type { ReactNode } from "react";
 
+import "./globals.css";
+
 import { defaultLocale } from "@/lib/i18n/locales";
 
 type RootLayoutProps = Readonly<{

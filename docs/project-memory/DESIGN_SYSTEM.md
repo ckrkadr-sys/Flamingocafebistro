@@ -82,3 +82,28 @@ Renkler rastgele component içine dağıtılmamalı. Mümkünse CSS variables ve
 5. Galeri/Instagram hissi veren görsel grid
 6. Konum ve çalışma saatleri
 7. Footer
+
+## Phase 5 Implemented Foundation
+
+Global design tokens live in `app/globals.css`.
+
+Implemented token groups:
+
+- Color tokens for flamingo pink, coral, sky, mint, cream, surface, text, muted, border, success, warning and focus states.
+- System font tokens only; no external font dependency.
+- Mobile-first text scale, line-height, spacing, radius, shadow, layout width, focus ring and transition tokens.
+
+Reusable primitives live under `components/shared`:
+
+- `Container`
+- `Section`
+- `SectionTitle`
+- `Button`
+- `CardSurface`
+
+Rules for later UI phases:
+
+- Reuse these primitives before adding new layout wrappers.
+- Keep random colors out of components; add or adjust tokens centrally.
+- Keep final homepage, menu, gallery and contact layouts in their later phases.
+- Keep user-visible text in dictionaries or data translations, not inside components.

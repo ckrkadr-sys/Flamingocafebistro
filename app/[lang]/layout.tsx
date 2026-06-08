@@ -1,6 +1,8 @@
 import type { ReactNode } from "react";
 import { notFound } from "next/navigation";
 
+import { FloatingContactActions } from "@/components/layout/FloatingContactActions";
+import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale, supportedLocales } from "@/lib/i18n/locales";
@@ -29,9 +31,11 @@ export default async function LocaleLayout({
   const dictionary = getDictionary(lang);
 
   return (
-    <>
+    <div className="site-shell">
       <Header dictionary={dictionary} locale={lang} />
-      {children}
-    </>
+      <div className="site-shell__content">{children}</div>
+      <Footer dictionary={dictionary} locale={lang} />
+      <FloatingContactActions dictionary={dictionary} />
+    </div>
   );
 }

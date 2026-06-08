@@ -6,6 +6,57 @@ import { localeLabels, supportedLocales } from "../lib/i18n/locales.ts";
 import { routeKeys } from "../lib/i18n/routes.ts";
 
 const failures: string[] = [];
+const requiredHomeTextKeys = [
+  "atmosphereActionLabel",
+  "atmosphereDescription",
+  "atmosphereEyebrow",
+  "atmosphereImageLabel",
+  "atmosphereTitle",
+  "categoriesDescription",
+  "categoriesEyebrow",
+  "categoriesTitle",
+  "categoryActionLabel",
+  "galleryActionLabel",
+  "galleryDescription",
+  "galleryEyebrow",
+  "galleryTitle",
+  "heroDescription",
+  "heroFallbackAction",
+  "heroImageLabel",
+  "heroPrimaryAction",
+  "heroSecondaryAction",
+  "heroTitle",
+  "locationActionLabel",
+  "locationDescription",
+  "locationEyebrow",
+  "locationPending",
+  "locationTitle",
+  "popularActionLabel",
+  "popularDescription",
+  "popularEyebrow",
+  "popularTitle",
+  "title",
+] as const;
+const requiredFooterTextKeys = [
+  "addressLabel",
+  "brandAreaLabel",
+  "closedLabel",
+  "contactActionsTitle",
+  "contactTitle",
+  "copyright",
+  "detailsPending",
+  "navigationLabel",
+  "openingHoursTitle",
+  "phoneLabel",
+  "socialTitle",
+] as const;
+const requiredCommonTextKeys = [
+  "floatingContactActionsLabel",
+  "languageSwitcherLabel",
+  "mobileMenuCloseLabel",
+  "mobileMenuOpenLabel",
+  "primaryNavigationLabel",
+] as const;
 
 for (const locale of supportedLocales) {
   const dictionary = dictionaries[locale];
@@ -37,6 +88,29 @@ for (const locale of supportedLocales) {
     if (!dictionary.seo[routeKey]?.description) {
       failures.push(`Missing SEO description "${routeKey}" for locale: ${locale}`);
     }
+  }
+
+  for (const homeKey of requiredHomeTextKeys) {
+    validateRequiredText(`dictionary ${locale} home ${homeKey}`, dictionary.home[homeKey]);
+  }
+
+  for (const footerKey of requiredFooterTextKeys) {
+    validateRequiredText(`dictionary ${locale} footer ${footerKey}`, dictionary.footer[footerKey]);
+  }
+
+  for (const weekday of weekdays) {
+    validateRequiredText(`dictionary ${locale} weekday ${weekday}`, dictionary.footer.weekdays[weekday]);
+  }
+
+  for (const commonKey of requiredCommonTextKeys) {
+    validateRequiredText(`dictionary ${locale} common ${commonKey}`, dictionary.common[commonKey]);
+  }
+
+  for (const action of siteConfig.primaryContactActions) {
+    validateRequiredText(
+      `dictionary ${locale} contact action label ${action.type}`,
+      dictionary.common.contactActionLabels[action.type],
+    );
   }
 }
 
