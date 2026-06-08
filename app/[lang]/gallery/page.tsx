@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { PageShell } from "@/components/shared/PageShell";
+import { GalleryPage as GalleryPageUi } from "@/components/gallery/GalleryPage";
+import { galleryCategories } from "@/data/gallery";
+import {
+  getGalleryItems,
+  getLocalizedGalleryAlt,
+} from "@/lib/gallery/galleryHelpers";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale } from "@/lib/i18n/locales";
 import { getLocalizedMetadata } from "@/lib/seo/metadata";
@@ -32,6 +37,21 @@ export default async function GalleryPage({ params }: PageProps) {
   }
 
   const dictionary = getDictionary(lang);
+  const items = getGalleryItems().map((item) => ({
+    alt: getLocalizedGalleryAlt(item, lang),
+    category: item.category,
+    featured: item.featured,
+    height: item.height,
+    id: item.id,
+    src: item.src,
+    width: item.width,
+  }));
 
-  return <PageShell title={dictionary.gallery.title} />;
+  return (
+    <GalleryPageUi
+      categories={galleryCategories}
+      dictionary={dictionary.gallery}
+      items={items}
+    />
+  );
 }

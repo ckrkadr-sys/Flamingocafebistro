@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { PageShell } from "@/components/shared/PageShell";
+import { ContactPage as ContactPageUi } from "@/components/contact/ContactPage";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale } from "@/lib/i18n/locales";
 import { getLocalizedMetadata } from "@/lib/seo/metadata";
+import {
+  getOpeningHours,
+  getRenderableContactActions,
+  getRenderableSocialLinks,
+  getSiteConfig,
+} from "@/lib/site/siteHelpers";
 
 type PageProps = Readonly<{
   params: Promise<{
@@ -33,5 +39,13 @@ export default async function ContactPage({ params }: PageProps) {
 
   const dictionary = getDictionary(lang);
 
-  return <PageShell title={dictionary.contact.title} />;
+  return (
+    <ContactPageUi
+      contactActions={getRenderableContactActions()}
+      dictionary={dictionary}
+      openingHours={getOpeningHours()}
+      site={getSiteConfig()}
+      socialLinks={getRenderableSocialLinks()}
+    />
+  );
 }

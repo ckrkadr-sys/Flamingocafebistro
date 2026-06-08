@@ -1,3 +1,4 @@
+import type { GalleryCategory } from "../../data/gallery.ts";
 import type { ContactActionType, Weekday } from "../../data/site.ts";
 import type { Locale } from "./locales.ts";
 import type { RouteKey } from "./routes.ts";
@@ -51,6 +52,36 @@ type MenuDictionary = PageDictionary & {
   searchPlaceholder: string;
 };
 
+type GalleryDictionary = PageDictionary & {
+  allCategoriesLabel: string;
+  categoryFilterLabel: string;
+  categoryLabels: Record<GalleryCategory, string>;
+  emptyMessage: string;
+  emptyTitle: string;
+  eyebrow: string;
+  intro: string;
+};
+
+type ContactActionKey = ContactActionType | "email";
+
+type ContactDictionary = PageDictionary & {
+  actionLabels: Record<ContactActionKey, string>;
+  actionsTitle: string;
+  addressLabel: string;
+  detailsTitle: string;
+  emailLabel: string;
+  eyebrow: string;
+  intro: string;
+  mapEmbedTitle: string;
+  mapPlaceholderDescription: string;
+  mapPlaceholderTitle: string;
+  mapTitle: string;
+  openingHoursTitle: string;
+  phoneLabel: string;
+  socialLabel: string;
+  unavailableLabel: string;
+};
+
 type SeoDictionary = {
   title: string;
   description: string;
@@ -61,8 +92,8 @@ export type Dictionary = {
   home: HomeDictionary;
   menu: MenuDictionary;
   about: PageDictionary;
-  gallery: PageDictionary;
-  contact: PageDictionary;
+  gallery: GalleryDictionary;
+  contact: ContactDictionary;
   footer: {
     addressLabel: string;
     brandAreaLabel: string;
@@ -158,9 +189,43 @@ export const dictionaries = {
       title: "Hakkımızda",
     },
     gallery: {
+      allCategoriesLabel: "Tümü",
+      categoryFilterLabel: "Galeri kategorileri",
+      categoryLabels: {
+        venue: "Mekan",
+        food: "Yemek",
+        drinks: "İçecekler",
+        desserts: "Tatlılar",
+        atmosphere: "Atmosfer",
+      },
+      emptyMessage: "Başka bir kategori seçerek galeriyi tekrar görüntüleyin.",
+      emptyTitle: "Bu kategoride görsel bulunamadı",
+      eyebrow: "Galeri",
+      intro: "Mekan, yemek, içecek ve atmosfer görselleri için hazırlanmış güncellenebilir galeri alanı.",
       title: "Galeri",
     },
     contact: {
+      actionLabels: {
+        phone: "Ara",
+        whatsapp: "WhatsApp",
+        directions: "Yol tarifi al",
+        instagram: "Instagram",
+        email: "E-posta gönder",
+      },
+      actionsTitle: "Hızlı aksiyonlar",
+      addressLabel: "Adres",
+      detailsTitle: "İletişim bilgileri",
+      emailLabel: "E-posta",
+      eyebrow: "İletişim",
+      intro: "Konum, çalışma saatleri ve hızlı iletişim bağlantıları tek yerde.",
+      mapEmbedTitle: "Flamingo Cafe&Bistro haritası",
+      mapPlaceholderDescription: "Google Maps bağlantısı doğrulandığında harita burada gösterilecek.",
+      mapPlaceholderTitle: "Harita yakında eklenecek",
+      mapTitle: "Konum",
+      openingHoursTitle: "Çalışma saatleri",
+      phoneLabel: "Telefon",
+      socialLabel: "Sosyal",
+      unavailableLabel: "Bilgiler yakında eklenecek.",
       title: "İletişim",
     },
     footer: {
@@ -278,9 +343,43 @@ export const dictionaries = {
       title: "About",
     },
     gallery: {
+      allCategoriesLabel: "All",
+      categoryFilterLabel: "Gallery categories",
+      categoryLabels: {
+        venue: "Venue",
+        food: "Food",
+        drinks: "Drinks",
+        desserts: "Desserts",
+        atmosphere: "Atmosphere",
+      },
+      emptyMessage: "Choose another category to view the gallery again.",
+      emptyTitle: "No visuals in this category yet",
+      eyebrow: "Gallery",
+      intro: "A flexible gallery area prepared for venue, food, drink and atmosphere visuals.",
       title: "Gallery",
     },
     contact: {
+      actionLabels: {
+        phone: "Call",
+        whatsapp: "WhatsApp",
+        directions: "Get directions",
+        instagram: "Instagram",
+        email: "Send email",
+      },
+      actionsTitle: "Quick actions",
+      addressLabel: "Address",
+      detailsTitle: "Contact information",
+      emailLabel: "Email",
+      eyebrow: "Contact",
+      intro: "Location, opening hours and quick contact links in one practical place.",
+      mapEmbedTitle: "Flamingo Cafe&Bistro map",
+      mapPlaceholderDescription: "The map will appear here once the Google Maps link is verified.",
+      mapPlaceholderTitle: "Map coming soon",
+      mapTitle: "Location",
+      openingHoursTitle: "Opening hours",
+      phoneLabel: "Phone",
+      socialLabel: "Social",
+      unavailableLabel: "Details will be added soon.",
       title: "Contact",
     },
     footer: {
@@ -398,9 +497,43 @@ export const dictionaries = {
       title: "О нас",
     },
     gallery: {
+      allCategoriesLabel: "Все",
+      categoryFilterLabel: "Категории галереи",
+      categoryLabels: {
+        venue: "Зал",
+        food: "Еда",
+        drinks: "Напитки",
+        desserts: "Десерты",
+        atmosphere: "Атмосфера",
+      },
+      emptyMessage: "Выберите другую категорию, чтобы снова посмотреть галерею.",
+      emptyTitle: "В этой категории пока нет изображений",
+      eyebrow: "Галерея",
+      intro: "Галерея для фотографий пространства, еды, напитков и атмосферы.",
       title: "Галерея",
     },
     contact: {
+      actionLabels: {
+        phone: "Позвонить",
+        whatsapp: "WhatsApp",
+        directions: "Маршрут",
+        instagram: "Instagram",
+        email: "Написать email",
+      },
+      actionsTitle: "Быстрые действия",
+      addressLabel: "Адрес",
+      detailsTitle: "Контактная информация",
+      emailLabel: "Email",
+      eyebrow: "Контакты",
+      intro: "Локация, часы работы и быстрые ссылки для связи в одном месте.",
+      mapEmbedTitle: "Карта Flamingo Cafe&Bistro",
+      mapPlaceholderDescription: "Карта появится здесь после проверки ссылки Google Maps.",
+      mapPlaceholderTitle: "Карта скоро появится",
+      mapTitle: "Локация",
+      openingHoursTitle: "Часы работы",
+      phoneLabel: "Телефон",
+      socialLabel: "Соцсети",
+      unavailableLabel: "Данные скоро будут добавлены.",
       title: "Контакты",
     },
     footer: {
@@ -518,9 +651,43 @@ export const dictionaries = {
       title: "Über uns",
     },
     gallery: {
+      allCategoriesLabel: "Alle",
+      categoryFilterLabel: "Galeriekategorien",
+      categoryLabels: {
+        venue: "Ort",
+        food: "Speisen",
+        drinks: "Getränke",
+        desserts: "Desserts",
+        atmosphere: "Atmosphäre",
+      },
+      emptyMessage: "Wählen Sie eine andere Kategorie, um die Galerie erneut anzusehen.",
+      emptyTitle: "In dieser Kategorie gibt es noch keine Bilder",
+      eyebrow: "Galerie",
+      intro: "Ein flexibler Galeriebereich für Bilder von Ort, Speisen, Getränken und Atmosphäre.",
       title: "Galerie",
     },
     contact: {
+      actionLabels: {
+        phone: "Anrufen",
+        whatsapp: "WhatsApp",
+        directions: "Route anzeigen",
+        instagram: "Instagram",
+        email: "E-Mail senden",
+      },
+      actionsTitle: "Schnelle Aktionen",
+      addressLabel: "Adresse",
+      detailsTitle: "Kontaktinformationen",
+      emailLabel: "E-Mail",
+      eyebrow: "Kontakt",
+      intro: "Standort, Öffnungszeiten und schnelle Kontaktlinks an einem praktischen Ort.",
+      mapEmbedTitle: "Karte von Flamingo Cafe&Bistro",
+      mapPlaceholderDescription: "Die Karte erscheint hier, sobald der Google-Maps-Link verifiziert ist.",
+      mapPlaceholderTitle: "Karte folgt bald",
+      mapTitle: "Standort",
+      openingHoursTitle: "Öffnungszeiten",
+      phoneLabel: "Telefon",
+      socialLabel: "Social Media",
+      unavailableLabel: "Details werden bald ergänzt.",
       title: "Kontakt",
     },
     footer: {

@@ -51,6 +51,39 @@ const requiredMenuTextKeys = [
   "searchPlaceholder",
   "title",
 ] as const;
+const requiredGalleryTextKeys = [
+  "allCategoriesLabel",
+  "categoryFilterLabel",
+  "emptyMessage",
+  "emptyTitle",
+  "eyebrow",
+  "intro",
+  "title",
+] as const;
+const requiredContactTextKeys = [
+  "actionsTitle",
+  "addressLabel",
+  "detailsTitle",
+  "emailLabel",
+  "eyebrow",
+  "intro",
+  "mapEmbedTitle",
+  "mapPlaceholderDescription",
+  "mapPlaceholderTitle",
+  "mapTitle",
+  "openingHoursTitle",
+  "phoneLabel",
+  "socialLabel",
+  "title",
+  "unavailableLabel",
+] as const;
+const requiredContactActionLabelKeys = [
+  "phone",
+  "whatsapp",
+  "directions",
+  "instagram",
+  "email",
+] as const;
 const requiredFooterTextKeys = [
   "addressLabel",
   "brandAreaLabel",
@@ -110,6 +143,25 @@ for (const locale of supportedLocales) {
 
   for (const menuKey of requiredMenuTextKeys) {
     validateRequiredText(`dictionary ${locale} menu ${menuKey}`, dictionary.menu[menuKey]);
+  }
+
+  for (const galleryKey of requiredGalleryTextKeys) {
+    validateRequiredText(`dictionary ${locale} gallery ${galleryKey}`, dictionary.gallery[galleryKey]);
+  }
+
+  for (const category of galleryCategories) {
+    validateRequiredText(`dictionary ${locale} gallery category ${category}`, dictionary.gallery.categoryLabels[category]);
+  }
+
+  for (const contactKey of requiredContactTextKeys) {
+    validateRequiredText(`dictionary ${locale} contact ${contactKey}`, dictionary.contact[contactKey]);
+  }
+
+  for (const actionKey of requiredContactActionLabelKeys) {
+    validateRequiredText(
+      `dictionary ${locale} contact action label ${actionKey}`,
+      dictionary.contact.actionLabels[actionKey],
+    );
   }
 
   for (const footerKey of requiredFooterTextKeys) {
