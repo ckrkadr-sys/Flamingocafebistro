@@ -37,6 +37,20 @@ type HomeDictionary = PageDictionary & {
   popularTitle: string;
 };
 
+type MenuDictionary = PageDictionary & {
+  allCategoriesLabel: string;
+  categoryFilterLabel: string;
+  clearSearchLabel: string;
+  emptyMessage: string;
+  emptyTitle: string;
+  eyebrow: string;
+  intro: string;
+  newBadgeLabel: string;
+  popularBadgeLabel: string;
+  searchLabel: string;
+  searchPlaceholder: string;
+};
+
 type SeoDictionary = {
   title: string;
   description: string;
@@ -45,7 +59,7 @@ type SeoDictionary = {
 export type Dictionary = {
   nav: Record<RouteKey, string>;
   home: HomeDictionary;
-  menu: PageDictionary;
+  menu: MenuDictionary;
   about: PageDictionary;
   gallery: PageDictionary;
   contact: PageDictionary;
@@ -127,6 +141,17 @@ export const dictionaries = {
       title: "Ana sayfa",
     },
     menu: {
+      allCategoriesLabel: "Tümü",
+      categoryFilterLabel: "Menü kategorileri",
+      clearSearchLabel: "Aramayı temizle",
+      emptyMessage: "Arama veya kategori filtresini değiştirerek tekrar deneyin.",
+      emptyTitle: "Eşleşen ürün bulunamadı",
+      eyebrow: "Fiyatlı menü",
+      intro: "Kategorilere göre gezinin, ürün adında veya açıklamasında hızlıca arayın.",
+      newBadgeLabel: "Yeni",
+      popularBadgeLabel: "Popüler",
+      searchLabel: "Menüde ara",
+      searchPlaceholder: "Ürün adı veya açıklama ara",
       title: "Menü",
     },
     about: {
@@ -236,6 +261,17 @@ export const dictionaries = {
       title: "Home",
     },
     menu: {
+      allCategoriesLabel: "All",
+      categoryFilterLabel: "Menu categories",
+      clearSearchLabel: "Clear search",
+      emptyMessage: "Try changing the search term or category filter.",
+      emptyTitle: "No matching items found",
+      eyebrow: "Priced menu",
+      intro: "Browse by category or quickly search item names and descriptions.",
+      newBadgeLabel: "New",
+      popularBadgeLabel: "Popular",
+      searchLabel: "Search menu",
+      searchPlaceholder: "Search item name or description",
       title: "Menu",
     },
     about: {
@@ -345,6 +381,17 @@ export const dictionaries = {
       title: "Главная",
     },
     menu: {
+      allCategoriesLabel: "Все",
+      categoryFilterLabel: "Категории меню",
+      clearSearchLabel: "Очистить поиск",
+      emptyMessage: "Попробуйте изменить поисковый запрос или категорию.",
+      emptyTitle: "Подходящие позиции не найдены",
+      eyebrow: "Меню с ценами",
+      intro: "Просматривайте по категориям или быстро ищите по названию и описанию.",
+      newBadgeLabel: "Новое",
+      popularBadgeLabel: "Популярное",
+      searchLabel: "Поиск по меню",
+      searchPlaceholder: "Искать название или описание",
       title: "Меню",
     },
     about: {
@@ -454,6 +501,17 @@ export const dictionaries = {
       title: "Startseite",
     },
     menu: {
+      allCategoriesLabel: "Alle",
+      categoryFilterLabel: "Menükategorien",
+      clearSearchLabel: "Suche löschen",
+      emptyMessage: "Ändern Sie den Suchbegriff oder den Kategoriefilter.",
+      emptyTitle: "Keine passenden Produkte gefunden",
+      eyebrow: "Menü mit Preisen",
+      intro: "Nach Kategorien stöbern oder schnell nach Namen und Beschreibungen suchen.",
+      newBadgeLabel: "Neu",
+      popularBadgeLabel: "Beliebt",
+      searchLabel: "Menü durchsuchen",
+      searchPlaceholder: "Name oder Beschreibung suchen",
       title: "Menü",
     },
     about: {

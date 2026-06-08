@@ -37,6 +37,20 @@ const requiredHomeTextKeys = [
   "popularTitle",
   "title",
 ] as const;
+const requiredMenuTextKeys = [
+  "allCategoriesLabel",
+  "categoryFilterLabel",
+  "clearSearchLabel",
+  "emptyMessage",
+  "emptyTitle",
+  "eyebrow",
+  "intro",
+  "newBadgeLabel",
+  "popularBadgeLabel",
+  "searchLabel",
+  "searchPlaceholder",
+  "title",
+] as const;
 const requiredFooterTextKeys = [
   "addressLabel",
   "brandAreaLabel",
@@ -92,6 +106,10 @@ for (const locale of supportedLocales) {
 
   for (const homeKey of requiredHomeTextKeys) {
     validateRequiredText(`dictionary ${locale} home ${homeKey}`, dictionary.home[homeKey]);
+  }
+
+  for (const menuKey of requiredMenuTextKeys) {
+    validateRequiredText(`dictionary ${locale} menu ${menuKey}`, dictionary.menu[menuKey]);
   }
 
   for (const footerKey of requiredFooterTextKeys) {

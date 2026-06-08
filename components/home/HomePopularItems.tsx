@@ -44,7 +44,7 @@ export function HomePopularItems({
           {items.slice(0, 3).map((item) => (
             <Link
               className="home-popular-card"
-              href={`${getLocalizedPath(locale, "menu")}#${item.categoryId}`}
+              href={`${getLocalizedPath(locale, "menu")}?category=${item.categoryId}`}
               key={item.id}
             >
               <CardSurface className="home-popular-card__surface" interactive>

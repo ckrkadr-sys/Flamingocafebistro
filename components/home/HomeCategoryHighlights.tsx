@@ -32,7 +32,7 @@ export function HomeCategoryHighlights({
           {categories.map((category) => (
             <Link
               className="home-category-card"
-              href={`${getLocalizedPath(locale, "menu")}#${category.id}`}
+              href={`${getLocalizedPath(locale, "menu")}?category=${category.id}`}
               key={category.id}
             >
               <CardSurface className="home-category-card__surface" interactive>
