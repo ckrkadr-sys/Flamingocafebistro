@@ -52,6 +52,31 @@ type MenuDictionary = PageDictionary & {
   searchPlaceholder: string;
 };
 
+type AboutValueItem = {
+  title: string;
+  description: string;
+};
+
+type AboutDictionary = PageDictionary & {
+  ctaContactLabel: string;
+  ctaMenuLabel: string;
+  ctaText: string;
+  ctaTitle: string;
+  experienceEyebrow: string;
+  experienceImageLabel: string;
+  experienceText: string;
+  experienceTitle: string;
+  eyebrow: string;
+  heroImageLabel: string;
+  intro: string;
+  storyEyebrow: string;
+  storyText: string;
+  storyTitle: string;
+  valueItems: readonly AboutValueItem[];
+  valuesEyebrow: string;
+  valuesTitle: string;
+};
+
 type GalleryDictionary = PageDictionary & {
   allCategoriesLabel: string;
   categoryFilterLabel: string;
@@ -91,7 +116,7 @@ export type Dictionary = {
   nav: Record<RouteKey, string>;
   home: HomeDictionary;
   menu: MenuDictionary;
-  about: PageDictionary;
+  about: AboutDictionary;
   gallery: GalleryDictionary;
   contact: ContactDictionary;
   footer: {
@@ -186,7 +211,45 @@ export const dictionaries = {
       title: "Menü",
     },
     about: {
+      ctaContactLabel: "İletişime geç",
+      ctaMenuLabel: "Menüyü gör",
+      ctaText: "Menüyü fiyatlarıyla inceleyin veya ziyaret için iletişim bilgilerine geçin.",
+      ctaTitle: "Ziyaretinizi kolay planlayın",
+      experienceEyebrow: "Cafe-bistro deneyimi",
+      experienceImageLabel: "Flamingo Cafe&Bistro cafe-bistro deneyimi görsel alanı",
+      experienceText: "Menü akışı kahve, kahvaltı, bistro yemekleri, tatlılar ve serin içecekleri dengeli biçimde öne çıkaracak şekilde hazırlanır.",
+      experienceTitle: "Kahve molasından doyurucu tabaklara",
+      eyebrow: "Flamingo hakkında",
+      heroImageLabel: "Flamingo Cafe&Bistro hakkında sayfası görsel alanı",
+      intro: "Flamingo Cafe&Bistro; kahve, kahvaltı, bistro tabakları, tatlılar ve soğuk içecekleri sıcak bir atmosferde buluşturan modern bir cafe-bistrodur.",
+      storyEyebrow: "Kısa hikaye",
+      storyText: "Odak noktamız; net fiyatlı menü, rahat mekan hissi ve kolay ulaşılabilir iletişim bilgileriyle misafirin kararını hızlılaştıran sade bir deneyim sunmak.",
+      storyTitle: "Günün farklı anlarına uyum sağlayan bir cafe-bistro",
       title: "Hakkımızda",
+      valueItems: [
+        {
+          title: "Özenli lezzetler",
+          description: "Taze ve dikkatli hazırlanan seçeneklere alan açan sade bir menü yapısı.",
+        },
+        {
+          title: "Sıcak atmosfer",
+          description: "Günün farklı saatlerinde rahatça uğranabilecek modern cafe hissi.",
+        },
+        {
+          title: "Çeşitli menü",
+          description: "Kahve, yiyecek, tatlı ve içecek kategorilerini birlikte gösteren dengeli akış.",
+        },
+        {
+          title: "Net fiyatlar",
+          description: "Menüde ürünleri fiyatlarıyla birlikte görmeyi kolaylaştıran pratik yapı.",
+        },
+        {
+          title: "Yerel deneyim",
+          description: "Konum ve iletişim bilgilerine hızlı ulaşmayı destekleyen yakın cafe-bistro hissi.",
+        },
+      ],
+      valuesEyebrow: "Değerler",
+      valuesTitle: "Flamingo deneyimini belirleyen detaylar",
     },
     gallery: {
       allCategoriesLabel: "Tümü",
@@ -340,7 +403,45 @@ export const dictionaries = {
       title: "Menu",
     },
     about: {
+      ctaContactLabel: "Contact us",
+      ctaMenuLabel: "View menu",
+      ctaText: "Browse the priced menu or open the contact details for your visit.",
+      ctaTitle: "Plan your visit easily",
+      experienceEyebrow: "Cafe-bistro experience",
+      experienceImageLabel: "Flamingo Cafe&Bistro cafe-bistro experience visual area",
+      experienceText: "The menu flow is prepared to balance coffee, breakfast, bistro plates, desserts and chilled drinks without turning the brand into one category only.",
+      experienceTitle: "From coffee breaks to filling plates",
+      eyebrow: "About Flamingo",
+      heroImageLabel: "Flamingo Cafe&Bistro about page visual area",
+      intro: "Flamingo Cafe&Bistro is a modern cafe-bistro shaped around coffee, breakfast, bistro plates, desserts and chilled drinks in one warm flow.",
+      storyEyebrow: "Short story",
+      storyText: "The focus is simple: a priced menu, an easy atmosphere, and practical contact and location access so guests can decide quickly.",
+      storyTitle: "A cafe-bistro made for different moments of the day",
       title: "About",
+      valueItems: [
+        {
+          title: "Careful flavors",
+          description: "A simple menu structure that leaves room for fresh, carefully prepared options.",
+        },
+        {
+          title: "Warm atmosphere",
+          description: "A modern cafe feeling that works for relaxed stops across the day.",
+        },
+        {
+          title: "Menu variety",
+          description: "A balanced flow across coffee, food, desserts and drinks.",
+        },
+        {
+          title: "Clear prices",
+          description: "A practical menu experience that keeps product prices visible.",
+        },
+        {
+          title: "Local experience",
+          description: "A close cafe-bistro feel with quick access to contact and location details.",
+        },
+      ],
+      valuesEyebrow: "Values",
+      valuesTitle: "The details that shape the Flamingo experience",
     },
     gallery: {
       allCategoriesLabel: "All",
@@ -494,7 +595,45 @@ export const dictionaries = {
       title: "Меню",
     },
     about: {
+      ctaContactLabel: "Связаться",
+      ctaMenuLabel: "Смотреть меню",
+      ctaText: "Посмотрите меню с ценами или откройте контакты для визита.",
+      ctaTitle: "Планируйте визит проще",
+      experienceEyebrow: "Опыт кафе-бистро",
+      experienceImageLabel: "Визуальная зона опыта кафе-бистро Flamingo Cafe&Bistro",
+      experienceText: "Меню выстроено так, чтобы сбалансированно показывать кофе, завтраки, блюда бистро, десерты и прохладные напитки, не сводя бренд к одной категории.",
+      experienceTitle: "От кофейной паузы до сытных блюд",
+      eyebrow: "О Flamingo",
+      heroImageLabel: "Визуальная зона страницы о Flamingo Cafe&Bistro",
+      intro: "Flamingo Cafe&Bistro — современное кафе-бистро, где кофе, завтраки, блюда бистро, десерты и прохладные напитки соединены в теплом формате.",
+      storyEyebrow: "Короткая история",
+      storyText: "Наш фокус прост: меню с понятными ценами, спокойная атмосфера и практичный доступ к контактам и локации, чтобы гостям было легче выбрать.",
+      storyTitle: "Кафе-бистро для разных моментов дня",
       title: "О нас",
+      valueItems: [
+        {
+          title: "Внимательные вкусы",
+          description: "Простая структура меню для свежих и аккуратно подготовленных вариантов.",
+        },
+        {
+          title: "Теплая атмосфера",
+          description: "Современное ощущение кафе для спокойных остановок в течение дня.",
+        },
+        {
+          title: "Разнообразное меню",
+          description: "Сбалансированный поток кофе, еды, десертов и напитков.",
+        },
+        {
+          title: "Понятные цены",
+          description: "Практичное меню, где цены на позиции остаются видимыми.",
+        },
+        {
+          title: "Локальный опыт",
+          description: "Близкое ощущение кафе-бистро с быстрым доступом к контактам и локации.",
+        },
+      ],
+      valuesEyebrow: "Ценности",
+      valuesTitle: "Детали, которые формируют опыт Flamingo",
     },
     gallery: {
       allCategoriesLabel: "Все",
@@ -648,7 +787,45 @@ export const dictionaries = {
       title: "Menü",
     },
     about: {
+      ctaContactLabel: "Kontakt aufnehmen",
+      ctaMenuLabel: "Menü ansehen",
+      ctaText: "Sehen Sie das Menü mit Preisen an oder öffnen Sie die Kontaktdaten für Ihren Besuch.",
+      ctaTitle: "Planen Sie Ihren Besuch einfacher",
+      experienceEyebrow: "Cafe-Bistro-Erlebnis",
+      experienceImageLabel: "Visueller Bereich für das Cafe-Bistro-Erlebnis von Flamingo Cafe&Bistro",
+      experienceText: "Der Menüfluss ist so angelegt, dass Kaffee, Frühstück, Bistro-Teller, Desserts und kühle Getränke ausgewogen sichtbar werden, ohne die Marke auf eine Kategorie zu reduzieren.",
+      experienceTitle: "Von der Kaffeepause bis zu sättigenden Tellern",
+      eyebrow: "Über Flamingo",
+      heroImageLabel: "Visueller Bereich der Über-uns-Seite von Flamingo Cafe&Bistro",
+      intro: "Flamingo Cafe&Bistro ist ein modernes Cafe-Bistro, das Kaffee, Frühstück, Bistro-Teller, Desserts und kühle Getränke in einem warmen Ablauf verbindet.",
+      storyEyebrow: "Kurze Geschichte",
+      storyText: "Der Fokus ist einfach: ein Menü mit klaren Preisen, eine entspannte Atmosphäre und praktischer Zugang zu Kontakt- und Standortinformationen.",
+      storyTitle: "Ein Cafe-Bistro für verschiedene Momente des Tages",
       title: "Über uns",
+      valueItems: [
+        {
+          title: "Sorgfältige Aromen",
+          description: "Eine einfache Menüstruktur mit Raum für frische und sorgfältig vorbereitete Optionen.",
+        },
+        {
+          title: "Warme Atmosphäre",
+          description: "Ein modernes Cafe-Gefühl für entspannte Stopps über den Tag.",
+        },
+        {
+          title: "Menüvielfalt",
+          description: "Ein ausgewogener Ablauf über Kaffee, Essen, Desserts und Getränke.",
+        },
+        {
+          title: "Klare Preise",
+          description: "Ein praktisches Menüerlebnis, bei dem Produktpreise sichtbar bleiben.",
+        },
+        {
+          title: "Lokales Erlebnis",
+          description: "Ein nahbares Cafe-Bistro-Gefühl mit schnellem Zugang zu Kontakt und Standort.",
+        },
+      ],
+      valuesEyebrow: "Werte",
+      valuesTitle: "Details, die das Flamingo-Erlebnis prägen",
     },
     gallery: {
       allCategoriesLabel: "Alle",

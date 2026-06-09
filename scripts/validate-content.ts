@@ -51,6 +51,25 @@ const requiredMenuTextKeys = [
   "searchPlaceholder",
   "title",
 ] as const;
+const requiredAboutTextKeys = [
+  "ctaContactLabel",
+  "ctaMenuLabel",
+  "ctaText",
+  "ctaTitle",
+  "experienceEyebrow",
+  "experienceImageLabel",
+  "experienceText",
+  "experienceTitle",
+  "eyebrow",
+  "heroImageLabel",
+  "intro",
+  "storyEyebrow",
+  "storyText",
+  "storyTitle",
+  "title",
+  "valuesEyebrow",
+  "valuesTitle",
+] as const;
 const requiredGalleryTextKeys = [
   "allCategoriesLabel",
   "categoryFilterLabel",
@@ -144,6 +163,37 @@ for (const locale of supportedLocales) {
   for (const menuKey of requiredMenuTextKeys) {
     validateRequiredText(`dictionary ${locale} menu ${menuKey}`, dictionary.menu[menuKey]);
   }
+
+  const aboutDictionary = dictionary.about as Record<
+    (typeof requiredAboutTextKeys)[number],
+    string
+  > & {
+    valueItems?: readonly { description?: string; title?: string }[];
+  };
+
+  for (const aboutKey of requiredAboutTextKeys) {
+    validateRequiredText(
+      `dictionary ${locale} about ${aboutKey}`,
+      aboutDictionary[aboutKey],
+    );
+  }
+
+  const aboutValueItems = aboutDictionary.valueItems ?? [];
+
+  if (aboutValueItems.length !== 5) {
+    failures.push(`Dictionary ${locale} about valueItems must contain 5 items`);
+  }
+
+  aboutValueItems.forEach((valueItem, index) => {
+    validateRequiredText(
+      `dictionary ${locale} about value item ${index + 1} title`,
+      valueItem.title,
+    );
+    validateRequiredText(
+      `dictionary ${locale} about value item ${index + 1} description`,
+      valueItem.description,
+    );
+  });
 
   for (const galleryKey of requiredGalleryTextKeys) {
     validateRequiredText(`dictionary ${locale} gallery ${galleryKey}`, dictionary.gallery[galleryKey]);
@@ -249,8 +299,8 @@ for (const item of menuItems) {
   }
 }
 
-function validateRequiredText(name: string, value: string) {
-  if (!value.trim()) {
+function validateRequiredText(name: string, value: unknown) {
+  if (typeof value !== "string" || !value.trim()) {
     failures.push(`Missing site data field: ${name}`);
   }
 }
