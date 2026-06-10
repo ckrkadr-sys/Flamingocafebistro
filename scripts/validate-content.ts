@@ -6,6 +6,7 @@ import { localeLabels, supportedLocales } from "../lib/i18n/locales.ts";
 import { routeKeys } from "../lib/i18n/routes.ts";
 
 const failures: string[] = [];
+const warnings: string[] = [];
 const requiredHomeTextKeys = [
   "atmosphereActionLabel",
   "atmosphereDescription",
@@ -285,6 +286,14 @@ for (const item of menuItems) {
     failures.push(`Menu item "${item.id}" price must be a finite non-negative number`);
   }
 
+  if (item.id.startsWith("starter-") || item.tags?.includes("starter-sample")) {
+    warnings.push(`Menu item "${item.id}" is starter/sample data`);
+  }
+
+  if (!item.image) {
+    warnings.push(`Menu item "${item.id}" has no product image`);
+  }
+
   for (const locale of supportedLocales) {
     const translation = item.translations[locale];
 
@@ -310,6 +319,10 @@ function validateSiteFact(name: string, fact: { value: string | null; isPlacehol
     failures.push(`Site data field "${name}" is placeholder but has no note`);
   }
 
+  if (fact.isPlaceholder) {
+    warnings.push(`Site data field "${name}" is still marked as placeholder`);
+  }
+
   if (fact.value === null) {
     return;
   }
@@ -333,8 +346,18 @@ if (!siteConfig.logoPath.startsWith("/")) {
   failures.push("Site logoPath must start with /");
 }
 
+if (siteConfig.logoPath.includes("/placeholders/")) {
+  warnings.push(`Site logoPath uses placeholder asset path: ${siteConfig.logoPath}`);
+}
+
 if (!siteConfig.defaultHeroImagePath.startsWith("/")) {
   failures.push("Site defaultHeroImagePath must start with /");
+}
+
+if (siteConfig.defaultHeroImagePath.includes("/placeholders/")) {
+  warnings.push(
+    `Site defaultHeroImagePath uses placeholder asset path: ${siteConfig.defaultHeroImagePath}`,
+  );
 }
 
 validateSiteFact("address", siteConfig.address);
@@ -366,6 +389,10 @@ for (const day of siteConfig.openingHours.days) {
   if (day.isPlaceholder && !day.note?.trim()) {
     failures.push(`Opening hours for "${day.day}" are placeholder but have no note`);
   }
+
+  if (day.isPlaceholder) {
+    warnings.push(`Opening hours for "${day.day}" are still marked as placeholder`);
+  }
 }
 
 for (const socialLink of siteConfig.socialLinks) {
@@ -394,6 +421,10 @@ for (const item of galleryItems) {
 
   if (!item.src.startsWith("/")) {
     failures.push(`Gallery item "${item.id}" src must start with /`);
+  }
+
+  if (item.id.startsWith("placeholder-") || item.src.includes("/placeholders/")) {
+    warnings.push(`Gallery item "${item.id}" uses a placeholder visual asset`);
   }
 
   if (!galleryCategories.includes(item.category)) {
@@ -432,3 +463,11 @@ if (failures.length > 0) {
 }
 
 console.log("Content validation passed.");
+
+if (warnings.length > 0) {
+  console.warn("Content readiness warnings:");
+
+  for (const warning of warnings) {
+    console.warn(`- ${warning}`);
+  }
+}
