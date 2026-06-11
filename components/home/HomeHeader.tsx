@@ -12,11 +12,10 @@ type HomeHeaderProps = Readonly<{
 }>;
 
 const leftNavItems = ["home", "menu", "about"] as const satisfies readonly RouteKey[];
-const rightNavItems = ["contact", "gallery"] as const satisfies readonly RouteKey[];
+const mobileNavItems = ["home", "menu", "about", "gallery", "contact"] as const satisfies readonly RouteKey[];
 
 export function HomeHeader({ dictionary, locale }: HomeHeaderProps) {
   const site = getSiteConfig();
-  const navItems = [...leftNavItems, ...rightNavItems];
 
   return (
     <header className="home-header">
@@ -35,6 +34,9 @@ export function HomeHeader({ dictionary, locale }: HomeHeaderProps) {
               {dictionary.nav[routeKey]}
             </Link>
           ))}
+          <span aria-disabled="true" className="home-header__link home-header__link--disabled">
+            {dictionary.home.headerCateringLabel}
+          </span>
         </nav>
 
         <Link
@@ -56,15 +58,18 @@ export function HomeHeader({ dictionary, locale }: HomeHeaderProps) {
           aria-label={dictionary.common.primaryNavigationLabel}
           className="home-header__nav home-header__nav--right"
         >
-          {rightNavItems.map((routeKey) => (
-            <Link
-              className="home-header__link"
-              href={getLocalizedPath(locale, routeKey)}
-              key={routeKey}
-            >
-              {dictionary.nav[routeKey]}
-            </Link>
-          ))}
+          <span aria-disabled="true" className="home-header__link home-header__link--disabled">
+            {dictionary.home.headerEventsLabel}
+          </span>
+          <Link
+            className="home-header__link"
+            href={getLocalizedPath(locale, "gallery")}
+          >
+            {dictionary.nav.gallery}
+          </Link>
+          <span aria-disabled="true" className="home-header__link home-header__link--disabled">
+            {dictionary.home.headerShopLabel}
+          </span>
           <Link
             className="home-header__cta"
             href={getLocalizedPath(locale, "contact")}
@@ -77,7 +82,7 @@ export function HomeHeader({ dictionary, locale }: HomeHeaderProps) {
         <details className="home-header__mobile">
           <summary>{dictionary.common.mobileMenuOpenLabel}</summary>
           <nav aria-label={dictionary.common.primaryNavigationLabel}>
-            {navItems.map((routeKey) => (
+            {mobileNavItems.map((routeKey) => (
               <Link
                 aria-current={routeKey === "home" ? "page" : undefined}
                 href={getLocalizedPath(locale, routeKey)}
@@ -89,6 +94,9 @@ export function HomeHeader({ dictionary, locale }: HomeHeaderProps) {
             <Link href={getLocalizedPath(locale, "contact")}>
               {dictionary.home.headerCtaLabel}
             </Link>
+            <span aria-disabled="true">{dictionary.home.headerCateringLabel}</span>
+            <span aria-disabled="true">{dictionary.home.headerEventsLabel}</span>
+            <span aria-disabled="true">{dictionary.home.headerShopLabel}</span>
           </nav>
         </details>
       </div>

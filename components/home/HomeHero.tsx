@@ -13,30 +13,18 @@ type HomeHeroProps = Readonly<{
 }>;
 
 export function HomeHero({
-  contactActions,
   dictionary,
   locale,
 }: HomeHeroProps) {
-  const directionsAction = contactActions.find(
-    (action) => action.type === "directions",
-  );
-  const secondaryHref =
-    directionsAction?.href.value ?? getLocalizedPath(locale, "contact");
-  const secondaryLabel = directionsAction
-    ? dictionary.home.heroSecondaryAction
-    : dictionary.home.heroFallbackAction;
-  const secondaryExternalProps = directionsAction
-    ? ({
-        rel: "noreferrer",
-        target: "_blank",
-      } as const)
-    : {};
-
   return (
     <section className="home-hero-v2">
       <div className="home-hero-v2__grid">
         <div className="home-hero__content">
-          <p className="home-script-label">{dictionary.home.heroScriptLabel}</p>
+          <div className="home-hero-v2__script-row">
+            <span aria-hidden="true" className="home-hero-v2__sparkle" />
+            <p className="home-script-label">{dictionary.home.heroScriptLabel}</p>
+            <span aria-hidden="true" className="home-hero-v2__sparkle home-hero-v2__sparkle--right" />
+          </div>
           <h1 className="home-hero-v2__title">{dictionary.home.heroTitle}</h1>
           <p className="home-hero-v2__ribbon">
             {dictionary.home.heroRibbonLabel}
@@ -51,10 +39,9 @@ export function HomeHero({
             </Link>
             <Link
               className="home-pill-button home-pill-button--light"
-              href={secondaryHref}
-              {...secondaryExternalProps}
+              href={getLocalizedPath(locale, "contact")}
             >
-              {secondaryLabel}
+              {dictionary.home.heroSecondaryAction}
               <span aria-hidden="true">+</span>
             </Link>
           </div>
@@ -71,17 +58,20 @@ export function HomeHero({
             <span>{dictionary.home.heroPanelLine2}</span>
             <span>{dictionary.home.heroPanelLine3}</span>
           </div>
+          <span aria-hidden="true" className="home-hero-v2__panel-sparkle" />
           <div className="home-hero-v2__badge">
             <span>{dictionary.home.heroMoodBadgeTop}</span>
             <strong>{dictionary.home.heroMoodBadgeMiddle}</strong>
             <span>{dictionary.home.heroMoodBadgeBottom}</span>
           </div>
           <div className="home-hero-v2__scene">
+            <span aria-hidden="true" className="home-hero-v2__plate" />
             <span aria-hidden="true" className="home-hero-v2__croissant" />
             <span aria-hidden="true" className="home-hero-v2__cup">
               <span />
             </span>
             <span aria-hidden="true" className="home-hero-v2__vase" />
+            <span aria-hidden="true" className="home-hero-v2__stem" />
             <span aria-hidden="true" className="home-hero-v2__flower" />
           </div>
         </div>

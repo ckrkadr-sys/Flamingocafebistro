@@ -13,9 +13,10 @@ export function FeatureStrip({ dictionary }: FeatureStripProps) {
       <div className="home-feature-strip__inner">
         {dictionary.home.featureItems.map((item, index) => (
           <article className="home-feature" key={item.title}>
-            <span aria-hidden="true" className="home-feature__icon">
-              {index + 1}
-            </span>
+            <span
+              aria-hidden="true"
+              className={`home-feature__icon home-feature__icon--${index + 1}`}
+            />
             <div>
               <h2>{item.title}</h2>
               <p>{item.description}</p>
