@@ -4,6 +4,8 @@ export const routeKeys = ["home", "menu", "about", "gallery", "contact"] as cons
 
 export type RouteKey = (typeof routeKeys)[number];
 
+export const primaryNavRouteKeys = ["home", "menu", "contact"] as const satisfies readonly RouteKey[];
+
 export const routeSegments = {
   home: "",
   menu: "menu",

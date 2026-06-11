@@ -5,7 +5,7 @@ import { MobileNavigation } from "@/components/layout/MobileNavigation";
 import { Container } from "@/components/shared/Container";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
-import { getLocalizedPath, routeKeys } from "@/lib/i18n/routes";
+import { getLocalizedPath, primaryNavRouteKeys } from "@/lib/i18n/routes";
 import { getSiteConfig } from "@/lib/site/siteHelpers";
 
 type HeaderProps = Readonly<{
@@ -15,7 +15,7 @@ type HeaderProps = Readonly<{
 
 export function Header({ dictionary, locale }: HeaderProps) {
   const site = getSiteConfig();
-  const navItems = routeKeys.map((routeKey) => ({
+  const navItems = primaryNavRouteKeys.map((routeKey) => ({
     href: getLocalizedPath(locale, routeKey),
     label: dictionary.nav[routeKey],
   }));

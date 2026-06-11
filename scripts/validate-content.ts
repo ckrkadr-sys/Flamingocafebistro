@@ -3,7 +3,7 @@ import { menuCategories, menuItems } from "../data/menu.ts";
 import { siteConfig, weekdays } from "../data/site.ts";
 import { dictionaries, requiredDictionarySections } from "../lib/i18n/dictionaries.ts";
 import { localeLabels, supportedLocales } from "../lib/i18n/locales.ts";
-import { routeKeys } from "../lib/i18n/routes.ts";
+import { primaryNavRouteKeys, routeKeys } from "../lib/i18n/routes.ts";
 
 const failures: string[] = [];
 const warnings: string[] = [];
@@ -124,6 +124,28 @@ const requiredCommonTextKeys = [
   "mobileMenuOpenLabel",
   "primaryNavigationLabel",
 ] as const;
+const guardedHomeUiTextKeys = [
+  "headerCateringLabel",
+  "headerCtaLabel",
+  "headerEventsLabel",
+  "headerShopLabel",
+  "heroSecondaryAction",
+  "visitBadge",
+  "visitDescription",
+  "visitTitle",
+] as const;
+const forbiddenHeaderTextPatterns = [
+  { label: "CATERING", pattern: /\bcatering\b/i },
+  { label: "EVENTS", pattern: /\bevents?\b/i },
+  { label: "SHOP", pattern: /\bshop\b/i },
+  { label: "RESERVATIONS", pattern: /\breservations?\b/i },
+  { label: "Book a table", pattern: /\bbook a table\b/i },
+] as const;
+const expectedPrimaryNavRouteKeys = ["home", "menu", "contact"] as const;
+
+if (primaryNavRouteKeys.join(",") !== expectedPrimaryNavRouteKeys.join(",")) {
+  failures.push("Primary header navigation must stay limited to home, menu and contact");
+}
 
 for (const locale of supportedLocales) {
   const dictionary = dictionaries[locale];
@@ -159,6 +181,15 @@ for (const locale of supportedLocales) {
 
   for (const homeKey of requiredHomeTextKeys) {
     validateRequiredText(`dictionary ${locale} home ${homeKey}`, dictionary.home[homeKey]);
+  }
+
+  const guardedHomeDictionary = dictionary.home as Record<string, unknown>;
+
+  for (const homeKey of guardedHomeUiTextKeys) {
+    validateNoForbiddenHeaderText(
+      `dictionary ${locale} home ${homeKey}`,
+      guardedHomeDictionary[homeKey],
+    );
   }
 
   for (const menuKey of requiredMenuTextKeys) {
@@ -311,6 +342,20 @@ for (const item of menuItems) {
 function validateRequiredText(name: string, value: unknown) {
   if (typeof value !== "string" || !value.trim()) {
     failures.push(`Missing site data field: ${name}`);
+  }
+}
+
+function validateNoForbiddenHeaderText(name: string, value: unknown) {
+  if (typeof value !== "string") {
+    return;
+  }
+
+  for (const forbiddenText of forbiddenHeaderTextPatterns) {
+    if (forbiddenText.pattern.test(value)) {
+      failures.push(
+        `${name} must not expose out-of-scope header text: ${forbiddenText.label}`,
+      );
+    }
   }
 }
 
