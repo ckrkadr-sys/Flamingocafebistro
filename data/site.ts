@@ -62,7 +62,7 @@ export type SiteConfig = {
   shortBrandName: string;
   address: SiteFact;
   phoneNumber: SiteFact;
-  whatsAppNumber: SiteFact;
+  whatsAppNumber: SiteFact<string | null>;
   email: SiteFact<string | null>;
   instagram: {
     handle: SiteFact;
@@ -77,8 +77,7 @@ export type SiteConfig = {
   primaryContactActions: readonly ContactAction[];
 };
 
-const placeholderNote = "Placeholder: real business details have not been provided yet.";
-const openingHoursPlaceholderNote = "Placeholder: real opening hours have not been provided yet.";
+const unavailableNote = "Unavailable by current project decision.";
 
 // Centralized placeholder business facts for Phase 4. Replace these values with
 // verified real business details before publishing contact/location UI or SEO.
@@ -86,72 +85,69 @@ export const siteConfig: SiteConfig = {
   businessName: "Flamingo Cafe&Bistro",
   shortBrandName: "Flamingo",
   address: {
-    value: "PLACEHOLDER_ADDRESS",
-    isPlaceholder: true,
-    note: placeholderNote,
+    value: "Foça, 1054. Sk. 62h, 48300 Fethiye/Muğla",
+    isPlaceholder: false,
   },
   phoneNumber: {
-    value: "PLACEHOLDER_PHONE_NUMBER",
-    isPlaceholder: true,
-    note: placeholderNote,
+    value: "+90 543 212 25 43",
+    isPlaceholder: false,
   },
   whatsAppNumber: {
-    value: "PLACEHOLDER_WHATSAPP_NUMBER",
-    isPlaceholder: true,
-    note: placeholderNote,
+    value: null,
+    isPlaceholder: false,
+    note: unavailableNote,
   },
   email: {
     value: null,
-    isPlaceholder: true,
-    note: "Placeholder: business email has not been provided yet.",
+    isPlaceholder: false,
+    note: unavailableNote,
   },
   instagram: {
     handle: {
-      value: "PLACEHOLDER_INSTAGRAM_HANDLE",
-      isPlaceholder: true,
-      note: placeholderNote,
+      value: "@flamingocafe.bistro",
+      isPlaceholder: false,
     },
     url: {
-      value: "PLACEHOLDER_INSTAGRAM_URL",
-      isPlaceholder: true,
-      note: placeholderNote,
+      value: "https://www.instagram.com/flamingocafe.bistro",
+      isPlaceholder: false,
     },
   },
   googleMapsUrl: {
-    value: "PLACEHOLDER_GOOGLE_MAPS_URL",
-    isPlaceholder: true,
-    note: placeholderNote,
+    value: "https://share.google/dAPjCBPb8m6F2OZ9e",
+    isPlaceholder: false,
   },
   googleMapsEmbedUrl: {
     value: null,
-    isPlaceholder: true,
-    note: "Placeholder: Google Maps embed URL has not been provided yet.",
+    isPlaceholder: false,
+    note: unavailableNote,
   },
   openingHours: {
     timezone: "Europe/Istanbul",
     days: weekdays.map((day) => ({
       day,
       isClosed: false,
-      ranges: [],
-      isPlaceholder: true,
-      note: openingHoursPlaceholderNote,
+      ranges: [
+        {
+          opens: "10:00",
+          closes: "23:30",
+        },
+      ],
+      isPlaceholder: false,
     })),
   },
-  logoPath: "/images/placeholders/logo.svg",
+  logoPath: "/images/logo/flamingocafe-logo.webp",
   defaultHeroImagePath: "/images/placeholders/hero-01.webp",
   socialLinks: [
     {
       id: "instagram",
       platform: "instagram",
       handle: {
-        value: "PLACEHOLDER_INSTAGRAM_HANDLE",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "@flamingocafe.bistro",
+        isPlaceholder: false,
       },
       url: {
-        value: "PLACEHOLDER_INSTAGRAM_URL",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "https://www.instagram.com/flamingocafe.bistro",
+        isPlaceholder: false,
       },
     },
   ],
@@ -160,29 +156,12 @@ export const siteConfig: SiteConfig = {
       id: "phone",
       type: "phone",
       href: {
-        value: "tel:PLACEHOLDER_PHONE_NUMBER",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "tel:+905432122543",
+        isPlaceholder: false,
       },
       value: {
-        value: "PLACEHOLDER_PHONE_NUMBER",
-        isPlaceholder: true,
-        note: placeholderNote,
-      },
-      isPrimary: true,
-    },
-    {
-      id: "whatsapp",
-      type: "whatsapp",
-      href: {
-        value: "https://wa.me/PLACEHOLDER_WHATSAPP_NUMBER",
-        isPlaceholder: true,
-        note: placeholderNote,
-      },
-      value: {
-        value: "PLACEHOLDER_WHATSAPP_NUMBER",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "+90 543 212 25 43",
+        isPlaceholder: false,
       },
       isPrimary: true,
     },
@@ -190,9 +169,8 @@ export const siteConfig: SiteConfig = {
       id: "directions",
       type: "directions",
       href: {
-        value: "PLACEHOLDER_GOOGLE_MAPS_URL",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "https://share.google/dAPjCBPb8m6F2OZ9e",
+        isPlaceholder: false,
       },
       isPrimary: true,
     },
@@ -200,15 +178,14 @@ export const siteConfig: SiteConfig = {
       id: "instagram",
       type: "instagram",
       href: {
-        value: "PLACEHOLDER_INSTAGRAM_URL",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "https://www.instagram.com/flamingocafe.bistro",
+        isPlaceholder: false,
       },
       value: {
-        value: "PLACEHOLDER_INSTAGRAM_HANDLE",
-        isPlaceholder: true,
-        note: placeholderNote,
+        value: "@flamingocafe.bistro",
+        isPlaceholder: false,
       },
+      isPrimary: true,
     },
   ],
 };

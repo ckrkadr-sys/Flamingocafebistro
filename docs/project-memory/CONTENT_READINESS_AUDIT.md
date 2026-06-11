@@ -1,180 +1,71 @@
 # Content Readiness Audit
 
-Phase: 11 - Real Content and Placeholder Audit
+Phase: 11A - Content Readiness Audit Document
 
-Date: 2026-06-09
+Date: 2026-06-11
 
 ## Current Status Summary
 
-The website architecture is ready for real production content, but the public-facing content is not production-ready yet.
+The site structure is ready for production content, but the actual public content is not production-ready yet.
 
-Current implementation status:
+- `npm run quality:check` is expected to pass with readiness warnings.
+- `data/site.ts` still contains placeholder business/contact facts.
+- `data/menu.ts` still contains starter/sample menu categories and products.
+- Current menu items have numeric prices, but they are not final business prices.
+- Current menu items do not have product images.
+- `data/gallery.ts` still contains placeholder gallery asset records.
+- `public/` currently has no real production image assets.
+- `lib/i18n/dictionaries.ts` contains structurally complete UI copy for `tr`, `en`, `ru`, and `de`, but some copy is intentionally placeholder-safe.
+- `scripts/validate-content.ts` already reports readiness warnings for starter menu data, missing product images, placeholder site data, placeholder contact actions, placeholder opening hours, and placeholder gallery assets.
 
-- Localized routes exist for `tr`, `en`, `ru`, and `de`.
-- Home, menu, gallery, contact, and about pages are implemented.
-- User-visible UI text is centralized in `lib/i18n/dictionaries.ts`.
-- Business facts are centralized in `data/site.ts`.
-- Menu data is centralized in `data/menu.ts`.
-- Gallery data is centralized in `data/gallery.ts`.
-- `public/` exists, but no real public image assets are present.
-- The site intentionally renders placeholder-safe visual treatments when placeholder image paths are used.
+This document is an audit only. It does not replace source data and does not define real business facts.
 
-Do not treat the current business/contact/menu/gallery content as final production content.
+## Business Information Still Needed
 
-## Business Information Checklist
+The following verified business details are still required before production launch:
 
-Source file: `data/site.ts`
+- Address.
+- Phone number.
+- WhatsApp number in international format.
+- Email address, or confirmed decision not to publish email.
+- Instagram handle.
+- Instagram profile URL.
+- Google Maps public URL.
+- Google Maps embed URL.
+- Opening hours for all seven days, including closed days or split shifts if relevant.
 
-### Present But Should Be Verified
+These values should later replace the placeholder facts in `data/site.ts` and the related contact action URLs.
 
-- [ ] `businessName`: currently `Flamingo Cafe&Bistro`.
-- [ ] `shortBrandName`: currently `Flamingo`.
-- [ ] `timezone`: currently `Europe/Istanbul`.
+## Visual Assets Still Needed
 
-These values may be correct, but they should still be confirmed before final SEO and structured data work.
+The following real visual assets are still required:
 
-### Missing Or Placeholder
+- Logo.
+- Hero image.
+- Menu product images.
+- Gallery images.
+- About page supporting visuals.
+- Contact page supporting visuals.
+- Gallery page supporting visuals.
 
-- [ ] Full street address.
-- [ ] Public phone number.
-- [ ] WhatsApp number in international format.
-- [ ] Public email address, or explicit confirmation that no email should be shown.
-- [ ] Instagram handle.
-- [ ] Instagram profile URL.
-- [ ] Google Maps public URL.
-- [ ] Google Maps embed URL.
-- [ ] Opening hours for all seven days.
-- [ ] Closed days, if any.
-- [ ] Logo asset path backed by a real file.
-- [ ] Hero image asset path backed by a real file.
-- [ ] Social link records with real URLs.
-- [ ] Contact action URLs for phone, WhatsApp, directions, and Instagram.
+Images should be real Flamingo Cafe&Bistro assets or approved brand assets. Placeholder paths should remain placeholder-marked until real files are provided.
 
-### Current Placeholder Details
+## Menu Data Still Needed
 
-- `address.value`: `PLACEHOLDER_ADDRESS`
-- `phoneNumber.value`: `PLACEHOLDER_PHONE_NUMBER`
-- `whatsAppNumber.value`: `PLACEHOLDER_WHATSAPP_NUMBER`
-- `email.value`: `null`
-- `instagram.handle.value`: `PLACEHOLDER_INSTAGRAM_HANDLE`
-- `instagram.url.value`: `PLACEHOLDER_INSTAGRAM_URL`
-- `googleMapsUrl.value`: `PLACEHOLDER_GOOGLE_MAPS_URL`
-- `googleMapsEmbedUrl.value`: `null`
-- `openingHours.days`: all seven days are marked placeholder and have no ranges.
-- `logoPath`: `/images/placeholders/logo.svg`
-- `defaultHeroImagePath`: `/images/placeholders/hero-01.webp`
+The following final menu content is still required:
 
-## Menu Data Checklist
+- Final categories.
+- Final product names.
+- Final numeric prices.
+- Final product descriptions.
+- Final product images.
+- Translations for `tr`, `en`, `ru`, and `de`.
 
-Source file: `data/menu.ts`
+Menu content must remain in the existing menu data model in `data/menu.ts`. Product names and descriptions must stay inside menu data translations, not the dictionary.
 
-### Current Menu Categories
+## Suggested Public Image Folder Structure
 
-The current categories are starter taxonomy data:
-
-- `breakfast`
-- `burgers`
-- `pasta`
-- `desserts`
-- `hot-drinks`
-- `cold-drinks`
-- `frozen-milkshake`
-
-These categories are suitable as a broad cafe-bistro starting point, but they must be confirmed against the real Flamingo menu.
-
-### Current Menu Items
-
-All current menu items are starter/sample records and must be replaced with real Flamingo menu items:
-
-- `starter-breakfast-plate` - price `240`
-- `starter-bistro-burger` - price `320`
-- `starter-cream-pasta` - price `285`
-- `starter-cafe-dessert` - price `180`
-- `starter-latte` - price `120`
-- `starter-iced-tea` - price `105`
-- `starter-strawberry-milkshake` - price `165`
-
-### Menu Replacement Requirements
-
-- [ ] Replace sample categories with the real final category list.
-- [ ] Replace all starter/sample products with real products.
-- [ ] Provide numeric prices for every product.
-- [ ] Provide product names for `tr`, `en`, `ru`, and `de`.
-- [ ] Provide product descriptions for `tr`, `en`, `ru`, and `de` where descriptions should appear.
-- [ ] Provide real product image filenames where images are available.
-- [ ] Confirm which products are popular.
-- [ ] Confirm which products are new, if any.
-- [ ] Confirm allergen/tag strategy before publishing allergen data.
-- [ ] Keep all menu products in `data/menu.ts`; do not create a second menu source.
-
-### Current Translation Status
-
-All current sample categories and sample items include translations for `tr`, `en`, `ru`, and `de`.
-
-The translations are structurally complete, but the product names/descriptions are sample-safe text and are not real Flamingo menu content.
-
-## Gallery Data Checklist
-
-Source file: `data/gallery.ts`
-
-### Current Gallery Categories
-
-Current gallery categories:
-
-- `venue`
-- `food`
-- `drinks`
-- `desserts`
-- `atmosphere`
-
-These categories are suitable for final use unless the real content needs another grouping.
-
-### Current Gallery Items
-
-All current gallery items are placeholder visual records:
-
-- `placeholder-venue-01` -> `/images/placeholders/venue-01.webp`
-- `placeholder-food-01` -> `/images/placeholders/food-01.webp`
-- `placeholder-drink-01` -> `/images/placeholders/drink-01.webp`
-- `placeholder-dessert-01` -> `/images/placeholders/dessert-01.webp`
-- `placeholder-atmosphere-01` -> `/images/placeholders/atmosphere-01.webp`
-
-### Gallery Replacement Requirements
-
-- [ ] Add real venue images.
-- [ ] Add real food images.
-- [ ] Add real drink images.
-- [ ] Add real dessert images, if desserts remain a gallery category.
-- [ ] Add real atmosphere/interior/exterior images.
-- [ ] Replace placeholder gallery `src` values with real public asset paths.
-- [ ] Replace placeholder-oriented alt text with descriptive real alt text in `tr`, `en`, `ru`, and `de`.
-- [ ] Confirm which images should be `featured`.
-- [ ] Confirm image order.
-
-### Current Alt Text Status
-
-All current gallery records include alt text for `tr`, `en`, `ru`, and `de`.
-
-The alt text is structurally complete, but it describes placeholder images. It must be replaced once real images are provided.
-
-## Public Asset Audit
-
-Inspected path: `public/`
-
-Current status:
-
-- `public/` exists.
-- No real files are currently present under `public/`.
-- No real logo file exists.
-- No real hero image exists.
-- No real menu product images exist.
-- No real gallery images exist.
-
-The current data references paths such as `/images/placeholders/logo.svg`, but those files are not present. This is currently safe because the UI detects placeholder paths and renders generated placeholder surfaces instead of loading missing images in the relevant image components.
-
-## Suggested Image Folder Structure
-
-Recommended public asset structure:
+Recommended structure:
 
 ```txt
 public/
@@ -184,7 +75,6 @@ public/
       flamingo-logo-mark.svg
     hero/
       flamingo-hero-01.webp
-      flamingo-hero-02.webp
     menu/
       breakfast/
       burgers/
@@ -199,87 +89,50 @@ public/
       drinks/
       desserts/
       atmosphere/
+    pages/
+      about/
+      contact/
+      gallery/
 ```
 
-This keeps brand, hero, menu, and gallery assets separate and makes data updates easier to review.
+Final folder names should follow the confirmed menu and gallery category IDs.
 
 ## Suggested Image Naming Convention
 
 Use lowercase kebab-case filenames with stable, descriptive names.
 
-Recommended patterns:
-
 - Logo: `flamingo-logo.svg`
 - Hero: `flamingo-hero-01.webp`
-- Venue gallery: `flamingo-venue-01.webp`
-- Food gallery: `flamingo-food-01.webp`
-- Menu product: `<category-id>/<product-id>.webp`
+- Menu products: `<product-id>.webp` inside the matching category folder.
+- Gallery images: `flamingo-<category>-01.webp`, `flamingo-<category>-02.webp`.
+- Page visuals: `flamingo-about-01.webp`, `flamingo-contact-01.webp`, `flamingo-gallery-01.webp`.
 
-Examples:
+Example paths:
 
 ```txt
 /images/brand/flamingo-logo.svg
 /images/hero/flamingo-hero-01.webp
-/images/gallery/venue/flamingo-venue-01.webp
 /images/menu/burgers/flamingo-burger.webp
+/images/gallery/venue/flamingo-venue-01.webp
+/images/pages/about/flamingo-about-01.webp
 ```
 
-Use `.webp` for photos where possible. Keep source images high enough quality for responsive display, but optimize before committing.
-
-## Dictionary Copy Audit
-
-Source file: `lib/i18n/dictionaries.ts`
-
-### Generic Or Placeholder-Safe Copy
-
-The following copy is intentionally generic and should be reviewed after real business data is confirmed:
-
-- Home hero and section copy describes a broad modern cafe-bistro experience.
-- Home popular section copy mentions starter previews while real menu content is not final.
-- Location/contact copy says details will be added soon.
-- Contact map placeholder copy says the map will appear after verification.
-- Gallery copy describes a flexible gallery area prepared for real visuals.
-- About copy is neutral brand-positioning copy, not a real founder/history story.
-- SEO descriptions currently use preparation-view language and are not production SEO copy.
-
-### Copy That Can Likely Remain
-
-The following can likely remain with minor polish:
-
-- Navigation labels.
-- Language switcher labels.
-- Menu search labels and empty states.
-- Gallery category labels if the category model remains the same.
-- Contact action labels.
-- Footer section labels.
-- About values if the brand wants concise neutral positioning.
-
-### Copy To Customize Later
-
-Customize these after real business identity and data are confirmed:
-
-- Home hero title and description.
-- About page story and experience text.
-- SEO title and description for each route and locale.
-- Gallery alt text.
-- Menu product names and descriptions.
-- Any copy that refers to location, opening hours, social channels, or final menu categories.
+Use optimized `.webp` for photos where possible. Keep SVG for logo assets when vector source is available.
 
 ## Safe Replacement Order
 
-Use this order once real content is provided:
+Recommended order once verified content is provided:
 
-1. Confirm business identity basics: exact brand spelling, short name, address, phone, WhatsApp, Instagram, Google Maps, email policy, and opening hours.
-2. Add real brand and hero assets under `public/images/brand/` and `public/images/hero/`.
-3. Update `data/site.ts` with real business facts and set `isPlaceholder: false` only for verified values.
-4. Add real gallery images under `public/images/gallery/`.
-5. Update `data/gallery.ts` with real image paths, categories, featured flags, order, and localized alt text.
+1. Confirm exact business facts: address, phone, WhatsApp, email policy, Instagram, Google Maps links, and opening hours.
+2. Add real logo and hero assets under `public/images/brand/` and `public/images/hero/`.
+3. Update `data/site.ts` with verified business facts and mark only verified values as non-placeholder.
+4. Add real gallery and page-supporting images under `public/images/gallery/` and `public/images/pages/`.
+5. Update `data/gallery.ts` with real image paths, category assignments, order, featured flags, dimensions, and localized alt text.
 6. Confirm final menu categories and product list.
 7. Add real menu product images under `public/images/menu/`.
-8. Replace `data/menu.ts` starter sample categories/items with real menu data, numeric prices, localized names/descriptions, and image paths.
-9. Review `lib/i18n/dictionaries.ts` for generic copy that should become brand/location-specific.
-10. Run `npm run validate:content`, `npm run lint`, `npm run typecheck`, `npm run build`, and `npm run quality:check`.
-11. After content is real, proceed to SEO structured data, sitemap, robots, canonical, and hreflang work.
+8. Replace starter menu data in `data/menu.ts` with final categories, products, numeric prices, image paths, and `tr`/`en`/`ru`/`de` translations.
+9. Review dictionary copy for production wording, especially home, about, contact, gallery, and SEO text.
+10. Run `npm run quality:check`.
 
 ## What Must Not Be Invented
 
@@ -297,28 +150,19 @@ Do not invent or guess:
 - Product prices.
 - Product images.
 - Gallery images.
-- Founder story, awards, dates, claims, or location-specific facts.
+- Logo or brand assets.
+- Founder story, awards, dates, sourcing claims, local claims, or other factual business claims.
 
-Only replace placeholders with verified information provided by the business or already present in the repository.
+Only replace placeholders with verified information from the business or approved source files.
 
 ## Recommended Next Phase
 
-Recommended next phase after real data is provided:
-
-Phase 12 - Real Business Data and Asset Integration
+Recommended next phase: Phase 11B - Real Content Collection and Handoff.
 
 Scope:
 
-- Add real public image assets.
-- Replace placeholder site facts in `data/site.ts`.
-- Replace gallery placeholder records in `data/gallery.ts`.
-- Replace starter menu data in `data/menu.ts`.
-- Update generic dictionary copy only where real data makes it more accurate.
-- Keep all pages and UI structure unchanged unless real content exposes a layout issue.
-
-After Phase 12, proceed to SEO productionization:
-
-- Locale metadata polish.
-- Canonical and hreflang.
-- Sitemap and robots.
-- LocalBusiness / Restaurant structured data.
+- Collect verified business information.
+- Collect final menu data with prices and all required translations.
+- Collect approved production image assets.
+- Confirm the final category structure.
+- Prepare a controlled Phase 12 implementation task for replacing placeholder data and assets without redesigning the UI.

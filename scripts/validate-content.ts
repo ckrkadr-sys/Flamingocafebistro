@@ -369,6 +369,10 @@ validateSiteFact("instagram.url", siteConfig.instagram.url);
 validateSiteFact("googleMapsUrl", siteConfig.googleMapsUrl);
 validateSiteFact("googleMapsEmbedUrl", siteConfig.googleMapsEmbedUrl);
 
+if (siteConfig.whatsAppNumber.value !== null) {
+  failures.push("WhatsApp number must remain disabled for this project phase");
+}
+
 if (siteConfig.openingHours.days.length !== 7) {
   failures.push("Site opening hours must define all 7 weekdays");
 }
@@ -403,6 +407,14 @@ for (const socialLink of siteConfig.socialLinks) {
 for (const action of siteConfig.primaryContactActions) {
   validateRequiredText(`contact action id ${action.id}`, action.id);
   validateSiteFact(`contact action ${action.id} href`, action.href);
+
+  if (action.type === "whatsapp") {
+    failures.push("WhatsApp contact actions must not be enabled");
+  }
+
+  if (action.href.value?.includes("wa.me")) {
+    failures.push(`Contact action "${action.id}" must not use a WhatsApp URL`);
+  }
 
   if (action.value) {
     validateSiteFact(`contact action ${action.id} value`, action.value);

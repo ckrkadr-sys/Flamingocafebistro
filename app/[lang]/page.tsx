@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { HomeAtmosphere } from "@/components/home/HomeAtmosphere";
-import { HomeCategoryHighlights } from "@/components/home/HomeCategoryHighlights";
+import { AboutBistro } from "@/components/home/AboutBistro";
+import { EventNights } from "@/components/home/EventNights";
+import { FeatureStrip } from "@/components/home/FeatureStrip";
 import { HomeGalleryPreview } from "@/components/home/HomeGalleryPreview";
 import { HomeHero } from "@/components/home/HomeHero";
-import { HomeLocationStrip } from "@/components/home/HomeLocationStrip";
-import { HomePopularItems } from "@/components/home/HomePopularItems";
+import { ReservationBand } from "@/components/home/ReservationBand";
+import { SignatureMenu } from "@/components/home/SignatureMenu";
+import { Testimonials } from "@/components/home/Testimonials";
 import {
   getFeaturedGalleryItems,
   getLocalizedGalleryAlt,
@@ -14,14 +16,11 @@ import {
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale } from "@/lib/i18n/locales";
 import {
-  getLocalizedCategory,
   getLocalizedMenuItem,
-  getMenuCategories,
-  getPopularMenuItems,
+  getMenuItems,
 } from "@/lib/menu/menuHelpers";
 import { getLocalizedMetadata } from "@/lib/seo/metadata";
 import {
-  getOpeningHours,
   getRenderableContactActions,
   getSiteConfig,
 } from "@/lib/site/siteHelpers";
@@ -54,25 +53,10 @@ export default async function LocaleHomePage({ params }: PageProps) {
   const dictionary = getDictionary(lang);
   const site = getSiteConfig();
   const contactActions = getRenderableContactActions();
-  const categories = getMenuCategories().map((category) =>
-    getLocalizedCategory(category, lang),
-  );
-  const popularItems = getPopularMenuItems().map((item) =>
+  const signatureItems = getMenuItems().map((item) =>
     getLocalizedMenuItem(item, lang),
   );
   const featuredGalleryItems = getFeaturedGalleryItems();
-  const atmosphereImage =
-    featuredGalleryItems.find((item) => item.category === "atmosphere") ??
-    featuredGalleryItems.find((item) => item.category === "venue");
-  const atmosphere = atmosphereImage
-    ? {
-        alt: getLocalizedGalleryAlt(atmosphereImage, lang),
-        src: atmosphereImage.src,
-      }
-    : {
-        alt: dictionary.home.atmosphereImageLabel,
-        src: site.defaultHeroImagePath,
-      };
   const galleryPreviewItems = featuredGalleryItems.map((item) => ({
     alt: getLocalizedGalleryAlt(item, lang),
     id: item.id,
@@ -87,33 +71,21 @@ export default async function LocaleHomePage({ params }: PageProps) {
         locale={lang}
         site={site}
       />
-      <HomeCategoryHighlights
-        categories={categories}
+      <FeatureStrip dictionary={dictionary} />
+      <SignatureMenu
         dictionary={dictionary}
+        items={signatureItems}
         locale={lang}
       />
-      <HomePopularItems
-        dictionary={dictionary}
-        items={popularItems}
-        locale={lang}
-      />
-      <HomeAtmosphere
-        dictionary={dictionary}
-        image={atmosphere}
-        locale={lang}
-      />
+      <AboutBistro dictionary={dictionary} locale={lang} />
       <HomeGalleryPreview
         dictionary={dictionary}
         items={galleryPreviewItems}
         locale={lang}
       />
-      <HomeLocationStrip
-        contactActions={contactActions}
-        dictionary={dictionary}
-        locale={lang}
-        openingHours={getOpeningHours()}
-        site={site}
-      />
+      <EventNights dictionary={dictionary} locale={lang} />
+      <Testimonials dictionary={dictionary} locale={lang} />
+      <ReservationBand dictionary={dictionary} locale={lang} />
     </main>
   );
 }

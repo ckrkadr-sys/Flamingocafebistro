@@ -1,9 +1,5 @@
 import Link from "next/link";
 
-import { Button } from "@/components/shared/Button";
-import { Container } from "@/components/shared/Container";
-import { Section } from "@/components/shared/Section";
-import { SectionTitle } from "@/components/shared/SectionTitle";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
 import { getLocalizedPath } from "@/lib/i18n/routes";
@@ -32,31 +28,33 @@ export function HomeGalleryPreview({
   }
 
   return (
-    <Section className="home-section home-gallery-preview">
-      <Container>
-        <div className="home-section__split-heading">
-          <SectionTitle
-            description={dictionary.home.galleryDescription}
-            eyebrow={dictionary.home.galleryEyebrow}
-            title={dictionary.home.galleryTitle}
-          />
-          <Button href={getLocalizedPath(locale, "gallery")} variant="secondary">
-            {dictionary.home.galleryActionLabel}
-          </Button>
+    <section className="home-gallery-showcase">
+      <div className="home-section-heading home-section-heading--with-action">
+        <div>
+          <p>{dictionary.home.galleryEyebrow}</p>
+          <h2>{dictionary.home.galleryTitle}</h2>
         </div>
+        <Link className="home-outline-button" href={getLocalizedPath(locale, "gallery")}>
+          {dictionary.home.galleryActionLabel}
+          <span aria-hidden="true">+</span>
+        </Link>
+      </div>
 
-        <div className="home-gallery-preview__grid">
-          {items.slice(0, 3).map((item) => (
-            <Link
-              className="home-gallery-preview__item"
-              href={getLocalizedPath(locale, "gallery")}
-              key={item.id}
-            >
-              <HomeImageFrame alt={item.alt} src={item.src} />
-            </Link>
-          ))}
-        </div>
-      </Container>
-    </Section>
+      <div className="home-gallery-showcase__grid">
+        {items.slice(0, 6).map((item) => (
+          <Link
+            className="home-gallery-showcase__item"
+            href={getLocalizedPath(locale, "gallery")}
+            key={item.id}
+          >
+            <HomeImageFrame alt={item.alt} src={item.src} />
+          </Link>
+        ))}
+      </div>
+
+      <p className="home-gallery-showcase__description">
+        {dictionary.home.galleryDescription}
+      </p>
+    </section>
   );
 }

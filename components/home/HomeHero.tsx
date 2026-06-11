@@ -1,12 +1,9 @@
-import { Button } from "@/components/shared/Button";
-import { Container } from "@/components/shared/Container";
-import { Section } from "@/components/shared/Section";
+import Link from "next/link";
+
 import type { ContactAction, SiteConfig } from "@/data/site";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
 import { getLocalizedPath } from "@/lib/i18n/routes";
-
-import { HomeImageFrame } from "./HomeImageFrame";
 
 type HomeHeroProps = Readonly<{
   contactActions: readonly ContactAction[];
@@ -19,7 +16,6 @@ export function HomeHero({
   contactActions,
   dictionary,
   locale,
-  site,
 }: HomeHeroProps) {
   const directionsAction = contactActions.find(
     (action) => action.type === "directions",
@@ -37,36 +33,59 @@ export function HomeHero({
     : {};
 
   return (
-    <Section className="home-hero" spacing="spacious">
-      <Container className="home-hero__grid">
+    <section className="home-hero-v2">
+      <div className="home-hero-v2__grid">
         <div className="home-hero__content">
-          <p className="home-hero__brand">{site.businessName}</p>
-          <h1 className="home-hero__title">{dictionary.home.heroTitle}</h1>
+          <p className="home-script-label">{dictionary.home.heroScriptLabel}</p>
+          <h1 className="home-hero-v2__title">{dictionary.home.heroTitle}</h1>
+          <p className="home-hero-v2__ribbon">
+            {dictionary.home.heroRibbonLabel}
+          </p>
           <p className="home-hero__description">
             {dictionary.home.heroDescription}
           </p>
           <div className="home-hero__actions">
-            <Button href={getLocalizedPath(locale, "menu")} size="lg">
+            <Link className="home-pill-button" href={getLocalizedPath(locale, "menu")}>
               {dictionary.home.heroPrimaryAction}
-            </Button>
-            <Button
+              <span aria-hidden="true">+</span>
+            </Link>
+            <Link
+              className="home-pill-button home-pill-button--light"
               href={secondaryHref}
-              size="lg"
-              variant="secondary"
               {...secondaryExternalProps}
             >
               {secondaryLabel}
-            </Button>
+              <span aria-hidden="true">+</span>
+            </Link>
           </div>
+          <span aria-hidden="true" className="home-hero-v2__palm" />
         </div>
 
-        <HomeImageFrame
-          alt={dictionary.home.heroImageLabel}
-          className="home-hero__image"
-          priority
-          src={site.defaultHeroImagePath}
-        />
-      </Container>
-    </Section>
+        <div
+          aria-label={dictionary.home.heroImageLabel}
+          className="home-hero-v2__panel"
+          role="img"
+        >
+          <div className="home-hero-v2__panel-copy">
+            <span>{dictionary.home.heroPanelLine1}</span>
+            <span>{dictionary.home.heroPanelLine2}</span>
+            <span>{dictionary.home.heroPanelLine3}</span>
+          </div>
+          <div className="home-hero-v2__badge">
+            <span>{dictionary.home.heroMoodBadgeTop}</span>
+            <strong>{dictionary.home.heroMoodBadgeMiddle}</strong>
+            <span>{dictionary.home.heroMoodBadgeBottom}</span>
+          </div>
+          <div className="home-hero-v2__scene">
+            <span aria-hidden="true" className="home-hero-v2__croissant" />
+            <span aria-hidden="true" className="home-hero-v2__cup">
+              <span />
+            </span>
+            <span aria-hidden="true" className="home-hero-v2__vase" />
+            <span aria-hidden="true" className="home-hero-v2__flower" />
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
