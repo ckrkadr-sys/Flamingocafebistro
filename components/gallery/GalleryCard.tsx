@@ -3,6 +3,7 @@ import Image from "next/image";
 import { CardSurface } from "@/components/shared/CardSurface";
 import type { GalleryCategory } from "@/data/gallery";
 import { isPlaceholderAssetPath } from "@/lib/site/siteHelpers";
+import { cn } from "@/lib/utils/cn";
 
 export type GalleryCardItem = Readonly<{
   alt: string;
@@ -23,7 +24,10 @@ export function GalleryCard({ categoryLabel, item }: GalleryCardProps) {
   const isPlaceholder = isPlaceholderAssetPath(item.src);
 
   return (
-    <CardSurface className="gallery-card" padded={false}>
+    <CardSurface
+      className={cn("gallery-card", item.featured && "gallery-card--featured")}
+      padded={false}
+    >
       <div
         aria-label={isPlaceholder ? item.alt : undefined}
         className="gallery-card__media"
