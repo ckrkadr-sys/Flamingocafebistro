@@ -48,6 +48,10 @@ export function HomePopularItems({
               key={item.id}
             >
               <CardSurface className="home-popular-card__surface" interactive>
+                <span aria-hidden="true" className="home-popular-card__visual">
+                  <span className="home-popular-card__visual-shape" />
+                  <span className="home-popular-card__visual-shape" />
+                </span>
                 <div>
                   <h3 className="home-card-title">{item.name}</h3>
                   {item.description ? (
