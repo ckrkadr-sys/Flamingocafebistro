@@ -12,15 +12,15 @@ export function getMenuCategories() {
 }
 
 export function getMenuItems() {
-  return [...menuItems];
+  return [...menuItems].sort((first, second) => first.order - second.order);
 }
 
 export function getMenuItemsByCategory(categoryId: string) {
-  return menuItems.filter((item) => item.categoryId === categoryId);
+  return getMenuItems().filter((item) => item.categoryId === categoryId);
 }
 
 export function getPopularMenuItems() {
-  return menuItems.filter((item) => item.isPopular);
+  return getMenuItems().filter((item) => item.isPopular);
 }
 
 export function getMenuCategoryById(categoryId: string) {
