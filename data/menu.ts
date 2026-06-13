@@ -25,6 +25,7 @@ export type MenuItem = {
   order: number;
   price: number;
   image?: string;
+  imagePath?: string;
   isPopular?: boolean;
   isNew?: boolean;
   allergens?: string[];
@@ -35,12 +36,14 @@ export type MenuItem = {
 function createMenuItem({
   categoryId,
   id,
+  imagePath,
   name,
   order,
   price,
 }: Readonly<{
   categoryId: string;
   id: string;
+  imagePath?: string;
   name: string;
   order: number;
   price: number;
@@ -48,6 +51,7 @@ function createMenuItem({
   return {
     categoryId,
     id,
+    ...(imagePath ? { imagePath } : {}),
     order,
     price,
     translations: {

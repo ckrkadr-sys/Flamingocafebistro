@@ -1,5 +1,9 @@
+import Image from "next/image";
+
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import type { MenuCategoryDisplayMode } from "@/lib/menu/menuDisplayModes";
 import type { LocalizedMenuItem } from "@/lib/menu/menuHelpers";
+import { isPlaceholderAssetPath } from "@/lib/site/siteHelpers";
 import { formatPrice } from "@/lib/utils/formatPrice";
 
 export type MenuCardItem = LocalizedMenuItem & {
@@ -8,13 +12,37 @@ export type MenuCardItem = LocalizedMenuItem & {
 
 type MenuCardProps = Readonly<{
   dictionary: Dictionary["menu"];
+  displayMode: MenuCategoryDisplayMode;
   item: MenuCardItem;
 }>;
 
-export function MenuCard({ dictionary, item }: MenuCardProps) {
+export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
+  const imagePath = item.imagePath ?? item.image;
+  const imageSrc =
+    displayMode === "food-media-list" &&
+    typeof imagePath === "string" &&
+    !isPlaceholderAssetPath(imagePath)
+      ? imagePath
+      : null;
+
   return (
-    <article className="menu-card">
+    <article
+      className={`menu-card menu-card--${displayMode}${
+        imageSrc ? " menu-card--with-image" : ""
+      }`}
+    >
       <div className="menu-card__row">
+        {imageSrc ? (
+          <div className="menu-card__media">
+            <Image
+              alt={item.name}
+              className="menu-card__image"
+              fill
+              sizes="(min-width: 60rem) 112px, 88px"
+              src={imageSrc}
+            />
+          </div>
+        ) : null}
         <div className="menu-card__content">
           <div className="menu-card__heading">
             <h3 className="menu-card__title">{item.name}</h3>

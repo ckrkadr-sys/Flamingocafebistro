@@ -321,8 +321,18 @@ for (const item of menuItems) {
     warnings.push(`Menu item "${item.id}" is starter/sample data`);
   }
 
-  if (!item.image) {
+  const productImagePath = item.imagePath ?? item.image;
+
+  if (!productImagePath) {
     warnings.push(`Menu item "${item.id}" has no product image`);
+  } else {
+    if (!productImagePath.startsWith("/")) {
+      failures.push(`Menu item "${item.id}" product image path must start with /`);
+    }
+
+    if (productImagePath.includes("/placeholders/")) {
+      failures.push(`Menu item "${item.id}" must not use a placeholder product image`);
+    }
   }
 
   for (const locale of supportedLocales) {

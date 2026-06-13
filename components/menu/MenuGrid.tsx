@@ -1,4 +1,8 @@
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import {
+  getMenuCategoryDisplayMode,
+  type MenuCategoryDisplayMode,
+} from "@/lib/menu/menuDisplayModes";
 
 import { MenuCard, type MenuCardItem } from "./MenuCard";
 
@@ -12,6 +16,7 @@ export function MenuGrid({ dictionary, items }: MenuGridProps) {
     {
       categoryId: string;
       categoryTitle: string;
+      displayMode: MenuCategoryDisplayMode;
       items: MenuCardItem[];
     }[]
   >((groupedItems, item) => {
@@ -29,6 +34,7 @@ export function MenuGrid({ dictionary, items }: MenuGridProps) {
       {
         categoryId: item.categoryId,
         categoryTitle: item.categoryTitle,
+        displayMode: getMenuCategoryDisplayMode(item.categoryId),
         items: [item],
       },
     ];
@@ -37,11 +43,20 @@ export function MenuGrid({ dictionary, items }: MenuGridProps) {
   return (
     <div className="menu-list">
       {sections.map((section) => (
-        <section className="menu-list__section" key={section.categoryId}>
+        <section
+          className={`menu-list__section menu-list__section--${section.displayMode}`}
+          data-display-mode={section.displayMode}
+          key={section.categoryId}
+        >
           <h2 className="menu-list__title">{section.categoryTitle}</h2>
           <div className="menu-list__items">
             {section.items.map((item) => (
-              <MenuCard dictionary={dictionary} item={item} key={item.id} />
+              <MenuCard
+                dictionary={dictionary}
+                displayMode={section.displayMode}
+                item={item}
+                key={item.id}
+              />
             ))}
           </div>
         </section>
