@@ -1244,18 +1244,26 @@ a {
 }
 
 .menu-card--with-image .menu-card__row {
+  --menu-card-media-size: clamp(6.875rem, 9vw, 8rem);
+
   align-items: center;
-  grid-template-columns: 5.5rem minmax(0, auto) minmax(1.5rem, 1fr) auto;
+  min-height: clamp(7rem, 10vw, 8.25rem);
+  gap: var(--space-4);
+  grid-template-columns: var(--menu-card-media-size) minmax(0, 1fr) auto;
+  padding-block: var(--space-3);
 }
 
 .menu-card__media {
   position: relative;
-  width: 5.5rem;
+  width: var(--menu-card-media-size, 5.5rem);
   overflow: hidden;
-  border: 1px solid #f0a8c5;
-  border-radius: var(--radius-lg);
+  border: 2px solid #f0a8c5;
+  border-radius: 0.95rem;
   background: var(--home-cream);
-  aspect-ratio: 1;
+  aspect-ratio: 4 / 3;
+  box-shadow:
+    0 8px 18px rgb(17 17 17 / 12%),
+    inset 0 0 0 1px rgb(255 255 255 / 40%);
 }
 
 .menu-card__image {
@@ -1291,6 +1299,10 @@ a {
   transform: translateY(-0.25rem);
 }
 
+.menu-card--with-image .menu-card__leader {
+  display: none;
+}
+
 .menu-card__price {
   border: 1px solid #f0a8c5;
   border-radius: 999px;
@@ -1301,7 +1313,14 @@ a {
   font-weight: 950;
   line-height: var(--line-tight);
   padding: var(--space-1) var(--space-2);
+  text-align: center;
   white-space: nowrap;
+}
+
+.menu-card--with-image .menu-card__price {
+  align-self: center;
+  min-width: 4.5rem;
+  box-shadow: 0 6px 12px rgb(217 63 127 / 8%);
 }
 
 .menu-card__description {
@@ -3767,12 +3786,19 @@ a.contact-card__value:hover {
   }
 
   .menu-card--with-image .menu-card__row {
+    --menu-card-media-size: clamp(5.5rem, 25vw, 6rem);
+
     align-items: center;
-    grid-template-columns: 4.75rem minmax(0, 1fr) auto;
+    min-height: 6.5rem;
+    gap: var(--space-3);
+    grid-template-columns: var(--menu-card-media-size) minmax(0, 1fr) auto;
+    padding-block: var(--space-3);
   }
 
   .menu-card__media {
-    width: 4.75rem;
+    width: var(--menu-card-media-size, 5.5rem);
+    border-radius: 0.85rem;
+    aspect-ratio: 1;
   }
 
   .menu-card__leader {
@@ -3781,6 +3807,11 @@ a.contact-card__value:hover {
 
   .menu-card__price {
     padding-block-start: 0.1rem;
+  }
+
+  .menu-card--with-image .menu-card__price {
+    min-width: 4rem;
+    padding-inline: var(--space-2);
   }
 
   .home-hero-v2,

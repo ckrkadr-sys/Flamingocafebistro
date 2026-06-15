@@ -38,7 +38,7 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
               alt={item.name}
               className="menu-card__image"
               fill
-              sizes="(min-width: 60rem) 112px, 88px"
+              sizes="(min-width: 60rem) 128px, 96px"
               src={imageSrc}
             />
           </div>

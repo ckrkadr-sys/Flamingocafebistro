@@ -273,6 +273,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 10,
     name: "Kahvaltı tabağı 2 kişilik",
     price: 900,
+    imagePath: "/images/menu/items/kahvalti-kahvalti-tabagi-2-kisilik.png",
   }),
   createMenuItem({
     id: "kahvalti-mini-kahvalti-tek-kisilik",
@@ -287,6 +288,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 30,
     name: "Menemen",
     price: 320,
+    imagePath: "/images/menu/items/kahvalti-menemen.png",
   }),
   createMenuItem({
     id: "kahvalti-omlet-peynirli",
@@ -301,6 +303,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 50,
     name: "Omlet mantarlı - kaşarlı",
     price: 280,
+    imagePath: "/images/menu/items/kahvalti-omlet-mantarli-kasarli.png",
   }),
   createMenuItem({
     id: "kahvalti-sahanda-yumurta",
@@ -343,6 +346,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 110,
     name: "Pancake",
     price: 350,
+    imagePath: "/images/menu/items/kahvalti-pancake.png",
   }),
   createMenuItem({
     id: "kahvalti-sahanda-izgara-sucuk",
@@ -392,6 +396,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 180,
     name: "Simit tabağı",
     price: 300,
+    imagePath: "/images/menu/items/kahvalti-simit-tabagi.png",
   }),
   createMenuItem({
     id: "kahvalti-sahanda-yumurta-3-yumurtali",
@@ -406,6 +411,7 @@ export const menuItems: readonly MenuItem[] = [
     order: 200,
     name: "Pişi tabağı",
     price: 280,
+    imagePath: "/images/menu/items/kahvalti-pisi-tabagi.png",
   }),
   createMenuItem({
     id: "tost-sandivic-flamingo-tost",
@@ -644,6 +650,8 @@ export const menuItems: readonly MenuItem[] = [
     order: 540,
     name: "Makarna- tavuklu fettucini",
     price: 400,
+    imagePath:
+      "/images/menu/items/manti-makarna-salata-bowl-makarna-tavuklu-fettucini.png",
   }),
   createMenuItem({
     id: "manti-makarna-salata-bowl-makarna-penne",

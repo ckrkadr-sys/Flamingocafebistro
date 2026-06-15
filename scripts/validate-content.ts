@@ -1,3 +1,6 @@
+import { existsSync } from "node:fs";
+import { resolve, sep } from "node:path";
+
 import { galleryCategories, galleryItems } from "../data/gallery.ts";
 import { menuCategories, menuItems } from "../data/menu.ts";
 import { siteConfig, weekdays } from "../data/site.ts";
@@ -7,6 +10,7 @@ import { primaryNavRouteKeys, routeKeys } from "../lib/i18n/routes.ts";
 
 const failures: string[] = [];
 const warnings: string[] = [];
+const publicDirectory = resolve(process.cwd(), "public");
 const requiredHomeTextKeys = [
   "atmosphereActionLabel",
   "atmosphereDescription",
@@ -141,6 +145,23 @@ const forbiddenHeaderTextPatterns = [
   { label: "RESERVATIONS", pattern: /\breservations?\b/i },
   { label: "Book a table", pattern: /\bbook a table\b/i },
 ] as const;
+
+function validatePublicAssetPath(label: string, assetPath: string) {
+  const relativeAssetPath = assetPath.replace(/^\/+/, "");
+  const resolvedAssetPath = resolve(publicDirectory, relativeAssetPath);
+
+  if (
+    resolvedAssetPath !== publicDirectory &&
+    !resolvedAssetPath.startsWith(`${publicDirectory}${sep}`)
+  ) {
+    failures.push(`${label} must resolve inside public directory`);
+    return;
+  }
+
+  if (!existsSync(resolvedAssetPath)) {
+    failures.push(`${label} does not exist in public directory: ${assetPath}`);
+  }
+}
 const expectedPrimaryNavRouteKeys = ["home", "menu", "contact"] as const;
 
 if (primaryNavRouteKeys.join(",") !== expectedPrimaryNavRouteKeys.join(",")) {
@@ -328,6 +349,11 @@ for (const item of menuItems) {
   } else {
     if (!productImagePath.startsWith("/")) {
       failures.push(`Menu item "${item.id}" product image path must start with /`);
+    } else {
+      validatePublicAssetPath(
+        `Menu item "${item.id}" product image path`,
+        productImagePath,
+      );
     }
 
     if (productImagePath.includes("/placeholders/")) {
