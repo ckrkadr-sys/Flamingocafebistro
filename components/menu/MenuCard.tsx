@@ -18,10 +18,10 @@ type MenuCardProps = Readonly<{
 
 export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
   const imagePath = item.imagePath ?? item.image;
+  const hasBadges = Boolean(item.isPopular || item.isNew);
+  const hasDetails = Boolean(item.description || hasBadges);
   const imageSrc =
-    displayMode === "food-media-list" &&
-    typeof imagePath === "string" &&
-    !isPlaceholderAssetPath(imagePath)
+    typeof imagePath === "string" && !isPlaceholderAssetPath(imagePath)
       ? imagePath
       : null;
 
@@ -31,40 +31,44 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
         imageSrc ? " menu-card--with-image" : ""
       }`}
     >
-      <div className="menu-card__row">
-        {imageSrc ? (
-          <div className="menu-card__media">
-            <Image
-              alt={item.name}
-              className="menu-card__image"
-              fill
-              sizes="(min-width: 60rem) 128px, 96px"
-              src={imageSrc}
-            />
+      {imageSrc ? (
+        <div className="menu-card__media">
+          <Image
+            alt={item.name}
+            className="menu-card__image"
+            height={108}
+            sizes="(min-width: 60rem) 112px, 88px"
+            src={imageSrc}
+            width={144}
+          />
+        </div>
+      ) : null}
+      <div className="menu-card__content">
+        <div className="menu-card__heading">
+          <h3 className="menu-card__title">{item.name}</h3>
+          <p className="menu-card__price">{formatPrice(item.price)}</p>
+        </div>
+        {hasDetails ? (
+          <div className="menu-card__details">
+            {item.description ? (
+              <p className="menu-card__description">{item.description}</p>
+            ) : null}
+            {hasBadges ? (
+              <div className="menu-card__badges">
+                {item.isPopular ? (
+                  <span className="menu-card__badge">
+                    {dictionary.popularBadgeLabel}
+                  </span>
+                ) : null}
+                {item.isNew ? (
+                  <span className="menu-card__badge menu-card__badge--new">
+                    {dictionary.newBadgeLabel}
+                  </span>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         ) : null}
-        <div className="menu-card__content">
-          <div className="menu-card__heading">
-            <h3 className="menu-card__title">{item.name}</h3>
-            <div className="menu-card__badges">
-              {item.isPopular ? (
-                <span className="menu-card__badge">
-                  {dictionary.popularBadgeLabel}
-                </span>
-              ) : null}
-              {item.isNew ? (
-                <span className="menu-card__badge menu-card__badge--new">
-                  {dictionary.newBadgeLabel}
-                </span>
-              ) : null}
-            </div>
-          </div>
-          {item.description ? (
-            <p className="menu-card__description">{item.description}</p>
-          ) : null}
-        </div>
-        <span className="menu-card__leader" aria-hidden="true" />
-        <p className="menu-card__price">{formatPrice(item.price)}</p>
       </div>
     </article>
   );

@@ -1,5 +1,12 @@
-import { menuCategories, menuItems, type MenuCategory, type MenuItem } from "@/data/menu";
-import type { Locale } from "@/lib/i18n/locales";
+import {
+  menuCategories,
+  menuItems,
+  type MenuCategory,
+  type MenuCategoryTranslation,
+  type MenuItem,
+  type MenuItemTranslation,
+} from "../../data/menu.ts";
+import type { Locale } from "../i18n/locales.ts";
 
 export type LocalizedMenuCategory = Omit<MenuCategory, "translations"> &
   MenuCategory["translations"][Locale];
@@ -32,10 +39,11 @@ export function getLocalizedCategory(
   locale: Locale,
 ): LocalizedMenuCategory {
   const { translations, ...categoryData } = category;
+  const translation = getCategoryTranslation(translations, locale);
 
   return {
     ...categoryData,
-    ...translations[locale],
+    ...translation,
   };
 }
 
@@ -44,9 +52,44 @@ export function getLocalizedMenuItem(
   locale: Locale,
 ): LocalizedMenuItem {
   const { translations, ...itemData } = item;
+  const translation = getItemTranslation(translations, locale);
 
   return {
     ...itemData,
-    ...translations[locale],
+    ...translation,
+  };
+}
+
+function getCategoryTranslation(
+  translations: MenuCategory["translations"],
+  locale: Locale,
+): MenuCategoryTranslation {
+  const fallback = translations.tr;
+  const translation = translations[locale] ?? fallback;
+
+  return {
+    ...(translation.description?.trim()
+      ? { description: translation.description }
+      : fallback.description?.trim()
+        ? { description: fallback.description }
+        : {}),
+    title: translation.title?.trim() ? translation.title : fallback.title,
+  };
+}
+
+function getItemTranslation(
+  translations: MenuItem["translations"],
+  locale: Locale,
+): MenuItemTranslation {
+  const fallback = translations.tr;
+  const translation = translations[locale] ?? fallback;
+
+  return {
+    ...(translation.description?.trim()
+      ? { description: translation.description }
+      : fallback.description?.trim()
+        ? { description: fallback.description }
+        : {}),
+    name: translation.name?.trim() ? translation.name : fallback.name,
   };
 }

@@ -20,21 +20,20 @@ The site structure is ready for production content, but the actual public conten
 
 This document is an audit only. It does not replace source data and does not define real business facts.
 
-## Business Information Still Needed
+## 2026-06-23 Business Brief Update
 
-The following verified business details are still required before production launch:
+The following business facts have now been provided and can be used to replace placeholder site data after implementation work begins:
 
-- Address.
-- Phone number.
-- WhatsApp number in international format.
-- Email address, or confirmed decision not to publish email.
-- Instagram handle.
-- Instagram profile URL.
-- Google Maps public URL.
-- Google Maps embed URL.
-- Opening hours for all seven days, including closed days or split shifts if relevant.
+- Business name: Flamingo Cafe & Bistro.
+- Location: Fethiye, Çalış Sahil.
+- Address: Foça, 1054. Sk. 62h, 48300 Fethiye/Muğla.
+- Phone / WhatsApp: +90 543 212 25 43.
+- Instagram handle: `@flamingocafe.bistro`.
+- Opening hours: Every day 10:00-23:30.
+- Email: do not publish an email address.
+- Google Maps link: ready, but the exact approved public URL and embed URL must be used when updating `data/site.ts`.
 
-These values should later replace the placeholder facts in `data/site.ts` and the related contact action URLs.
+These values should later replace the placeholder facts in `data/site.ts` and the related contact action URLs. WhatsApp must be presented as a contact channel, not as online ordering or reservation.
 
 ## Visual Assets Still Needed
 
@@ -52,11 +51,11 @@ Images should be real Flamingo Cafe&Bistro assets or approved brand assets. Plac
 
 ## Menu Data Still Needed
 
-The following final menu content is still required:
+The v1 menu content will be sourced from Excel. Until that import/replacement task is executed, the following production menu content is still required in the repository:
 
-- Final categories.
-- Final product names.
-- Final numeric prices.
+- Final categories from Excel.
+- Final product names from Excel.
+- Final numeric prices from Excel.
 - Final product descriptions.
 - Final product images.
 - Translations for `tr`, `en`, `ru`, and `de`.
@@ -123,7 +122,7 @@ Use optimized `.webp` for photos where possible. Keep SVG for logo assets when v
 
 Recommended order once verified content is provided:
 
-1. Confirm exact business facts: address, phone, WhatsApp, email policy, Instagram, Google Maps links, and opening hours.
+1. Confirm exact implementation values for Google Maps public/embed URLs and Instagram profile URL.
 2. Add real logo and hero assets under `public/images/brand/` and `public/images/hero/`.
 3. Update `data/site.ts` with verified business facts and mark only verified values as non-placeholder.
 4. Add real gallery and page-supporting images under `public/images/gallery/` and `public/images/pages/`.

@@ -28,6 +28,19 @@ Flamingo şu şekilde görünmeli:
 - Yemek, kahve, tatlı ve içecekleri dengeli gösteren
 - Kullanışlı ve hızlı gezilebilen
 
+## Marka Kişiliği ve Kitle
+
+Flamingo'nun hedef kitlesi Çalış Sahil'e gelen yerli/yabancı turistler ile Fethiye/Çalış çevresindeki yerel müşterilerin dengeli karışımıdır. Tasarım yalnızca turistik restoran veya yalnızca mahalle kafesi gibi hissettirmemelidir.
+
+Marka kişiliği:
+
+- Renkli ama kaliteli.
+- Samimi ama dağınık değil.
+- Modern ama soğuk değil.
+- Sahil ruhunu taşıyan, gün batımı hissi veren, sosyal ve sıcak.
+
+Pembe/flamingo kimliği kullanılabilir; ancak premium cafe-bistro algısını bozmayacak şekilde coral, sıcak beyaz, koyu yazı, mavi ve yardımcı renklerle dengelenmelidir.
+
 ## Renk Yaklaşımı
 
 Önerilen renk dünyası:

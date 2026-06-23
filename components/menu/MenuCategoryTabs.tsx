@@ -1,41 +1,43 @@
-import type { LocalizedMenuCategory } from "@/lib/menu/menuHelpers";
-
 type MenuCategoryTabsProps = Readonly<{
-  allLabel: string;
-  categories: readonly LocalizedMenuCategory[];
+  activeCategoryId: string;
+  categories: readonly {
+    id: string;
+    targetId: string;
+    title: string;
+  }[];
   label: string;
   onSelectCategory: (categoryId: string) => void;
-  selectedCategoryId: string;
 }>;
 
 export function MenuCategoryTabs({
-  allLabel,
+  activeCategoryId,
   categories,
   label,
   onSelectCategory,
-  selectedCategoryId,
 }: MenuCategoryTabsProps) {
   return (
     <nav aria-label={label} className="menu-category-tabs">
-      <button
-        aria-pressed={selectedCategoryId === "all"}
-        className="menu-category-tabs__button"
-        onClick={() => onSelectCategory("all")}
-        type="button"
-      >
-        {allLabel}
-      </button>
-      {categories.map((category) => (
-        <button
-          aria-pressed={selectedCategoryId === category.id}
-          className="menu-category-tabs__button"
-          key={category.id}
-          onClick={() => onSelectCategory(category.id)}
-          type="button"
-        >
-          {category.title}
-        </button>
-      ))}
+      <ol className="menu-category-tabs__list">
+        {categories.map((category) => (
+          <li className="menu-category-tabs__item" key={category.id}>
+            <a
+              aria-current={
+                activeCategoryId === category.id ? "location" : undefined
+              }
+              className="menu-category-tabs__button"
+              href={`#${category.targetId}`}
+              onClick={(event) => {
+                event.preventDefault();
+                onSelectCategory(category.id);
+              }}
+            >
+              <span className="menu-category-tabs__title">
+                {category.title}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ol>
     </nav>
   );
 }

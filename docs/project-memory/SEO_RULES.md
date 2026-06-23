@@ -4,6 +4,8 @@
 
 Flamingo Cafe&Bistro sitesi çok dilli ve yerel işletme odaklı SEO yapısına sahip olmalıdır.
 
+Yerel SEO odağı Fethiye, Çalış Sahil, cafe, bistro, kahvaltı, yemek ve gün batımı deneyimi etrafında kurulmalıdır. SEO dili online sipariş, ödeme veya rezervasyon beklentisi oluşturmamalıdır.
+
 ## Locale Bazlı URL Yapısı
 
 Her dil için ayrı URL olmalıdır:

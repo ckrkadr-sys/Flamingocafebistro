@@ -7,6 +7,18 @@
 - `ru` — Русский
 - `de` — Deutsch
 
+## Kaynak Dil ve Ton
+
+Kaynak dil Türkçe olacaktır. İşletmenin gerçek menüsü, fiyatları, kategori yapısı ve operasyonel bilgileri Türkçe içerikten gelir.
+
+Diğer diller Türkçe kaynak üzerinden doğal şekilde yerelleştirilmelidir:
+
+- `en`: turistlere yönelik doğal ve anlaşılır İngilizce.
+- `ru`: turistlere yönelik doğal Rusça.
+- `de`: turistlere yönelik doğal Almanca.
+
+Ton tüm dillerde sıcak, net, davetkar ve profesyonel kalmalıdır. Birebir kelime çevirisi yapılmamalı; her dil kendi doğal kullanımına göre lokalize edilmelidir.
+
 ## Route Yapısı
 
 Her sayfa locale prefix ile açılmalıdır:

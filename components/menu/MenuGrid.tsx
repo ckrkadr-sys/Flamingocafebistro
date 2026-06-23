@@ -1,55 +1,38 @@
 import type { Dictionary } from "@/lib/i18n/dictionaries";
-import {
-  getMenuCategoryDisplayMode,
-  type MenuCategoryDisplayMode,
-} from "@/lib/menu/menuDisplayModes";
+import type { MenuSection } from "@/lib/menu/menuSections";
 
-import { MenuCard, type MenuCardItem } from "./MenuCard";
+import { MenuCard } from "./MenuCard";
 
 type MenuGridProps = Readonly<{
   dictionary: Dictionary["menu"];
-  items: readonly MenuCardItem[];
+  sections: readonly MenuSection[];
 }>;
 
-export function MenuGrid({ dictionary, items }: MenuGridProps) {
-  const sections = items.reduce<
-    {
-      categoryId: string;
-      categoryTitle: string;
-      displayMode: MenuCategoryDisplayMode;
-      items: MenuCardItem[];
-    }[]
-  >((groupedItems, item) => {
-    const currentSection = groupedItems.find(
-      (section) => section.categoryId === item.categoryId,
-    );
+export function getMenuSectionElementId(categoryId: string) {
+  return `menu-category-${categoryId}`;
+}
 
-    if (currentSection) {
-      currentSection.items.push(item);
-      return groupedItems;
-    }
-
-    return [
-      ...groupedItems,
-      {
-        categoryId: item.categoryId,
-        categoryTitle: item.categoryTitle,
-        displayMode: getMenuCategoryDisplayMode(item.categoryId),
-        items: [item],
-      },
-    ];
-  }, []);
-
+export function MenuGrid({ dictionary, sections }: MenuGridProps) {
   return (
-    <div className="menu-list">
+    <div className="menu-chapters">
       {sections.map((section) => (
         <section
-          className={`menu-list__section menu-list__section--${section.displayMode}`}
+          className={`menu-chapter menu-chapter--${section.displayMode}`}
           data-display-mode={section.displayMode}
+          id={getMenuSectionElementId(section.categoryId)}
           key={section.categoryId}
         >
-          <h2 className="menu-list__title">{section.categoryTitle}</h2>
-          <div className="menu-list__items">
+          <header className="menu-chapter__header">
+            <div className="menu-chapter__heading">
+              <h2 className="menu-chapter__title">{section.categoryTitle}</h2>
+              {section.categoryDescription ? (
+                <p className="menu-chapter__description">
+                  {section.categoryDescription}
+                </p>
+              ) : null}
+            </div>
+          </header>
+          <div className="menu-chapter__items">
             {section.items.map((item) => (
               <MenuCard
                 dictionary={dictionary}
