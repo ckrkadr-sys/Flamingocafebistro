@@ -583,6 +583,13 @@ a {
 }
 
 .home-page {
+  --home-content-gutter: clamp(1rem, 3.2vw, 3rem);
+  --home-content-max: 106rem;
+  --home-content-width: min(
+    calc(100% - (var(--home-content-gutter) * 2)),
+    var(--home-content-max)
+  );
+
   background:
     linear-gradient(180deg, var(--color-surface) 0%, var(--color-cream) 44%, var(--color-surface) 100%);
 }
@@ -2419,7 +2426,6 @@ a.contact-card__value:hover {
 }
 
 .home-page {
-  overflow: hidden;
   background:
     linear-gradient(180deg, var(--home-cream) 0%, var(--home-cream-alt) 48%, var(--home-cream) 100%);
 }
@@ -2428,8 +2434,9 @@ a.contact-card__value:hover {
   position: sticky;
   z-index: 40;
   top: 0;
-  background: var(--home-cream);
-  padding: 0.85rem max(0.75rem, 1.4vw) 0;
+  width: 100%;
+  border-bottom: 3px solid var(--home-pink);
+  background: var(--home-charcoal);
 }
 
 .home-header__bar {
@@ -2439,14 +2446,7 @@ a.contact-card__value:hover {
   max-width: 95rem;
   align-items: center;
   gap: 0.75rem;
-  border: 3px solid var(--home-pink);
-  border-radius: 999px;
   margin-inline: auto;
-  background: var(--home-charcoal);
-  box-shadow:
-    inset 0 0 0 2px var(--home-black),
-    inset 0 0 0 5px rgb(255 247 236 / 16%),
-    0 18px 36px rgb(17 17 17 / 18%);
   grid-template-columns: minmax(0, 1fr) clamp(10.3rem, 13.6vw, 12.7rem) minmax(0, 1fr);
   padding: 0.55rem clamp(1.25rem, 2.4vw, 2.45rem);
 }
@@ -2590,13 +2590,8 @@ a.contact-card__value:hover {
 .home-notes,
 .home-reservation,
 .home-footer {
-  width: min(calc(100vw - 2rem), 86rem);
+  width: var(--home-content-width);
   margin-inline: auto;
-}
-
-.home-hero-v2,
-.home-feature-strip {
-  width: min(calc(100vw - 1.5rem), 91rem);
 }
 
 .home-hero-v2 {
@@ -2607,7 +2602,7 @@ a.contact-card__value:hover {
 .home-hero-v2::before {
   position: absolute;
   top: 6rem;
-  left: -5rem;
+  left: calc(var(--home-content-gutter) * -0.65);
   width: 13rem;
   height: 13rem;
   border: 2px solid var(--home-pink);
@@ -2621,10 +2616,10 @@ a.contact-card__value:hover {
 
 .home-hero-v2__grid {
   display: grid;
-  min-height: clamp(36rem, 47.5vw, 44rem);
+  min-height: clamp(34rem, 43vw, 41.5rem);
   align-items: center;
-  gap: clamp(0.6rem, 1.15vw, 1.35rem);
-  grid-template-columns: minmax(0, 1.04fr) minmax(29rem, 0.96fr);
+  gap: clamp(1rem, 2.25vw, 2.5rem);
+  grid-template-columns: minmax(0, 1.1fr) minmax(clamp(22rem, 34vw, 38rem), 0.9fr);
 }
 
 .home-hero-v2__grid > * {
@@ -2693,9 +2688,9 @@ a.contact-card__value:hover {
 }
 
 .home-hero-v2__title {
-  max-width: 8.15ch;
-  font-size: clamp(5.35rem, 8.85vw, 8.15rem);
-  line-height: 0.82;
+  max-width: min(100%, 8ch);
+  font-size: clamp(4.45rem, 7.2vw, 7.35rem);
+  line-height: 0.84;
   text-shadow:
     0.025em 0.025em 0 rgb(17 17 17 / 12%),
     0.055em 0.055em 0 rgb(17 17 17 / 7%);
@@ -2724,8 +2719,8 @@ a.contact-card__value:hover {
   display: grid;
   align-content: center;
   gap: 0.85rem;
-  padding-block-start: clamp(3rem, 5.6vw, 5.9rem);
-  padding-inline-start: clamp(1.6rem, 5vw, 5rem);
+  padding-block-start: clamp(2.4rem, 4.4vw, 4.9rem);
+  padding-inline-start: clamp(1rem, 3vw, 3.25rem);
 }
 
 .home-hero__description {
@@ -3947,16 +3942,11 @@ a.contact-card__value:hover {
   .home-events,
   .home-notes,
   .home-reservation {
-    width: min(calc(100vw - 1rem), 86rem);
-  }
-
-  .home-header {
-    padding-inline: 0.5rem;
+    width: var(--home-content-width);
   }
 
   .home-header__bar {
     min-height: 4.8rem;
-    border-radius: 1.7rem;
   }
 
   .home-header__logo-link {

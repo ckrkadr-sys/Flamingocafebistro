@@ -1,18 +1,9 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
-import { AboutBistro } from "@/components/home/AboutBistro";
-import { EventNights } from "@/components/home/EventNights";
 import { FeatureStrip } from "@/components/home/FeatureStrip";
-import { HomeGalleryPreview } from "@/components/home/HomeGalleryPreview";
 import { HomeHero } from "@/components/home/HomeHero";
-import { ReservationBand } from "@/components/home/ReservationBand";
 import { SignatureMenu } from "@/components/home/SignatureMenu";
-import { Testimonials } from "@/components/home/Testimonials";
-import {
-  getFeaturedGalleryItems,
-  getLocalizedGalleryAlt,
-} from "@/lib/gallery/galleryHelpers";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale } from "@/lib/i18n/locales";
 import {
@@ -56,12 +47,6 @@ export default async function LocaleHomePage({ params }: PageProps) {
   const signatureItems = getMenuItems().map((item) =>
     getLocalizedMenuItem(item, lang),
   );
-  const featuredGalleryItems = getFeaturedGalleryItems();
-  const galleryPreviewItems = featuredGalleryItems.map((item) => ({
-    alt: getLocalizedGalleryAlt(item, lang),
-    id: item.id,
-    src: item.src,
-  }));
 
   return (
     <main className="home-page">
@@ -77,15 +62,6 @@ export default async function LocaleHomePage({ params }: PageProps) {
         items={signatureItems}
         locale={lang}
       />
-      <AboutBistro dictionary={dictionary} locale={lang} />
-      <HomeGalleryPreview
-        dictionary={dictionary}
-        items={galleryPreviewItems}
-        locale={lang}
-      />
-      <EventNights dictionary={dictionary} locale={lang} />
-      <Testimonials dictionary={dictionary} locale={lang} />
-      <ReservationBand dictionary={dictionary} locale={lang} />
     </main>
   );
 }
