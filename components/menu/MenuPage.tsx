@@ -4,7 +4,6 @@ import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
-import { SectionTitle } from "@/components/shared/SectionTitle";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
 import type { Locale } from "@/lib/i18n/locales";
 import type {
@@ -16,7 +15,6 @@ import { getVisibleMenuSections } from "@/lib/menu/menuSections";
 import { MenuCategoryTabs } from "./MenuCategoryTabs";
 import { MenuEmptyState } from "./MenuEmptyState";
 import { getMenuSectionElementId, MenuGrid } from "./MenuGrid";
-import { MenuSearch } from "./MenuSearch";
 
 type MenuPageProps = Readonly<{
   categories: readonly LocalizedMenuCategory[];
@@ -37,7 +35,6 @@ export function MenuPage({
   const [activeCategoryId, setActiveCategoryId] = useState(
     initialActiveCategoryId,
   );
-  const [searchQuery, setSearchQuery] = useState("");
   const initialScrollHandledRef = useRef(false);
 
   const sections = useMemo(
@@ -46,9 +43,9 @@ export function MenuPage({
         categories,
         items,
         locale,
-        searchQuery,
+        searchQuery: "",
       }),
-    [categories, items, locale, searchQuery],
+    [categories, items, locale],
   );
 
   const visibleCategoryLinks = useMemo(
@@ -181,24 +178,6 @@ export function MenuPage({
 
   return (
     <main className="menu-page">
-      <Section className="menu-hero" spacing="compact">
-        <Container className="menu-hero__inner">
-          <SectionTitle
-            description={dictionary.intro}
-            eyebrow={dictionary.eyebrow}
-            title={dictionary.title}
-          />
-          <MenuSearch
-            clearLabel={dictionary.clearSearchLabel}
-            label={dictionary.searchLabel}
-            onChange={setSearchQuery}
-            onClear={() => setSearchQuery("")}
-            placeholder={dictionary.searchPlaceholder}
-            value={searchQuery}
-          />
-        </Container>
-      </Section>
-
       <Section className="menu-listing" spacing="compact">
         <Container>
           {sections.length > 0 ? (

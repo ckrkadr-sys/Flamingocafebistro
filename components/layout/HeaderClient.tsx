@@ -59,9 +59,6 @@ export function HeaderClient({
               key={item.routeKey}
             >
               {item.label}
-              {item.routeKey === "contact" ? (
-                <span aria-hidden="true">+</span>
-              ) : null}
             </Link>
           ))}
         </nav>

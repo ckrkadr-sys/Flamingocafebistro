@@ -16,64 +16,52 @@ export function HomeHero({
   dictionary,
   locale,
 }: HomeHeroProps) {
+  const menuPath = getLocalizedPath(locale, "menu");
+  const heroCategoryLinks = [
+    {
+      categoryId: "kahvalti",
+      label: dictionary.home.heroCategoryLinks.breakfast,
+    },
+    {
+      categoryId: "kahveler",
+      label: dictionary.home.heroCategoryLinks.coffees,
+    },
+    {
+      categoryId: "tatlilar",
+      label: dictionary.home.heroCategoryLinks.desserts,
+    },
+  ] as const;
+
   return (
-    <section className="home-hero-v2">
-      <div className="home-hero-v2__grid">
+    <section className="home-hero-v2" aria-labelledby="home-hero-title">
+      <div className="home-hero-v2__inner">
         <div className="home-hero__content">
-          <div className="home-hero-v2__script-row">
-            <span aria-hidden="true" className="home-hero-v2__sparkle" />
-            <p className="home-script-label">{dictionary.home.heroScriptLabel}</p>
-            <span aria-hidden="true" className="home-hero-v2__sparkle home-hero-v2__sparkle--right" />
-          </div>
-          <h1 className="home-hero-v2__title">{dictionary.home.heroTitle}</h1>
-          <p className="home-hero-v2__ribbon">
-            {dictionary.home.heroRibbonLabel}
-          </p>
+          <p className="home-hero-v2__eyebrow">{dictionary.home.heroEyebrow}</p>
+          <h1 className="home-hero-v2__title" id="home-hero-title">
+            {dictionary.home.heroTitle}
+          </h1>
           <p className="home-hero__description">
             {dictionary.home.heroDescription}
           </p>
           <div className="home-hero__actions">
-            <Link className="home-pill-button" href={getLocalizedPath(locale, "menu")}>
+            <Link className="home-pill-button" href={menuPath}>
               {dictionary.home.heroPrimaryAction}
-              <span aria-hidden="true">+</span>
-            </Link>
-            <Link
-              className="home-pill-button home-pill-button--light"
-              href={getLocalizedPath(locale, "contact")}
-            >
-              {dictionary.home.heroSecondaryAction}
-              <span aria-hidden="true">+</span>
             </Link>
           </div>
-          <span aria-hidden="true" className="home-hero-v2__palm" />
-        </div>
-
-        <div
-          aria-label={dictionary.home.heroImageLabel}
-          className="home-hero-v2__panel"
-          role="img"
-        >
-          <div className="home-hero-v2__panel-copy">
-            <span>{dictionary.home.heroPanelLine1}</span>
-            <span>{dictionary.home.heroPanelLine2}</span>
-            <span>{dictionary.home.heroPanelLine3}</span>
-          </div>
-          <span aria-hidden="true" className="home-hero-v2__panel-sparkle" />
-          <div className="home-hero-v2__badge">
-            <span>{dictionary.home.heroMoodBadgeTop}</span>
-            <strong>{dictionary.home.heroMoodBadgeMiddle}</strong>
-            <span>{dictionary.home.heroMoodBadgeBottom}</span>
-          </div>
-          <div className="home-hero-v2__scene">
-            <span aria-hidden="true" className="home-hero-v2__plate" />
-            <span aria-hidden="true" className="home-hero-v2__croissant" />
-            <span aria-hidden="true" className="home-hero-v2__cup">
-              <span />
-            </span>
-            <span aria-hidden="true" className="home-hero-v2__vase" />
-            <span aria-hidden="true" className="home-hero-v2__stem" />
-            <span aria-hidden="true" className="home-hero-v2__flower" />
-          </div>
+          <nav
+            aria-label={dictionary.home.heroCategoryNavLabel}
+            className="home-hero-v2__categories"
+          >
+            <ul className="home-hero-v2__category-list">
+              {heroCategoryLinks.map((category) => (
+                <li key={category.categoryId}>
+                  <Link href={`${menuPath}?category=${category.categoryId}`}>
+                    {category.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </nav>
         </div>
       </div>
     </section>

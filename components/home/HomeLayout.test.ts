@@ -9,6 +9,15 @@ const globalsCss = readFileSync(
   join(currentDirectory, "..", "..", "app", "globals.css"),
   "utf8",
 );
+const homeHeroSource = readFileSync(join(currentDirectory, "HomeHero.tsx"), "utf8");
+const featureStripSource = readFileSync(
+  join(currentDirectory, "FeatureStrip.tsx"),
+  "utf8",
+);
+const dictionariesSource = readFileSync(
+  join(currentDirectory, "..", "..", "lib", "i18n", "dictionaries.ts"),
+  "utf8",
+);
 
 function getRuleBody(selector: string) {
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -19,51 +28,66 @@ function getRuleBody(selector: string) {
   return match[1];
 }
 
-function getRuleBodyContaining(selector: string, pattern: RegExp) {
-  const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const matches = [
-    ...globalsCss.matchAll(new RegExp(`${escapedSelector}\\s*\\{([^}]*)\\}`, "g")),
-  ];
-  const matchingRule = matches.find((match) => pattern.test(match[1]));
-
-  assert.ok(matchingRule, `${selector} rule matching ${pattern} should exist`);
-
-  return matchingRule[1];
-}
-
 describe("homepage layout width system", () => {
-  test("uses one shared non-100vw content width for hero, feature strip and signature", () => {
-    const homePageRule = getRuleBody(".home-page");
+  test("uses the cafe exterior photo as a full-bleed, menu-focused hero", () => {
+    const heroRule = getRuleBody(".home-hero-v2");
 
-    assert.match(homePageRule, /--home-content-width:/);
-    assert.doesNotMatch(
-      globalsCss,
-      /\.home-page\s*\{[^}]*overflow:\s*hidden;/,
+    assert.match(heroRule, /width:\s*100%;/);
+    assert.match(heroRule, /height:\s*clamp\(70vh,\s*76vh,\s*82vh\);/);
+    assert.match(
+      heroRule,
+      /url\("\/images\/home\/flamingo-night-exterior\.png"\)/,
     );
+    assert.match(heroRule, /background-position:\s*68% center;/);
+    assert.match(heroRule, /background-size:\s*cover;/);
 
     assert.match(
       globalsCss,
-      /\.home-hero-v2,\s*\.home-feature-strip,\s*\.home-signature[\s\S]*?width:\s*var\(--home-content-width\);/,
+      /\.home-feature-strip,\s*\.home-about-bistro[\s\S]*?width:\s*var\(--home-content-width\);/,
     );
-    assert.doesNotMatch(
-      globalsCss,
-      /\.home-hero-v2,\s*\.home-feature-strip\s*\{[\s\S]*?width:\s*min\(calc\(100vw/,
-    );
+    assert.doesNotMatch(globalsCss, /\.home-signature\b/);
+    assert.doesNotMatch(globalsCss, /\.home-location__inner\b/);
+    assert.doesNotMatch(globalsCss, /\.home-footer\b/);
   });
 
-  test("keeps the hero desktop grid flexible enough to avoid clipping the title", () => {
-    const heroGridRule = getRuleBody(".home-hero-v2__grid");
-    const heroContentRule = getRuleBodyContaining(
-      ".home-hero__content",
-      /padding-inline-start:/,
-    );
-    const heroTitleRule = getRuleBodyContaining(
-      ".home-hero-v2__title",
-      /text-shadow:/,
-    );
+  test("keeps the hero title compact enough for the left text area", () => {
+    const heroTitleRule = getRuleBody(".home-hero-v2__title");
 
-    assert.doesNotMatch(heroGridRule, /minmax\(29rem,/);
-    assert.match(heroContentRule, /padding-inline-start:\s*clamp\(1rem,/);
-    assert.match(heroTitleRule, /max-width:\s*min\(100%,\s*8ch\);/);
+    assert.match(heroTitleRule, /font-size:\s*clamp\(2\.75rem,\s*4vw,\s*4\.1rem\);/);
+  });
+
+  test("keeps the home header logo compact over the photo hero", () => {
+    const homeLogoRule = getRuleBody(".site-shell--home .home-header__logo-link");
+
+    assert.match(homeLogoRule, /width:\s*clamp\(4\.15rem,\s*5\.35vw,\s*5\.35rem\);/);
+    assert.doesNotMatch(homeLogoRule, /13rem/);
+  });
+
+  test("renders only the compact menu CTA and category links in the hero source", () => {
+    assert.match(homeHeroSource, /getLocalizedPath\(locale,\s*"menu"\)/);
+    assert.match(homeHeroSource, /categoryId:\s*"kahvalti"/);
+    assert.match(homeHeroSource, /categoryId:\s*"kahveler"/);
+    assert.match(homeHeroSource, /categoryId:\s*"tatlilar"/);
+    assert.match(homeHeroSource, /heroCategoryLinks/);
+
+    assert.doesNotMatch(homeHeroSource, /heroSecondaryAction/);
+    assert.doesNotMatch(homeHeroSource, /heroPanelLine/);
+    assert.doesNotMatch(homeHeroSource, /heroMoodBadge/);
+    assert.doesNotMatch(homeHeroSource, /home-hero-v2__panel/);
+  });
+
+  test("keeps new homepage hero copy in the dictionary and removes old hero fields", () => {
+    assert.match(dictionariesSource, /heroEyebrow/);
+    assert.match(dictionariesSource, /heroCategoryLinks/);
+
+    assert.doesNotMatch(dictionariesSource, /heroScriptLabel/);
+    assert.doesNotMatch(dictionariesSource, /heroRibbonLabel/);
+    assert.doesNotMatch(dictionariesSource, /heroSecondaryAction/);
+  });
+
+  test("keeps feature strip items unnumbered", () => {
+    assert.doesNotMatch(featureStripSource, /index \+ 1/);
+    assert.doesNotMatch(featureStripSource, /home-feature__marker/);
+    assert.doesNotMatch(globalsCss, /\.home-feature__marker\b/);
   });
 });

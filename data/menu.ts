@@ -326,6 +326,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Käse-Omelett" },
     },
     price: 250,
+    imagePath: "/images/menu/items/kahvalti-omlet-peynirli.png",
   }),
   createMenuItem({
     id: "kahvalti-omlet-mantarli-kasarli",
@@ -351,6 +352,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Spiegeleier in der Pfanne" },
     },
     price: 180,
+    imagePath: "/images/menu/items/kahvalti-sahanda-yumurta.png",
   }),
   createMenuItem({
     id: "kahvalti-sahanda-sucuklu-yumurta",
@@ -363,42 +365,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Spiegeleier mit Sucuk" },
     },
     price: 250,
-  }),
-  createMenuItem({
-    id: "kahvalti-cikolatali-kruvasan",
-    categoryId: "kahvalti",
-    order: 80,
-    translations: {
-      tr: { name: "Çikolatalı Kruvasan" },
-      en: { name: "Chocolate Croissant" },
-      ru: { name: "Шоколадный Круассан" },
-      de: { name: "Schokoladen-Croissant" },
-    },
-    price: 180,
-  }),
-  createMenuItem({
-    id: "kahvalti-sahanda-yumurta-peynirli",
-    categoryId: "kahvalti",
-    order: 90,
-    translations: {
-      tr: { name: "Sahanda Peynirli Yumurta" },
-      en: { name: "Fried Eggs with Cheese" },
-      ru: { name: "Яичница с Сыром" },
-      de: { name: "Spiegeleier mit Käse" },
-    },
-    price: 200,
-  }),
-  createMenuItem({
-    id: "kahvalti-soganli-yumurta-3-yumurtadan-murat",
-    categoryId: "kahvalti",
-    order: 100,
-    translations: {
-      tr: { name: "Soğanlı Yumurta" },
-      en: { name: "Onion Eggs" },
-      ru: { name: "Яичница с Луком" },
-      de: { name: "Eier mit Zwiebeln" },
-    },
-    price: 250,
+    imagePath: "/images/menu/items/kahvalti-sahanda-sucuklu-yumurta.png",
   }),
   createMenuItem({
     id: "kahvalti-pancake",
@@ -424,30 +391,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Gegrillter Sucuk in der Pfanne" },
     },
     price: 200,
-  }),
-  createMenuItem({
-    id: "kahvalti-gin-fizz",
-    categoryId: "kahvalti",
-    order: 130,
-    translations: {
-      tr: { name: "Gin Fizz" },
-      en: { name: "Gin Fizz" },
-      ru: { name: "Gin Fizz" },
-      de: { name: "Gin Fizz" },
-    },
-    price: 400,
-  }),
-  createMenuItem({
-    id: "kahvalti-kahvalti-sicak-tabagi",
-    categoryId: "kahvalti",
-    order: 140,
-    translations: {
-      tr: { name: "Sıcak Kahvaltı Tabağı" },
-      en: { name: "Hot Breakfast Plate" },
-      ru: { name: "Горячая Завтрачная Тарелка" },
-      de: { name: "Warme Frühstücksplatte" },
-    },
-    price: 150,
+    imagePath: "/images/menu/items/kahvalti-sahanda-izgara-sucuk.png",
   }),
   createMenuItem({
     id: "kahvalti-sigara-boregi",
@@ -460,6 +404,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Sigara Börek (Käseröllchen)" },
     },
     price: 280,
+    imagePath: "/images/menu/items/atistirmaliklar-sigara-boregi.png",
   }),
   createMenuItem({
     id: "kahvalti-simit-tabagi",
@@ -473,18 +418,6 @@ export const menuItems: readonly MenuItem[] = [
     },
     price: 300,
     imagePath: "/images/menu/items/kahvalti-simit-tabagi.png",
-  }),
-  createMenuItem({
-    id: "kahvalti-sahanda-yumurta-3-yumurtali",
-    categoryId: "kahvalti",
-    order: 190,
-    translations: {
-      tr: { name: "Sahanda Yumurta (3 Yumurtalı)" },
-      en: { name: "Fried Eggs in a Pan (3 Eggs)" },
-      ru: { name: "Яичница на Сковороде (3 Яйца)" },
-      de: { name: "Spiegeleier in der Pfanne (3 Eier)" },
-    },
-    price: 210,
   }),
   createMenuItem({
     id: "kahvalti-pisi-tabagi",
@@ -510,6 +443,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Flamingo-Toast" },
     },
     price: 350,
+    imagePath: "/images/menu/items/tost-sandivic-flamingo-tost.png",
   }),
   createMenuItem({
     id: "tost-sandivic-kasarli-tost",
@@ -522,6 +456,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Toast mit Kaschar-Käse" },
     },
     price: 250,
+    imagePath: "/images/menu/items/tost-sandivic-kasarli-tost.png",
   }),
   createMenuItem({
     id: "tost-sandivic-karisik-tost",
@@ -534,6 +469,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Gemischter Toast" },
     },
     price: 280,
+    imagePath: "/images/menu/items/tost-sandivic-karisik-tost.png",
   }),
   createMenuItem({
     id: "tost-sandivic-peynirli-tost",
@@ -546,6 +482,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Käse-Toast" },
     },
     price: 250,
+    imagePath: "/images/menu/items/tost-sandivic-kasarli-tost.png",
   }),
   createMenuItem({
     id: "tost-sandivic-soguk-sandvic",
@@ -582,6 +519,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Sigara Börek (Käseröllchen)" },
     },
     price: 280,
+    imagePath: "/images/menu/items/atistirmaliklar-sigara-boregi.png",
   }),
   createMenuItem({
     id: "atistirmaliklar-sosis-tabagi",
@@ -606,54 +544,6 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Käseplatte" },
     },
     price: 400,
-  }),
-  createMenuItem({
-    id: "atistirmaliklar-beyaz-leblebi",
-    categoryId: "atistirmaliklar",
-    order: 310,
-    translations: {
-      tr: { name: "Beyaz Leblebi" },
-      en: { name: "Roasted White Chickpeas" },
-      ru: { name: "Белый Леблеби (Жареный Нут)" },
-      de: { name: "Weißer Leblebi (Geröstete Kichererbsen)" },
-    },
-    price: 50,
-  }),
-  createMenuItem({
-    id: "atistirmaliklar-tuzlu-fistik-kucuk",
-    categoryId: "atistirmaliklar",
-    order: 320,
-    translations: {
-      tr: { name: "Küçük Tuzlu Fıstık" },
-      en: { name: "Small Salted Peanuts" },
-      ru: { name: "Маленькая Порция Солёного Арахиса" },
-      de: { name: "Kleine Gesalzene Erdnüsse" },
-    },
-    price: 50,
-  }),
-  createMenuItem({
-    id: "atistirmaliklar-mucver-tabagi",
-    categoryId: "atistirmaliklar",
-    order: 330,
-    translations: {
-      tr: { name: "Mücver Tabağı" },
-      en: { name: "Mücver Plate (Zucchini Fritters)" },
-      ru: { name: "Мюджвер (Оладьи из Цукини)" },
-      de: { name: "Mücver-Teller (Zucchini-Puffer)" },
-    },
-    price: 350,
-  }),
-  createMenuItem({
-    id: "atistirmaliklar-cips",
-    categoryId: "atistirmaliklar",
-    order: 340,
-    translations: {
-      tr: { name: "Cips" },
-      en: { name: "Chips" },
-      ru: { name: "Чипсы" },
-      de: { name: "Chips" },
-    },
-    price: 100,
   }),
   createMenuItem({
     id: "atistirmaliklar-meyve-tabagi",
@@ -788,18 +678,6 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Hähnchen-Wrap" },
     },
     price: 380,
-  }),
-  createMenuItem({
-    id: "flamingo-ozel-lezzetler-mucver-tabagi",
-    categoryId: "flamingo-ozel-lezzetler",
-    order: 460,
-    translations: {
-      tr: { name: "Mücver Tabağı" },
-      en: { name: "Mücver Plate (Zucchini Fritters)" },
-      ru: { name: "Мюджвер (Оладьи из Цукини)" },
-      de: { name: "Mücver-Teller (Zucchini-Puffer)" },
-    },
-    price: 350,
   }),
   createMenuItem({
     id: "flamingo-ozel-lezzetler-tavuk-parcalari",
@@ -1019,18 +897,20 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Hausgemachter Mosaikkuchen" },
     },
     price: 250,
+    imagePath: "/images/menu/items/tatlilar-ev-yapimi-mozaik.png",
   }),
   createMenuItem({
-    id: "tatlilar-pankek",
+    id: "tatlilar-pancake",
     categoryId: "tatlilar",
     order: 660,
     translations: {
-      tr: { name: "Pankek" },
-      en: { name: "Pancakes" },
-      ru: { name: "Панкейки" },
-      de: { name: "Pancakes" },
+      tr: { name: "Pancake" },
+      en: { name: "Pancake" },
+      ru: { name: "Панкейк" },
+      de: { name: "Pancake" },
     },
     price: 350,
+    imagePath: "/images/menu/items/kahvalti-pancake.png",
   }),
   createMenuItem({
     id: "kahveler-turk-kahvesi",
@@ -1307,18 +1187,6 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Coffee Brandy" },
     },
     price: 400,
-  }),
-  createMenuItem({
-    id: "kahveler-laktozsuzsut",
-    categoryId: "kahveler",
-    order: 900,
-    translations: {
-      tr: { name: "Laktozsuz Süt" },
-      en: { name: "Lactose-Free Milk" },
-      ru: { name: "Безлактозное Молоко" },
-      de: { name: "Laktosefreie Milch" },
-    },
-    price: 30,
   }),
   createMenuItem({
     id: "caylar-demleme-cay",
@@ -1669,18 +1537,6 @@ export const menuItems: readonly MenuItem[] = [
     price: 30,
   }),
   createMenuItem({
-    id: "soguk-icecekler-salgam",
-    categoryId: "soguk-icecekler",
-    order: 1200,
-    translations: {
-      tr: { name: "Şalgam" },
-      en: { name: "Şalgam (Turnip Juice)" },
-      ru: { name: "Шалгам (Напиток из Репы)" },
-      de: { name: "Şalgam (Rübensaft)" },
-    },
-    price: 75,
-  }),
-  createMenuItem({
     id: "soguk-icecekler-seftali-suyu",
     categoryId: "soguk-icecekler",
     order: 1210,
@@ -1858,7 +1714,7 @@ export const menuItems: readonly MenuItem[] = [
       ru: { name: "Ванильный Милкшейк" },
       de: { name: "Vanille-Milkshake" },
     },
-    price: 2250,
+    price: 250,
   }),
   createMenuItem({
     id: "serinleticiler-smoothie-cilek",
@@ -2147,18 +2003,6 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Mexican Beer vom Fass 50 cl" },
     },
     price: 180,
-  }),
-  createMenuItem({
-    id: "biralar-mexican-extra",
-    categoryId: "biralar",
-    order: 1600,
-    translations: {
-      tr: { name: "Mexican Extra" },
-      en: { name: "Mexican Extra" },
-      ru: { name: "Mexican Extra" },
-      de: { name: "Mexican Extra" },
-    },
-    price: 20,
   }),
   createMenuItem({
     id: "biralar-shandy-bira-sprite",
@@ -2615,6 +2459,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Doluca Weißwein Glas" },
     },
     price: 230,
+    imagePath: "/images/menu/items/saraplar-doluca-beyaz-kadeh.png",
   }),
   createMenuItem({
     id: "saraplar-doluca-kirmizi-kadeh",
@@ -2712,6 +2557,7 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Doluca Rosé Glas" },
     },
     price: 260,
+    imagePath: "/images/menu/items/saraplar-doluca-rose-kadeh.png",
   }),
   createMenuItem({
     id: "kokteyller-mojito",
@@ -2784,6 +2630,18 @@ export const menuItems: readonly MenuItem[] = [
       de: { name: "Aperol Spritz" },
     },
     price: 550,
+  }),
+  createMenuItem({
+    id: "kokteyller-gin-fizz",
+    categoryId: "kokteyller",
+    order: 2125,
+    translations: {
+      tr: { name: "Gin Fizz" },
+      en: { name: "Gin Fizz" },
+      ru: { name: "Gin Fizz" },
+      de: { name: "Gin Fizz" },
+    },
+    price: 400,
   }),
   createMenuItem({
     id: "kokteyller-flamingo-moonlight",

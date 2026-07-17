@@ -23,10 +23,10 @@ export function OpeningHours({
           <dl className="contact-opening-hours__list">
             {visibleDays.map((day) => (
               <div className="contact-opening-hours__day" key={day.day}>
-                <dt>{dictionary.footer.weekdays[day.day]}</dt>
+                <dt>{dictionary.common.weekdays[day.day]}</dt>
                 <dd>
                   {day.isClosed
-                    ? dictionary.footer.closedLabel
+                    ? dictionary.common.closedLabel
                     : day.ranges
                         .map((range) => `${range.opens} - ${range.closes}`)
                         .join(", ") || dictionary.contact.unavailableLabel}

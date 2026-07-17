@@ -7,19 +7,15 @@ import { cn } from "@/lib/utils/cn";
 
 type SiteChromeProps = Readonly<{
   children: ReactNode;
-  defaultFooter: ReactNode;
   floatingActions: ReactNode;
   header: ReactNode;
-  homeFooter: ReactNode;
   homePath: string;
 }>;
 
 export function SiteChrome({
   children,
-  defaultFooter,
   floatingActions,
   header,
-  homeFooter,
   homePath,
 }: SiteChromeProps) {
   const pathname = usePathname();
@@ -31,7 +27,6 @@ export function SiteChrome({
     <div className={cn("site-shell", isHome && "site-shell--home")}>
       {header}
       <div className="site-shell__content">{children}</div>
-      {isHome ? homeFooter : defaultFooter}
       {isHome ? null : floatingActions}
     </div>
   );

@@ -20,12 +20,13 @@ function getRuleBody(selector: string) {
 }
 
 describe("header layout styles", () => {
-  test("puts the dark header background and pink divider on the full-width shell", () => {
+  test("puts a restrained dark header on the full-width shell", () => {
     const headerRule = getRuleBody(".home-header");
     const headerBarRule = getRuleBody(".home-header__bar");
 
-    assert.match(headerRule, /background:\s*var\(--home-charcoal\);/);
-    assert.match(headerRule, /border-bottom:\s*3px solid var\(--home-pink\);/);
+    assert.match(headerRule, /background:\s*rgb\(13 13 13 \/ 98%\);/);
+    assert.match(headerRule, /border-bottom:\s*1px solid rgb\(255 247 236 \/ 14%\);/);
+    assert.doesNotMatch(headerRule, /3px solid var\(--home-pink\)/);
     assert.doesNotMatch(headerRule, /background:\s*var\(--home-cream\);/);
 
     assert.doesNotMatch(headerBarRule, /border:\s*3px solid var\(--home-pink\);/);

@@ -15,7 +15,6 @@ const requiredHomeTextKeys = [
   "atmosphereActionLabel",
   "atmosphereDescription",
   "atmosphereEyebrow",
-  "atmosphereImageLabel",
   "atmosphereTitle",
   "categoriesDescription",
   "categoriesEyebrow",
@@ -25,22 +24,21 @@ const requiredHomeTextKeys = [
   "galleryDescription",
   "galleryEyebrow",
   "galleryTitle",
+  "heroCategoryNavLabel",
   "heroDescription",
-  "heroFallbackAction",
-  "heroImageLabel",
+  "heroEyebrow",
   "heroPrimaryAction",
-  "heroSecondaryAction",
   "heroTitle",
-  "locationActionLabel",
-  "locationDescription",
-  "locationEyebrow",
-  "locationPending",
-  "locationTitle",
   "popularActionLabel",
   "popularDescription",
   "popularEyebrow",
   "popularTitle",
   "title",
+] as const;
+const requiredHomeHeroCategoryLinkKeys = [
+  "breakfast",
+  "coffees",
+  "desserts",
 ] as const;
 const requiredMenuTextKeys = [
   "allCategoriesLabel",
@@ -108,20 +106,8 @@ const requiredContactActionLabelKeys = [
   "instagram",
   "email",
 ] as const;
-const requiredFooterTextKeys = [
-  "addressLabel",
-  "brandAreaLabel",
-  "closedLabel",
-  "contactActionsTitle",
-  "contactTitle",
-  "copyright",
-  "detailsPending",
-  "navigationLabel",
-  "openingHoursTitle",
-  "phoneLabel",
-  "socialTitle",
-] as const;
 const requiredCommonTextKeys = [
+  "closedLabel",
   "floatingContactActionsLabel",
   "languageSwitcherLabel",
   "mobileMenuCloseLabel",
@@ -133,7 +119,6 @@ const guardedHomeUiTextKeys = [
   "headerCtaLabel",
   "headerEventsLabel",
   "headerShopLabel",
-  "heroSecondaryAction",
   "visitBadge",
   "visitDescription",
   "visitTitle",
@@ -204,6 +189,13 @@ for (const locale of supportedLocales) {
     validateRequiredText(`dictionary ${locale} home ${homeKey}`, dictionary.home[homeKey]);
   }
 
+  for (const categoryKey of requiredHomeHeroCategoryLinkKeys) {
+    validateRequiredText(
+      `dictionary ${locale} home heroCategoryLinks ${categoryKey}`,
+      dictionary.home.heroCategoryLinks[categoryKey],
+    );
+  }
+
   const guardedHomeDictionary = dictionary.home as Record<string, unknown>;
 
   for (const homeKey of guardedHomeUiTextKeys) {
@@ -267,12 +259,8 @@ for (const locale of supportedLocales) {
     );
   }
 
-  for (const footerKey of requiredFooterTextKeys) {
-    validateRequiredText(`dictionary ${locale} footer ${footerKey}`, dictionary.footer[footerKey]);
-  }
-
   for (const weekday of weekdays) {
-    validateRequiredText(`dictionary ${locale} weekday ${weekday}`, dictionary.footer.weekdays[weekday]);
+    validateRequiredText(`dictionary ${locale} weekday ${weekday}`, dictionary.common.weekdays[weekday]);
   }
 
   for (const commonKey of requiredCommonTextKeys) {

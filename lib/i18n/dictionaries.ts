@@ -12,6 +12,12 @@ type HomeTextItem = {
   description: string;
 };
 
+type HomeHeroCategoryLinks = {
+  breakfast: string;
+  coffees: string;
+  desserts: string;
+};
+
 type HomeDictionary = PageDictionary & {
   aboutActionLabel: string;
   aboutDescription: string;
@@ -23,7 +29,6 @@ type HomeDictionary = PageDictionary & {
   atmosphereActionLabel: string;
   atmosphereDescription: string;
   atmosphereEyebrow: string;
-  atmosphereImageLabel: string;
   atmosphereTitle: string;
   categoriesDescription: string;
   categoriesEyebrow: string;
@@ -40,30 +45,12 @@ type HomeDictionary = PageDictionary & {
   eventsTitle: string;
   featureItems: readonly HomeTextItem[];
   featureStripLabel: string;
-  footerQuickLinksTitle: string;
-  footerStayActionLabel: string;
-  footerStayText: string;
-  footerStayTitle: string;
-  footerTagline: string;
+  heroCategoryLinks: HomeHeroCategoryLinks;
+  heroCategoryNavLabel: string;
   heroDescription: string;
-  heroFallbackAction: string;
-  heroImageLabel: string;
-  heroMoodBadgeBottom: string;
-  heroMoodBadgeMiddle: string;
-  heroMoodBadgeTop: string;
-  heroPanelLine1: string;
-  heroPanelLine2: string;
-  heroPanelLine3: string;
+  heroEyebrow: string;
   heroPrimaryAction: string;
-  heroRibbonLabel: string;
-  heroSecondaryAction: string;
-  heroScriptLabel: string;
   heroTitle: string;
-  locationActionLabel: string;
-  locationDescription: string;
-  locationEyebrow: string;
-  locationPending: string;
-  locationTitle: string;
   menuCardImageLabel: string;
   noteItems: readonly HomeTextItem[];
   notesActionLabel: string;
@@ -73,9 +60,6 @@ type HomeDictionary = PageDictionary & {
   popularDescription: string;
   popularEyebrow: string;
   popularTitle: string;
-  signatureActionLabel: string;
-  signatureEyebrow: string;
-  signatureTitle: string;
   visitActionLabel: string;
   visitBadge: string;
   visitDescription: string;
@@ -164,27 +148,15 @@ export type Dictionary = {
   about: AboutDictionary;
   gallery: GalleryDictionary;
   contact: ContactDictionary;
-  footer: {
-    addressLabel: string;
-    brandAreaLabel: string;
-    closedLabel: string;
-    contactActionsTitle: string;
-    contactTitle: string;
-    copyright: string;
-    detailsPending: string;
-    navigationLabel: string;
-    openingHoursTitle: string;
-    phoneLabel: string;
-    socialTitle: string;
-    weekdays: Record<Weekday, string>;
-  };
   common: {
+    closedLabel: string;
     contactActionLabels: Record<ContactActionType, string>;
     floatingContactActionsLabel: string;
     languageSwitcherLabel: string;
     mobileMenuCloseLabel: string;
     mobileMenuOpenLabel: string;
     primaryNavigationLabel: string;
+    weekdays: Record<Weekday, string>;
   };
   seo: Record<RouteKey, SeoDictionary>;
 };
@@ -196,7 +168,6 @@ export const requiredDictionarySections = [
   "about",
   "gallery",
   "contact",
-  "footer",
   "common",
   "seo",
 ] as const satisfies readonly (keyof Dictionary)[];
@@ -221,7 +192,6 @@ export const dictionaries = {
       atmosphereActionLabel: "İletişime geç",
       atmosphereDescription: "Çalış Sahil'in gün batımı hissiyle kahve, yemek, içecek ve tatlıyı aynı sıcak akışta buluşturan bir cafe-bistro.",
       atmosphereEyebrow: "Mekan hissi",
-      atmosphereImageLabel: "Flamingo Cafe&Bistro atmosfer alanı",
       atmosphereTitle: "Çalış Sahil'de günün her saatine uygun sıcak bir durak",
       categoriesDescription: "Kahvaltıdan burgerlere, makarnadan içeceklere kadar menüye hızlıca göz atın.",
       categoriesEyebrow: "Menü kategorileri",
@@ -251,47 +221,33 @@ export const dictionaries = {
       eventsTitle: "Cafe-bistro anları",
       featureItems: [
         {
-          title: "Yerel sıcaklık",
-          description: "Çalış Sahil'in günlük ritmine yakın, samimi bir durak.",
+          title: "Fiyatlı menü",
+          description: "Kahvaltı, kahve, tatlı ve bistro lezzetlerini hızlıca açın.",
         },
         {
-          title: "Taze ve özenli",
-          description: "Kahve, yemek ve içecekleri dengeli bir cafe-bistro akışında düşünür.",
+          title: "Yol tarifi",
+          description: "Çalış Sahil konumunu haritada açın.",
         },
         {
-          title: "Ziyarete hazır",
-          description: "Menü, konum ve çalışma saatlerine hızlıca ulaşmayı kolaylaştırır.",
+          title: "Çalışma saati",
+          description: "Günün planını hızlıca netleştirin.",
         },
         {
-          title: "Sıcak atmosfer",
-          description: "Rahat servis, canlı renkler ve tekrar uğramak isteyeceğiniz bir mekan hissi.",
+          title: "Telefon",
+          description: "Konum ve ziyaret soruları için doğrudan arayın.",
         },
       ],
       featureStripLabel: "Flamingo Cafe&Bistro öne çıkan ziyaret detayları",
-      footerQuickLinksTitle: "Hızlı bağlantılar",
-      footerStayActionLabel: "İletişime geç",
-      footerStayText: "Konum, telefon, Instagram ve çalışma saatleri için iletişim sayfasını açın.",
-      footerStayTitle: "Güncel kalın",
-      footerTagline: "Güzel anlar. Güzel lezzetler. Her gün.",
-      heroDescription: "Flamingo Cafe&Bistro; taze lezzetler, sıcak servis ve Çalış Sahil'in rahat atmosferini günün her anına taşıyan modern bir cafe-bistro.",
-      heroFallbackAction: "İletişime geç",
-      heroImageLabel: "Flamingo Cafe&Bistro ana görsel alanı",
-      heroMoodBadgeBottom: "Tüm gün",
-      heroMoodBadgeMiddle: "İyi his",
-      heroMoodBadgeTop: "Kahve",
-      heroPanelLine1: "İyi ye",
-      heroPanelLine2: "Biraz",
-      heroPanelLine3: "Kal",
-      heroPrimaryAction: "Menüyü gör",
-      heroRibbonLabel: "Mahallenizin cafe-bistrosu",
-      heroSecondaryAction: "İletişim bilgileri",
-      heroScriptLabel: "Güzel anlar,",
-      heroTitle: "Güzel lezzetler",
-      locationActionLabel: "İletişim sayfası",
-      locationDescription: "Foça, 1054. Sokak'taki konuma, telefon bilgisine ve her gün geçerli çalışma saatlerine hızlıca ulaşın.",
-      locationEyebrow: "Konum ve iletişim",
-      locationPending: "Bu bilgi şu anda kullanılamıyor.",
-      locationTitle: "Çalış Sahil ziyareti için pratik bilgiler",
+      heroCategoryLinks: {
+        breakfast: "Kahvaltı",
+        coffees: "Kahveler",
+        desserts: "Tatlılar",
+      },
+      heroCategoryNavLabel: "Öne çıkan menü kategorileri",
+      heroDescription: "Kahvaltı, tatlılar, kahveler ve daha fazlası.",
+      heroEyebrow: "Flamingo Cafe & Bistro",
+      heroPrimaryAction: "Menüyü Gör",
+      heroTitle: "Lezzetlerimizi Keşfedin",
       menuCardImageLabel: "Menü ürünü görsel alanı",
       noteItems: [
         {
@@ -314,9 +270,6 @@ export const dictionaries = {
       popularDescription: "Gerçek menü içeriği eklenene kadar küçük bir başlangıç ön izlemesi.",
       popularEyebrow: "Popüler başlangıçlar",
       popularTitle: "Menüden kısa bir tat",
-      signatureActionLabel: "Tüm menüye git",
-      signatureEyebrow: "Bizim",
-      signatureTitle: "Öne çıkan menü",
       visitActionLabel: "İletişim bilgileri",
       visitBadge: "Ziyaret bilgisi",
       visitDescription: "Telefon, yol tarifi ve çalışma saatleriyle ziyaretinizi kolayca planlayın.",
@@ -419,29 +372,8 @@ export const dictionaries = {
       unavailableLabel: "Bu bilgi şu anda kullanılamıyor.",
       title: "İletişim",
     },
-    footer: {
-      addressLabel: "Adres",
-      brandAreaLabel: "Marka bilgisi",
-      closedLabel: "Kapalı",
-      contactActionsTitle: "Hızlı iletişim",
-      contactTitle: "İletişim",
-      copyright: "Flamingo Cafe&Bistro",
-      detailsPending: "Bu bilgi şu anda kullanılamıyor.",
-      navigationLabel: "Alt gezinme",
-      openingHoursTitle: "Çalışma saatleri",
-      phoneLabel: "Telefon",
-      socialTitle: "Sosyal",
-      weekdays: {
-        monday: "Pazartesi",
-        tuesday: "Salı",
-        wednesday: "Çarşamba",
-        thursday: "Perşembe",
-        friday: "Cuma",
-        saturday: "Cumartesi",
-        sunday: "Pazar",
-      },
-    },
     common: {
+      closedLabel: "Kapalı",
       contactActionLabels: {
         phone: "Telefon",
         whatsapp: "WhatsApp",
@@ -453,6 +385,15 @@ export const dictionaries = {
       mobileMenuCloseLabel: "Kapat",
       mobileMenuOpenLabel: "Menü",
       primaryNavigationLabel: "Ana gezinme",
+      weekdays: {
+        monday: "Pazartesi",
+        tuesday: "Salı",
+        wednesday: "Çarşamba",
+        thursday: "Perşembe",
+        friday: "Cuma",
+        saturday: "Cumartesi",
+        sunday: "Pazar",
+      },
     },
     seo: {
       home: {
@@ -496,7 +437,6 @@ export const dictionaries = {
       atmosphereActionLabel: "Contact us",
       atmosphereDescription: "Coffee, food, drinks and desserts in a warm cafe-bistro flow shaped by Çalış Beach sunsets.",
       atmosphereEyebrow: "Atmosphere",
-      atmosphereImageLabel: "Flamingo Cafe&Bistro atmosphere area",
       atmosphereTitle: "A warm stop by Çalış Beach for every part of the day",
       categoriesDescription: "Scan breakfast, burgers, pasta, drinks and more before opening the full menu.",
       categoriesEyebrow: "Menu categories",
@@ -526,47 +466,33 @@ export const dictionaries = {
       eventsTitle: "Cafe-bistro moments",
       featureItems: [
         {
-          title: "Местная атмосфера",
-          description: "Теплая точка у пляжа Чалыш для ежедневных встреч.",
+          title: "Priced menu",
+          description: "Open breakfast, coffee, desserts and bistro flavors quickly.",
         },
         {
-          title: "Свежо и внимательно",
-          description: "Кофе, еда и напитки в спокойном ритме кафе-бистро.",
+          title: "Directions",
+          description: "Open the Çalış Beach location on the map.",
         },
         {
-          title: "Удобно для визита",
-          description: "Меню, локация и часы работы доступны быстро и понятно.",
+          title: "Opening hours",
+          description: "Check the day plan at a glance.",
         },
         {
-          title: "Теплая атмосфера",
-          description: "Гостеприимный сервис и место, куда приятно возвращаться.",
+          title: "Phone",
+          description: "Call directly for location and visit questions.",
         },
       ],
       featureStripLabel: "Flamingo Cafe&Bistro visit highlights",
-      footerQuickLinksTitle: "Quick links",
-      footerStayActionLabel: "Contact us",
-      footerStayText: "Open the contact page for location, phone, Instagram and opening hours.",
-      footerStayTitle: "Stay in the loop",
-      footerTagline: "Good times. Great flavors. Every day.",
-      heroDescription: "Flamingo Cafe&Bistro is where fresh ingredients, friendly faces, and feel-good vibes come together for coffee, food, drinks and easy visits by Çalış Beach.",
-      heroFallbackAction: "Contact us",
-      heroImageLabel: "Flamingo Cafe&Bistro hero visual area",
-      heroMoodBadgeBottom: "All day",
-      heroMoodBadgeMiddle: "Good mood",
-      heroMoodBadgeTop: "Coffee",
-      heroPanelLine1: "Eat well",
-      heroPanelLine2: "Stay",
-      heroPanelLine3: "Awhile",
+      heroCategoryLinks: {
+        breakfast: "Breakfast",
+        coffees: "Coffees",
+        desserts: "Desserts",
+      },
+      heroCategoryNavLabel: "Featured menu categories",
+      heroDescription: "Breakfast, desserts, coffees and more.",
+      heroEyebrow: "Flamingo Cafe & Bistro",
       heroPrimaryAction: "View our menu",
-      heroRibbonLabel: "Your neighborhood bistro",
-      heroSecondaryAction: "Contact details",
-      heroScriptLabel: "Good Times,",
-      heroTitle: "Great flavors",
-      locationActionLabel: "Contact page",
-      locationDescription: "Find the Foça, 1054th Street location, call details and daily opening hours in one place.",
-      locationEyebrow: "Location and contact",
-      locationPending: "This detail is currently unavailable.",
-      locationTitle: "Practical details for your Çalış Beach visit",
+      heroTitle: "Discover Our Flavors",
       menuCardImageLabel: "Menu product visual area",
       noteItems: [
         {
@@ -589,9 +515,6 @@ export const dictionaries = {
       popularDescription: "A small starter preview until the real menu content is added.",
       popularEyebrow: "Popular starters",
       popularTitle: "A quick taste from the menu",
-      signatureActionLabel: "View full menu",
-      signatureEyebrow: "Our",
-      signatureTitle: "Signature menu",
       visitActionLabel: "Contact details",
       visitBadge: "Visit info",
       visitDescription: "Use phone, directions and opening hours to plan your visit easily.",
@@ -694,29 +617,8 @@ export const dictionaries = {
       unavailableLabel: "This detail is currently unavailable.",
       title: "Contact",
     },
-    footer: {
-      addressLabel: "Address",
-      brandAreaLabel: "Brand information",
-      closedLabel: "Closed",
-      contactActionsTitle: "Quick contact",
-      contactTitle: "Contact",
-      copyright: "Flamingo Cafe&Bistro",
-      detailsPending: "This detail is currently unavailable.",
-      navigationLabel: "Footer navigation",
-      openingHoursTitle: "Opening hours",
-      phoneLabel: "Phone",
-      socialTitle: "Social",
-      weekdays: {
-        monday: "Monday",
-        tuesday: "Tuesday",
-        wednesday: "Wednesday",
-        thursday: "Thursday",
-        friday: "Friday",
-        saturday: "Saturday",
-        sunday: "Sunday",
-      },
-    },
     common: {
+      closedLabel: "Closed",
       contactActionLabels: {
         phone: "Phone",
         whatsapp: "WhatsApp",
@@ -728,6 +630,15 @@ export const dictionaries = {
       mobileMenuCloseLabel: "Close",
       mobileMenuOpenLabel: "Menu",
       primaryNavigationLabel: "Primary navigation",
+      weekdays: {
+        monday: "Monday",
+        tuesday: "Tuesday",
+        wednesday: "Wednesday",
+        thursday: "Thursday",
+        friday: "Friday",
+        saturday: "Saturday",
+        sunday: "Sunday",
+      },
     },
     seo: {
       home: {
@@ -771,7 +682,6 @@ export const dictionaries = {
       atmosphereActionLabel: "Связаться",
       atmosphereDescription: "Кофе, еда, напитки и десерты в уютном формате кафе-бистро у пляжа Чалыш с видами на закат.",
       atmosphereEyebrow: "Атмосфера",
-      atmosphereImageLabel: "Зона атмосферы Flamingo Cafe&Bistro",
       atmosphereTitle: "Уютная остановка у пляжа Чалыш в любое время дня",
       categoriesDescription: "Быстро посмотрите завтрак, бургеры, пасту, напитки и другие категории.",
       categoriesEyebrow: "Категории меню",
@@ -801,47 +711,33 @@ export const dictionaries = {
       eventsTitle: "Моменты кафе-бистро",
       featureItems: [
         {
-          title: "Lokal vertraut",
-          description: "Ein warmer Treffpunkt am Çalış Strand für den täglichen Rhythmus.",
+          title: "Меню с ценами",
+          description: "Быстро откройте завтраки, кофе, десерты и блюда бистро.",
         },
         {
-          title: "Frisch und sorgfältig",
-          description: "Kaffee, Speisen und Getränke in einem ausgewogenen Cafe-Bistro-Ablauf.",
+          title: "Маршрут",
+          description: "Откройте локацию у пляжа Чалыш на карте.",
         },
         {
-          title: "Bereit für den Besuch",
-          description: "Menü, Standort und Öffnungszeiten sind schnell und klar erreichbar.",
+          title: "Часы работы",
+          description: "Быстро уточните план на день.",
         },
         {
-          title: "Warme Atmosphäre",
-          description: "Freundlicher Service und ein Ort, zu dem man gern zurückkommt.",
+          title: "Телефон",
+          description: "Позвоните напрямую по вопросам локации и визита.",
         },
       ],
       featureStripLabel: "Ключевые детали визита в Flamingo Cafe&Bistro",
-      footerQuickLinksTitle: "Быстрые ссылки",
-      footerStayActionLabel: "Связаться",
-      footerStayText: "Откройте страницу контактов для адреса, телефона, Instagram и часов работы.",
-      footerStayTitle: "Оставайтесь на связи",
-      footerTagline: "Хорошие моменты. Яркие вкусы. Каждый день.",
-      heroDescription: "Flamingo Cafe&Bistro соединяет свежие вкусы, дружелюбный сервис и легкую атмосферу пляжа Чалыш для кофе, еды и напитков.",
-      heroFallbackAction: "Связаться",
-      heroImageLabel: "Главная визуальная зона Flamingo Cafe&Bistro",
-      heroMoodBadgeBottom: "Весь день",
-      heroMoodBadgeMiddle: "Хорошее настроение",
-      heroMoodBadgeTop: "Кофе",
-      heroPanelLine1: "Ешьте",
-      heroPanelLine2: "И",
-      heroPanelLine3: "Отдыхайте",
+      heroCategoryLinks: {
+        breakfast: "Завтраки",
+        coffees: "Кофе",
+        desserts: "Десерты",
+      },
+      heroCategoryNavLabel: "Популярные категории меню",
+      heroDescription: "Завтраки, десерты, кофе и многое другое.",
+      heroEyebrow: "Flamingo Cafe & Bistro",
       heroPrimaryAction: "Смотреть меню",
-      heroRibbonLabel: "Ваше кафе-бистро по соседству",
-      heroSecondaryAction: "Контакты",
-      heroScriptLabel: "Хорошие моменты,",
-      heroTitle: "Яркие вкусы",
-      locationActionLabel: "Страница контактов",
-      locationDescription: "Адрес на Foça, 1054. Sk., телефон и ежедневные часы работы собраны здесь для быстрого доступа.",
-      locationEyebrow: "Локация и контакты",
-      locationPending: "Эта информация сейчас недоступна.",
-      locationTitle: "Практичная информация для визита к пляжу Чалыш",
+      heroTitle: "Откройте наши вкусы",
       menuCardImageLabel: "Визуальная зона продукта меню",
       noteItems: [
         {
@@ -864,9 +760,6 @@ export const dictionaries = {
       popularDescription: "Небольшой стартовый предварительный просмотр до добавления настоящего меню.",
       popularEyebrow: "Популярные старты",
       popularTitle: "Короткий вкус меню",
-      signatureActionLabel: "Открыть меню",
-      signatureEyebrow: "Наше",
-      signatureTitle: "Избранное меню",
       visitActionLabel: "Контакты",
       visitBadge: "Для визита",
       visitDescription: "Используйте телефон, маршрут и часы работы, чтобы легко спланировать визит.",
@@ -969,29 +862,8 @@ export const dictionaries = {
       unavailableLabel: "Эта информация сейчас недоступна.",
       title: "Контакты",
     },
-    footer: {
-      addressLabel: "Адрес",
-      brandAreaLabel: "Информация о бренде",
-      closedLabel: "Закрыто",
-      contactActionsTitle: "Быстрая связь",
-      contactTitle: "Контакты",
-      copyright: "Flamingo Cafe&Bistro",
-      detailsPending: "Эта информация сейчас недоступна.",
-      navigationLabel: "Навигация в подвале",
-      openingHoursTitle: "Часы работы",
-      phoneLabel: "Телефон",
-      socialTitle: "Соцсети",
-      weekdays: {
-        monday: "Понедельник",
-        tuesday: "Вторник",
-        wednesday: "Среда",
-        thursday: "Четверг",
-        friday: "Пятница",
-        saturday: "Суббота",
-        sunday: "Воскресенье",
-      },
-    },
     common: {
+      closedLabel: "Закрыто",
       contactActionLabels: {
         phone: "Телефон",
         whatsapp: "WhatsApp",
@@ -1003,6 +875,15 @@ export const dictionaries = {
       mobileMenuCloseLabel: "Закрыть",
       mobileMenuOpenLabel: "Меню",
       primaryNavigationLabel: "Основная навигация",
+      weekdays: {
+        monday: "Понедельник",
+        tuesday: "Вторник",
+        wednesday: "Среда",
+        thursday: "Четверг",
+        friday: "Пятница",
+        saturday: "Суббота",
+        sunday: "Воскресенье",
+      },
     },
     seo: {
       home: {
@@ -1046,7 +927,6 @@ export const dictionaries = {
       atmosphereActionLabel: "Kontakt aufnehmen",
       atmosphereDescription: "Kaffee, Speisen, Getränke und Desserts in einem gemütlichen Cafe-Bistro-Fluss am Çalış Strand mit Blick auf den Sonnenuntergang.",
       atmosphereEyebrow: "Atmosphäre",
-      atmosphereImageLabel: "Atmosphäre-Bereich von Flamingo Cafe&Bistro",
       atmosphereTitle: "Ein gemütlicher Stopp am Çalış Strand für jede Tageszeit",
       categoriesDescription: "Frühstück, Burger, Pasta, Getränke und mehr schnell vor dem vollständigen Menü ansehen.",
       categoriesEyebrow: "Menükategorien",
@@ -1076,47 +956,33 @@ export const dictionaries = {
       eventsTitle: "Cafe-Bistro-Momente",
       featureItems: [
         {
-          title: "Lokal vertraut",
-          description: "Ein warmer Treffpunkt am Çalış Strand für den täglichen Rhythmus.",
+          title: "Menü mit Preisen",
+          description: "Frühstück, Kaffee, Desserts und Bistro-Aromen schnell öffnen.",
         },
         {
-          title: "Frisch und sorgfältig",
-          description: "Kaffee, Speisen und Getränke in einem ausgewogenen Cafe-Bistro-Ablauf.",
+          title: "Route",
+          description: "Den Standort am Çalış Strand auf der Karte öffnen.",
         },
         {
-          title: "Bereit für den Besuch",
-          description: "Menü, Standort und Öffnungszeiten sind schnell und klar erreichbar.",
+          title: "Öffnungszeiten",
+          description: "Den Tagesplan auf einen Blick prüfen.",
         },
         {
-          title: "Warme Atmosphäre",
-          description: "Freundlicher Service und ein Ort, zu dem man gern zurückkommt.",
+          title: "Telefon",
+          description: "Direkt für Standort- und Besuchsfragen anrufen.",
         },
       ],
       featureStripLabel: "Besuchsdetails von Flamingo Cafe&Bistro",
-      footerQuickLinksTitle: "Schnelle Links",
-      footerStayActionLabel: "Kontakt aufnehmen",
-      footerStayText: "Öffnen Sie die Kontaktseite für Standort, Telefon, Instagram und Öffnungszeiten.",
-      footerStayTitle: "In Kontakt bleiben",
-      footerTagline: "Gute Zeiten. Große Aromen. Jeden Tag.",
-      heroDescription: "Flamingo Cafe&Bistro verbindet frische Aromen, freundlichen Service und die leichte Atmosphäre am Çalış Strand für Kaffee, Speisen und Getränke.",
-      heroFallbackAction: "Kontakt aufnehmen",
-      heroImageLabel: "Hero-Bildbereich von Flamingo Cafe&Bistro",
-      heroMoodBadgeBottom: "Den ganzen Tag",
-      heroMoodBadgeMiddle: "Gute Stimmung",
-      heroMoodBadgeTop: "Kaffee",
-      heroPanelLine1: "Gut",
-      heroPanelLine2: "Essen",
-      heroPanelLine3: "Bleiben",
+      heroCategoryLinks: {
+        breakfast: "Frühstück",
+        coffees: "Kaffee",
+        desserts: "Desserts",
+      },
+      heroCategoryNavLabel: "Ausgewählte Menükategorien",
+      heroDescription: "Frühstück, Desserts, Kaffee und mehr.",
+      heroEyebrow: "Flamingo Cafe & Bistro",
       heroPrimaryAction: "Menü ansehen",
-      heroRibbonLabel: "Ihr Cafe-Bistro in der Nähe",
-      heroSecondaryAction: "Kontaktdaten",
-      heroScriptLabel: "Gute Zeiten,",
-      heroTitle: "Große Aromen",
-      locationActionLabel: "Kontaktseite",
-      locationDescription: "Adresse in der Foça, 1054. Sk., Telefon und tägliche Öffnungszeiten an einem Ort.",
-      locationEyebrow: "Standort und Kontakt",
-      locationPending: "Diese Information ist derzeit nicht verfügbar.",
-      locationTitle: "Praktische Details für Ihren Besuch am Çalış Strand",
+      heroTitle: "Unsere Aromen entdecken",
       menuCardImageLabel: "Visueller Bereich für Menüprodukt",
       noteItems: [
         {
@@ -1139,9 +1005,6 @@ export const dictionaries = {
       popularDescription: "Eine kleine Startvorschau, bis echte Menüinhalte ergänzt werden.",
       popularEyebrow: "Beliebte Starter",
       popularTitle: "Ein kurzer Vorgeschmack aus dem Menü",
-      signatureActionLabel: "Ganzes Menü",
-      signatureEyebrow: "Unser",
-      signatureTitle: "Ausgewähltes Menü",
       visitActionLabel: "Kontaktdaten",
       visitBadge: "Besuchsinfo",
       visitDescription: "Nutzen Sie Telefon, Route und Öffnungszeiten, um Ihren Besuch einfach zu planen.",
@@ -1244,29 +1107,8 @@ export const dictionaries = {
       unavailableLabel: "Diese Information ist derzeit nicht verfügbar.",
       title: "Kontakt",
     },
-    footer: {
-      addressLabel: "Adresse",
-      brandAreaLabel: "Markeninformation",
-      closedLabel: "Geschlossen",
-      contactActionsTitle: "Schneller Kontakt",
-      contactTitle: "Kontakt",
-      copyright: "Flamingo Cafe&Bistro",
-      detailsPending: "Diese Information ist derzeit nicht verfügbar.",
-      navigationLabel: "Footer-Navigation",
-      openingHoursTitle: "Öffnungszeiten",
-      phoneLabel: "Telefon",
-      socialTitle: "Social Media",
-      weekdays: {
-        monday: "Montag",
-        tuesday: "Dienstag",
-        wednesday: "Mittwoch",
-        thursday: "Donnerstag",
-        friday: "Freitag",
-        saturday: "Samstag",
-        sunday: "Sonntag",
-      },
-    },
     common: {
+      closedLabel: "Geschlossen",
       contactActionLabels: {
         phone: "Telefon",
         whatsapp: "WhatsApp",
@@ -1278,6 +1120,15 @@ export const dictionaries = {
       mobileMenuCloseLabel: "Schließen",
       mobileMenuOpenLabel: "Menü",
       primaryNavigationLabel: "Hauptnavigation",
+      weekdays: {
+        monday: "Montag",
+        tuesday: "Dienstag",
+        wednesday: "Mittwoch",
+        thursday: "Donnerstag",
+        friday: "Freitag",
+        saturday: "Samstag",
+        sunday: "Sonntag",
+      },
     },
     seo: {
       home: {

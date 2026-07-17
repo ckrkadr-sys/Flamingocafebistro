@@ -3,13 +3,8 @@ import { notFound } from "next/navigation";
 
 import { FeatureStrip } from "@/components/home/FeatureStrip";
 import { HomeHero } from "@/components/home/HomeHero";
-import { SignatureMenu } from "@/components/home/SignatureMenu";
 import { getDictionary } from "@/lib/i18n/getDictionary";
 import { isLocale } from "@/lib/i18n/locales";
-import {
-  getLocalizedMenuItem,
-  getMenuItems,
-} from "@/lib/menu/menuHelpers";
 import { getLocalizedMetadata } from "@/lib/seo/metadata";
 import {
   getRenderableContactActions,
@@ -44,9 +39,6 @@ export default async function LocaleHomePage({ params }: PageProps) {
   const dictionary = getDictionary(lang);
   const site = getSiteConfig();
   const contactActions = getRenderableContactActions();
-  const signatureItems = getMenuItems().map((item) =>
-    getLocalizedMenuItem(item, lang),
-  );
 
   return (
     <main className="home-page">
@@ -56,11 +48,11 @@ export default async function LocaleHomePage({ params }: PageProps) {
         locale={lang}
         site={site}
       />
-      <FeatureStrip dictionary={dictionary} />
-      <SignatureMenu
+      <FeatureStrip
+        contactActions={contactActions}
         dictionary={dictionary}
-        items={signatureItems}
         locale={lang}
+        site={site}
       />
     </main>
   );
