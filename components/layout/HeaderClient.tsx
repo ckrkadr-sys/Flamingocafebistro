@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useRef } from "react";
 
 import { LanguageSwitcher } from "@/components/layout/LanguageSwitcher";
 import type { Locale } from "@/lib/i18n/locales";
@@ -36,6 +37,7 @@ export function HeaderClient({
   primaryNavigationLabel,
 }: HeaderClientProps) {
   const pathname = usePathname();
+  const mobileMenuRef = useRef<HTMLDetailsElement>(null);
   const activeRouteKey = getRouteKeyFromPath(pathname ?? homeHref);
 
   return (
@@ -85,7 +87,7 @@ export function HeaderClient({
           />
         </div>
 
-        <details className="home-header__mobile">
+        <details className="home-header__mobile" ref={mobileMenuRef}>
           <summary>{mobileMenuOpenLabel}</summary>
           <div className="home-header__mobile-panel">
             <nav aria-label={primaryNavigationLabel}>
@@ -97,6 +99,9 @@ export function HeaderClient({
                         activeRouteKey === item.routeKey ? "page" : undefined
                       }
                       href={item.href}
+                      onClick={() =>
+                        mobileMenuRef.current?.removeAttribute("open")
+                      }
                     >
                       {item.label}
                     </Link>

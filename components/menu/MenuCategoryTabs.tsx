@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useRef } from "react";
+
 type MenuCategoryTabsProps = Readonly<{
   activeCategoryId: string;
   categories: readonly {
@@ -15,8 +19,39 @@ export function MenuCategoryTabs({
   label,
   onSelectCategory,
 }: MenuCategoryTabsProps) {
+  const navigationRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const navigation = navigationRef.current;
+    const activeLink = navigation?.querySelector<HTMLElement>(
+      '[aria-current="location"]',
+    );
+
+    if (!navigation || !activeLink) {
+      return;
+    }
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    navigation.scrollTo({
+      behavior: prefersReducedMotion ? "auto" : "smooth",
+      left:
+        activeLink.offsetLeft -
+        (navigation.clientWidth - activeLink.clientWidth) / 2,
+      top:
+        activeLink.offsetTop -
+        (navigation.clientHeight - activeLink.clientHeight) / 2,
+    });
+  }, [activeCategoryId]);
+
   return (
-    <nav aria-label={label} className="menu-category-tabs">
+    <nav
+      aria-label={label}
+      className="menu-category-tabs"
+      ref={navigationRef}
+    >
       <ol className="menu-category-tabs__list">
         {categories.map((category) => (
           <li className="menu-category-tabs__item" key={category.id}>

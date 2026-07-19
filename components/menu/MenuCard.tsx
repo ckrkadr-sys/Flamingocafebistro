@@ -27,41 +27,31 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
 
   return (
     <article
-      className={`menu-card menu-card--${displayMode}${
-        imageSrc ? " menu-card--with-image" : ""
+      className={`menu-item-row menu-item-row--${displayMode} ${
+        imageSrc
+          ? "menu-item-row--with-image"
+          : "menu-item-row--no-image"
       }`}
     >
-      {imageSrc ? (
-        <div className="menu-card__media">
-          <Image
-            alt={item.name}
-            className="menu-card__image"
-            height={108}
-            sizes="(min-width: 60rem) 112px, 88px"
-            src={imageSrc}
-            width={144}
-          />
-        </div>
-      ) : null}
-      <div className="menu-card__content">
-        <div className="menu-card__heading">
-          <h3 className="menu-card__title">{item.name}</h3>
-          <p className="menu-card__price">{formatPrice(item.price)}</p>
+      <div className="menu-item-row__content">
+        <div className="menu-item-row__primary">
+          <h3 className="menu-item-row__title">{item.name}</h3>
+          <p className="menu-item-row__price">{formatPrice(item.price)}</p>
         </div>
         {hasDetails ? (
-          <div className="menu-card__details">
+          <div className="menu-item-row__details">
             {item.description ? (
-              <p className="menu-card__description">{item.description}</p>
+              <p className="menu-item-row__description">{item.description}</p>
             ) : null}
             {hasBadges ? (
-              <div className="menu-card__badges">
+              <div className="menu-item-row__badges">
                 {item.isPopular ? (
-                  <span className="menu-card__badge">
+                  <span className="menu-item-row__badge">
                     {dictionary.popularBadgeLabel}
                   </span>
                 ) : null}
                 {item.isNew ? (
-                  <span className="menu-card__badge menu-card__badge--new">
+                  <span className="menu-item-row__badge menu-item-row__badge--new">
                     {dictionary.newBadgeLabel}
                   </span>
                 ) : null}
@@ -70,6 +60,18 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
           </div>
         ) : null}
       </div>
+      {imageSrc ? (
+        <div className="menu-item-row__media">
+          <Image
+            alt={item.name}
+            className="menu-item-row__image"
+            height={112}
+            sizes="(max-width: 430px) 100px, (max-width: 767px) 112px, 96px"
+            src={imageSrc}
+            width={112}
+          />
+        </div>
+      ) : null}
     </article>
   );
 }

@@ -22,9 +22,16 @@ export function SiteChrome({
   const normalizedPath =
     pathname.length > 1 ? pathname.replace(/\/$/, "") : pathname;
   const isHome = normalizedPath === homePath;
+  const isMenu = normalizedPath === `${homePath}/menu`;
 
   return (
-    <div className={cn("site-shell", isHome && "site-shell--home")}>
+    <div
+      className={cn(
+        "site-shell",
+        isHome && "site-shell--home",
+        isMenu && "site-shell--menu",
+      )}
+    >
       {header}
       <div className="site-shell__content">{children}</div>
       {isHome ? null : floatingActions}

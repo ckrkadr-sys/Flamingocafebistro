@@ -1,6 +1,13 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useDeferredValue,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import { Container } from "@/components/shared/Container";
 import { Section } from "@/components/shared/Section";
@@ -15,6 +22,7 @@ import { getVisibleMenuSections } from "@/lib/menu/menuSections";
 import { MenuCategoryTabs } from "./MenuCategoryTabs";
 import { MenuEmptyState } from "./MenuEmptyState";
 import { getMenuSectionElementId, MenuGrid } from "./MenuGrid";
+import { MenuSearch } from "./MenuSearch";
 
 type MenuPageProps = Readonly<{
   categories: readonly LocalizedMenuCategory[];
@@ -35,6 +43,8 @@ export function MenuPage({
   const [activeCategoryId, setActiveCategoryId] = useState(
     initialActiveCategoryId,
   );
+  const [searchQuery, setSearchQuery] = useState("");
+  const deferredSearchQuery = useDeferredValue(searchQuery);
   const initialScrollHandledRef = useRef(false);
 
   const sections = useMemo(
@@ -43,9 +53,9 @@ export function MenuPage({
         categories,
         items,
         locale,
-        searchQuery: "",
+        searchQuery: deferredSearchQuery,
       }),
-    [categories, items, locale],
+    [categories, deferredSearchQuery, items, locale],
   );
 
   const visibleCategoryLinks = useMemo(
@@ -126,7 +136,19 @@ export function MenuPage({
       animationFrameId = 0;
 
       const isDesktopLayout = window.matchMedia("(min-width: 60rem)").matches;
-      const activationOffset = isDesktopLayout ? 128 : 168;
+      const headerRect = document
+        .querySelector<HTMLElement>(".home-header")
+        ?.getBoundingClientRect();
+      const visibleHeaderHeight = headerRect
+        ? Math.max(0, Math.min(headerRect.bottom, headerRect.height))
+        : 0;
+      const categoryNavigationHeight =
+        document
+          .querySelector<HTMLElement>(".menu-layout__sidebar")
+          ?.getBoundingClientRect().height ?? 0;
+      const activationOffset =
+        visibleHeaderHeight +
+        (isDesktopLayout ? 0 : categoryNavigationHeight);
       let nextActiveCategoryId = sections[0].categoryId;
 
       for (const section of sections) {
@@ -180,6 +202,13 @@ export function MenuPage({
     <main className="menu-page">
       <Section className="menu-listing" spacing="compact">
         <Container>
+          <MenuSearch
+            clearLabel={dictionary.clearSearchLabel}
+            label={dictionary.searchLabel}
+            onChange={setSearchQuery}
+            placeholder={dictionary.searchPlaceholder}
+            value={searchQuery}
+          />
           {sections.length > 0 ? (
             <div className="menu-layout">
               <aside className="menu-layout__sidebar">
