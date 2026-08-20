@@ -152,6 +152,7 @@ export type Dictionary = {
     closedLabel: string;
     contactActionLabels: Record<ContactActionType, string>;
     floatingContactActionsLabel: string;
+    languageNames: Record<Locale, string>;
     languageSwitcherLabel: string;
     mobileMenuCloseLabel: string;
     mobileMenuOpenLabel: string;
@@ -381,6 +382,12 @@ export const dictionaries = {
         instagram: "Instagram",
       },
       floatingContactActionsLabel: "Hızlı iletişim",
+      languageNames: {
+        tr: "Türkçe",
+        en: "English",
+        ru: "Русский",
+        de: "Deutsch",
+      },
       languageSwitcherLabel: "Dil seçimi",
       mobileMenuCloseLabel: "Kapat",
       mobileMenuOpenLabel: "Menü",
@@ -626,6 +633,12 @@ export const dictionaries = {
         instagram: "Instagram",
       },
       floatingContactActionsLabel: "Quick contact",
+      languageNames: {
+        tr: "Türkçe",
+        en: "English",
+        ru: "Русский",
+        de: "Deutsch",
+      },
       languageSwitcherLabel: "Language selection",
       mobileMenuCloseLabel: "Close",
       mobileMenuOpenLabel: "Menu",
@@ -871,6 +884,12 @@ export const dictionaries = {
         instagram: "Instagram",
       },
       floatingContactActionsLabel: "Быстрая связь",
+      languageNames: {
+        tr: "Türkçe",
+        en: "English",
+        ru: "Русский",
+        de: "Deutsch",
+      },
       languageSwitcherLabel: "Выбор языка",
       mobileMenuCloseLabel: "Закрыть",
       mobileMenuOpenLabel: "Меню",
@@ -1116,6 +1135,12 @@ export const dictionaries = {
         instagram: "Instagram",
       },
       floatingContactActionsLabel: "Schneller Kontakt",
+      languageNames: {
+        tr: "Türkçe",
+        en: "English",
+        ru: "Русский",
+        de: "Deutsch",
+      },
       languageSwitcherLabel: "Sprachauswahl",
       mobileMenuCloseLabel: "Schließen",
       mobileMenuOpenLabel: "Menü",

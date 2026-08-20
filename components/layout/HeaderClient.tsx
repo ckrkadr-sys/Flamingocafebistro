@@ -19,6 +19,7 @@ type HeaderClientProps = Readonly<{
   brandLabel: string;
   currentLocale: Locale;
   homeHref: string;
+  languageNames: Readonly<Record<Locale, string>>;
   languageSwitcherLabel: string;
   logoPath: string;
   mobileMenuOpenLabel: string;
@@ -26,10 +27,13 @@ type HeaderClientProps = Readonly<{
   primaryNavigationLabel: string;
 }>;
 
+const headerDisclosureGroupName = "header-disclosures";
+
 export function HeaderClient({
   brandLabel,
   currentLocale,
   homeHref,
+  languageNames,
   languageSwitcherLabel,
   logoPath,
   mobileMenuOpenLabel,
@@ -84,10 +88,17 @@ export function HeaderClient({
           <LanguageSwitcher
             ariaLabel={languageSwitcherLabel}
             currentLocale={currentLocale}
+            disclosureGroupName={headerDisclosureGroupName}
+            languageNames={languageNames}
+            onOpen={() => mobileMenuRef.current?.removeAttribute("open")}
           />
         </div>
 
-        <details className="home-header__mobile" ref={mobileMenuRef}>
+        <details
+          className="home-header__mobile"
+          name={headerDisclosureGroupName}
+          ref={mobileMenuRef}
+        >
           <summary>{mobileMenuOpenLabel}</summary>
           <div className="home-header__mobile-panel">
             <nav aria-label={primaryNavigationLabel}>
@@ -109,10 +120,6 @@ export function HeaderClient({
                 ))}
               </ul>
             </nav>
-            <LanguageSwitcher
-              ariaLabel={languageSwitcherLabel}
-              currentLocale={currentLocale}
-            />
           </div>
         </details>
       </div>

@@ -33,7 +33,10 @@ export function getRouteKeyFromPath(pathname: string): RouteKey {
 }
 
 export function getEquivalentLocalizedPath(pathname: string, targetLocale: Locale) {
-  return getLocalizedPath(targetLocale, getRouteKeyFromPath(pathname));
+  const suffixStart = pathname.search(/[?#]/);
+  const suffix = suffixStart >= 0 ? pathname.slice(suffixStart) : "";
+
+  return `${getLocalizedPath(targetLocale, getRouteKeyFromPath(pathname))}${suffix}`;
 }
 
 export function getDefaultLocalizedPath(routeKey: RouteKey = "home") {

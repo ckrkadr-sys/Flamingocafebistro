@@ -354,8 +354,7 @@ a {
   list-style: none;
 }
 
-.site-header__nav-list,
-.language-switcher__list {
+.site-header__nav-list {
   display: flex;
   align-items: center;
 }
@@ -392,21 +391,119 @@ a {
   background: var(--color-surface-soft);
 }
 
+.language-switcher {
+  position: relative;
+}
+
+.language-switcher__trigger {
+  display: inline-flex;
+  min-width: 44px;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface-soft);
+  color: var(--color-text);
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 900;
+  line-height: 1;
+  list-style: none;
+  padding: 0.5rem 0.65rem;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.language-switcher__trigger::-webkit-details-marker {
+  display: none;
+}
+
+.language-switcher__trigger:hover,
+.language-switcher[open] .language-switcher__trigger {
+  border-color: var(--color-flamingo-pink);
+  background: var(--color-cream-strong);
+}
+
+.language-switcher__chevron {
+  width: 0.4rem;
+  height: 0.4rem;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: translateY(-0.1rem) rotate(45deg);
+  transition: transform var(--transition-fast);
+}
+
+.language-switcher[open] .language-switcher__chevron {
+  transform: translateY(0.1rem) rotate(225deg);
+}
+
+.language-switcher__popover {
+  position: absolute;
+  z-index: 3;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  width: min(11rem, calc(100vw - 1.5rem));
+  border: 1px solid var(--color-border);
+  border-radius: 0.75rem;
+  background: var(--color-surface);
+  box-shadow: var(--shadow-lift);
+  padding: 0.375rem;
+  transform-origin: top right;
+  animation: language-switcher-popover-in var(--transition-fast) both;
+}
+
+.language-switcher:not([open]) > .language-switcher__popover {
+  display: none;
+}
+
 .language-switcher__list {
-  gap: var(--space-1);
+  display: grid;
+  gap: 0.125rem;
 }
 
 .language-switcher__link {
-  min-width: 44px;
-  justify-content: center;
-  padding: var(--space-2);
-  color: var(--color-text-soft);
+  width: 100%;
+  min-width: 0;
+  justify-content: space-between;
+  padding: 0.65rem 0.75rem;
+  color: var(--color-text);
   font-size: var(--text-sm);
 }
 
+.language-switcher__link:hover,
+.language-switcher__link:focus-visible {
+  background: var(--color-surface-soft);
+}
+
 .language-switcher__link[aria-current="true"] {
+  background: rgb(245 95 143 / 14%);
+  color: var(--color-text);
+}
+
+.language-switcher__link[aria-current="true"]::after {
+  width: 0.45rem;
+  height: 0.45rem;
+  flex: 0 0 auto;
+  border-radius: 999px;
   background: var(--color-flamingo-pink);
-  color: var(--color-on-accent);
+  content: "";
+}
+
+@keyframes language-switcher-popover-in {
+  from {
+    opacity: 0;
+    transform: translateY(-0.25rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .mobile-navigation {
@@ -993,6 +1090,7 @@ a {
 .menu-layout {
   display: grid;
   gap: 0;
+  grid-template-columns: minmax(0, 1fr);
 }
 
 .menu-layout__content {
@@ -1003,6 +1101,7 @@ a {
   position: sticky;
   z-index: 12;
   top: var(--menu-phone-sticky-offset);
+  min-width: 0;
   margin-inline: calc(var(--space-4) * -1);
   border: 0;
   border-block-end: 1px solid var(--menu-rule);
@@ -1186,7 +1285,7 @@ a {
 }
 
 .menu-item-row__content,
-.menu-item-row__details {
+.menu-item-row__copy {
   display: grid;
   min-width: 0;
   gap: var(--space-1);
@@ -1326,7 +1425,7 @@ a {
   }
 
   .menu-item-row__content,
-  .menu-item-row__details {
+  .menu-item-row__copy {
     gap: var(--space-2);
   }
 
@@ -1482,7 +1581,7 @@ a {
   }
 
   .menu-item-row__content,
-  .menu-item-row__details {
+  .menu-item-row__copy {
     gap: var(--space-2);
   }
 
@@ -2499,29 +2598,24 @@ a.contact-card__value:hover {
 }
 
 .home-header__actions {
+  position: relative;
+  z-index: 2;
   grid-column: 3;
   justify-self: end;
 }
 
-.home-header .language-switcher__list {
-  gap: 0.35rem;
-  justify-content: flex-end;
-}
-
-.home-header .language-switcher__link {
-  min-width: 2.75rem;
+.home-header .language-switcher__trigger {
   border-color: rgb(255 247 236 / 20%);
   background: rgb(255 247 236 / 9%);
   color: var(--home-white);
   font-size: 0.82rem;
-  font-weight: 950;
 }
 
-.home-header .language-switcher__link:hover,
-.home-header .language-switcher__link[aria-current="true"] {
+.home-header .language-switcher__trigger:hover,
+.home-header .language-switcher[open] .language-switcher__trigger {
   border-color: var(--home-pink);
-  background: var(--home-pink);
-  color: var(--home-black);
+  background: rgb(236 79 143 / 18%);
+  color: var(--home-white);
 }
 
 .home-header__link,
@@ -2622,6 +2716,7 @@ a.contact-card__value:hover {
 }
 
 .home-header__mobile {
+  z-index: 1;
   display: none;
 }
 
@@ -3309,8 +3404,13 @@ a.contact-card__value:hover {
 
   .home-header__bar {
     min-height: 5rem;
-    grid-template-columns: auto 1fr;
-    padding-inline: 1.1rem;
+  }
+
+  .site-shell .home-header__bar {
+    column-gap: 0.5rem;
+    grid-template-columns: minmax(4.15rem, 1fr) auto auto;
+    padding-block: 0;
+    padding-inline: clamp(0.75rem, 3.4vw, 1.1rem);
   }
 
   .home-header__nav {
@@ -3318,12 +3418,17 @@ a.contact-card__value:hover {
   }
 
   .home-header__actions {
-    display: none;
+    display: flex;
+    grid-column: 2;
+    justify-self: end;
   }
 
   .home-header__logo-link {
-    top: -0.45rem;
+    position: static;
+    grid-column: 1;
+    justify-self: start;
     width: 6.35rem;
+    transform: none;
   }
 
   .site-shell--home .home-header__bar {
@@ -3337,6 +3442,7 @@ a.contact-card__value:hover {
 
   .home-header__mobile {
     display: block;
+    grid-column: 3;
     justify-self: end;
   }
 
@@ -3372,15 +3478,6 @@ a.contact-card__value:hover {
     display: flex;
     border-radius: 0.75rem;
     padding-inline: 0.8rem;
-  }
-
-  .home-header__mobile-panel .language-switcher {
-    border-top: 1px solid rgb(255 247 236 / 16%);
-    padding-block-start: 0.7rem;
-  }
-
-  .home-header__mobile-panel .language-switcher__list {
-    justify-content: flex-start;
   }
 
   .home-about-bistro,

@@ -16,10 +16,13 @@ type MenuCardProps = Readonly<{
   item: MenuCardItem;
 }>;
 
+// Square cover crops need extra source width to keep landscape photos sharp at DPR 2–3.
+const menuImageSourceSizes =
+  "(max-width: 430px) 178px, (max-width: 767px) 200px, 170px";
+
 export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
   const imagePath = item.imagePath ?? item.image;
   const hasBadges = Boolean(item.isPopular || item.isNew);
-  const hasDetails = Boolean(item.description || hasBadges);
   const imageSrc =
     typeof imagePath === "string" && !isPlaceholderAssetPath(imagePath)
       ? imagePath
@@ -35,27 +38,25 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
     >
       <div className="menu-item-row__content">
         <div className="menu-item-row__primary">
-          <h3 className="menu-item-row__title">{item.name}</h3>
-          <p className="menu-item-row__price">{formatPrice(item.price)}</p>
-        </div>
-        {hasDetails ? (
-          <div className="menu-item-row__details">
+          <div className="menu-item-row__copy">
+            <h3 className="menu-item-row__title">{item.name}</h3>
             {item.description ? (
               <p className="menu-item-row__description">{item.description}</p>
             ) : null}
-            {hasBadges ? (
-              <div className="menu-item-row__badges">
-                {item.isPopular ? (
-                  <span className="menu-item-row__badge">
-                    {dictionary.popularBadgeLabel}
-                  </span>
-                ) : null}
-                {item.isNew ? (
-                  <span className="menu-item-row__badge menu-item-row__badge--new">
-                    {dictionary.newBadgeLabel}
-                  </span>
-                ) : null}
-              </div>
+          </div>
+          <p className="menu-item-row__price">{formatPrice(item.price)}</p>
+        </div>
+        {hasBadges ? (
+          <div className="menu-item-row__badges">
+            {item.isPopular ? (
+              <span className="menu-item-row__badge">
+                {dictionary.popularBadgeLabel}
+              </span>
+            ) : null}
+            {item.isNew ? (
+              <span className="menu-item-row__badge menu-item-row__badge--new">
+                {dictionary.newBadgeLabel}
+              </span>
             ) : null}
           </div>
         ) : null}
@@ -66,7 +67,8 @@ export function MenuCard({ dictionary, displayMode, item }: MenuCardProps) {
             alt={item.name}
             className="menu-item-row__image"
             height={112}
-            sizes="(max-width: 430px) 100px, (max-width: 767px) 112px, 96px"
+            quality={85}
+            sizes={menuImageSourceSizes}
             src={imageSrc}
             width={112}
           />

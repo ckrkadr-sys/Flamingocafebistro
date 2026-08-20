@@ -88,9 +88,9 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "tost-sandivic",
     order: 20,
     translations: {
-      tr: { title: "Tost - Sandviç" },
+      tr: { title: "Tost & Sandviç" },
       en: { title: "Toasts & Sandwiches" },
-      ru: { title: "Тосты и Сэндвичи" },
+      ru: { title: "Тосты и сэндвичи" },
       de: { title: "Toasts & Sandwiches" },
     },
   },
@@ -108,20 +108,20 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "flamingo-ozel-lezzetler",
     order: 40,
     translations: {
-      tr: { title: "Flamingo Özel Lezzetler" },
-      en: { title: "Flamingo Specialties" },
-      ru: { title: "Фирменные Блюда Flamingo" },
-      de: { title: "Flamingo Spezialitäten" },
+      tr: { title: "Burger, Köfte & Wrap" },
+      en: { title: "Burgers, Köfte & Wraps" },
+      ru: { title: "Бургеры, кёфте и врапы" },
+      de: { title: "Burger, Köfte & Wraps" },
     },
   },
   {
     id: "manti-makarna-salata-bowl",
     order: 50,
     translations: {
-      tr: { title: "Mantı - Makarna - Salata - Bowl" },
-      en: { title: "Mantı, Pasta, Salad & Bowl" },
-      ru: { title: "Манты, Паста, Салаты и Боулы" },
-      de: { title: "Mantı, Pasta, Salat & Bowl" },
+      tr: { title: "Makarna, Mantı & Salata" },
+      en: { title: "Pasta, Mantı & Salads" },
+      ru: { title: "Паста, манты и салаты" },
+      de: { title: "Pasta, Mantı & Salate" },
     },
   },
   {
@@ -139,7 +139,7 @@ export const menuCategories: readonly MenuCategory[] = [
     order: 70,
     translations: {
       tr: { title: "Kahveler" },
-      en: { title: "Coffees" },
+      en: { title: "Coffee" },
       ru: { title: "Кофе" },
       de: { title: "Kaffee" },
     },
@@ -149,8 +149,8 @@ export const menuCategories: readonly MenuCategory[] = [
     order: 80,
     translations: {
       tr: { title: "Çaylar" },
-      en: { title: "Teas" },
-      ru: { title: "Чаи" },
+      en: { title: "Tea" },
+      ru: { title: "Чай" },
       de: { title: "Tee" },
     },
   },
@@ -159,9 +159,9 @@ export const menuCategories: readonly MenuCategory[] = [
     order: 90,
     translations: {
       tr: { title: "Soğuk Kahveler" },
-      en: { title: "Iced Coffees" },
-      ru: { title: "Холодный Кофе" },
-      de: { title: "Eiskaffee" },
+      en: { title: "Iced Coffee" },
+      ru: { title: "Холодный кофе" },
+      de: { title: "Kalte Kaffeegetränke" },
     },
   },
   {
@@ -170,7 +170,7 @@ export const menuCategories: readonly MenuCategory[] = [
     translations: {
       tr: { title: "Soğuk İçecekler" },
       en: { title: "Cold Drinks" },
-      ru: { title: "Холодные Напитки" },
+      ru: { title: "Холодные напитки" },
       de: { title: "Kaltgetränke" },
     },
   },
@@ -178,20 +178,20 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "vitamin",
     order: 110,
     translations: {
-      tr: { title: "Vitamin" },
-      en: { title: "Fresh Juices" },
-      ru: { title: "Свежие Соки" },
-      de: { title: "Frische Säfte" },
+      tr: { title: "Taze Sıkım Meyve Suları" },
+      en: { title: "Freshly Squeezed Juices" },
+      ru: { title: "Свежевыжатые соки" },
+      de: { title: "Frisch gepresste Säfte" },
     },
   },
   {
     id: "serinleticiler",
     order: 120,
     translations: {
-      tr: { title: "Serinleticiler" },
-      en: { title: "Refreshers" },
-      ru: { title: "Освежающие Напитки" },
-      de: { title: "Erfrischungen" },
+      tr: { title: "Serinletici İçecekler" },
+      en: { title: "Refreshing Drinks" },
+      ru: { title: "Освежающие напитки" },
+      de: { title: "Erfrischende Getränke" },
     },
   },
   {
@@ -210,7 +210,7 @@ export const menuCategories: readonly MenuCategory[] = [
     translations: {
       tr: { title: "Alkollü İçecekler" },
       en: { title: "Alcoholic Drinks" },
-      ru: { title: "Алкогольные Напитки" },
+      ru: { title: "Алкогольные напитки" },
       de: { title: "Alkoholische Getränke" },
     },
   },
@@ -218,10 +218,10 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "raki-sise-ickiler",
     order: 150,
     translations: {
-      tr: { title: "Rakı - Şişe İçkiler" },
+      tr: { title: "Rakı & Şişe İçkiler" },
       en: { title: "Rakı & Bottled Spirits" },
-      ru: { title: "Ракы и Бутылочные Напитки" },
-      de: { title: "Rakı & Flaschengetränke" },
+      ru: { title: "Ракы и крепкие напитки в бутылках" },
+      de: { title: "Rakı & Spirituosen in Flaschen" },
     },
   },
   {
@@ -248,7 +248,7 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "shot",
     order: 180,
     translations: {
-      tr: { title: "Shot" },
+      tr: { title: "Shotlar" },
       en: { title: "Shots" },
       ru: { title: "Шоты" },
       de: { title: "Shots" },
@@ -260,7 +260,7 @@ export const menuCategories: readonly MenuCategory[] = [
     translations: {
       tr: { title: "Frozen İçecekler" },
       en: { title: "Frozen Drinks" },
-      ru: { title: "Фрозен Напитки" },
+      ru: { title: "Фроузен-напитки" },
       de: { title: "Frozen-Getränke" },
     },
   },
@@ -268,7 +268,7 @@ export const menuCategories: readonly MenuCategory[] = [
     id: "dondurma",
     order: 200,
     translations: {
-      tr: { title: "Dondurma" },
+      tr: { title: "Dondurmalar" },
       en: { title: "Ice Cream" },
       ru: { title: "Мороженое" },
       de: { title: "Eis" },
@@ -437,10 +437,26 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "tost-sandivic",
     order: 210,
     translations: {
-      tr: { name: "Flamingo Tost" },
-      en: { name: "Flamingo Toast" },
-      ru: { name: "Тост Flamingo" },
-      de: { name: "Flamingo-Toast" },
+      tr: {
+        name: "Flamingo Tost",
+        description:
+          "Sucuk, kaşar peyniri, özel sos, domates ve turşu. Taze domates, salatalık ve patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Flamingo Toast",
+        description:
+          "Sucuk, kashar cheese, special sauce, tomato and pickles. Served with fresh tomato, cucumber and fries.",
+      },
+      ru: {
+        name: "Тост Flamingo",
+        description:
+          "Суджук, сыр кашар, фирменный соус, помидор и соленья. Подаётся со свежим помидором, огурцом и картофелем фри.",
+      },
+      de: {
+        name: "Flamingo-Toast",
+        description:
+          "Sucuk, Kaschar-Käse, Spezialsauce, Tomate und eingelegtes Gemüse. Serviert mit frischer Tomate, Gurke und Pommes frites.",
+      },
     },
     price: 350,
     imagePath: "/images/menu/items/tost-sandivic-flamingo-tost.png",
@@ -450,10 +466,26 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "tost-sandivic",
     order: 220,
     translations: {
-      tr: { name: "Kaşarlı Tost" },
-      en: { name: "Kashar Cheese Toast" },
-      ru: { name: "Тост с Кашаром" },
-      de: { name: "Toast mit Kaschar-Käse" },
+      tr: {
+        name: "Kaşarlı Tost",
+        description:
+          "Kaşar peyniri, domates ve salatalık. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Kashar Cheese Toast",
+        description:
+          "Kashar cheese, tomato and cucumber. Served with fries.",
+      },
+      ru: {
+        name: "Тост с Кашаром",
+        description:
+          "Сыр кашар, помидор и огурец. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Toast mit Kaschar-Käse",
+        description:
+          "Kaschar-Käse, Tomate und Gurke. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 250,
     imagePath: "/images/menu/items/tost-sandivic-kasarli-tost.png",
@@ -463,10 +495,26 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "tost-sandivic",
     order: 230,
     translations: {
-      tr: { name: "Karışık Tost" },
-      en: { name: "Mixed Toast" },
-      ru: { name: "Смешанный Тост" },
-      de: { name: "Gemischter Toast" },
+      tr: {
+        name: "Karışık Tost",
+        description:
+          "Sucuk, kaşar peyniri, domates ve salatalık. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Mixed Toast",
+        description:
+          "Sucuk, kashar cheese, tomato and cucumber. Served with fries.",
+      },
+      ru: {
+        name: "Смешанный Тост",
+        description:
+          "Суджук, сыр кашар, помидор и огурец. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Gemischter Toast",
+        description:
+          "Sucuk, Kaschar-Käse, Tomate und Gurke. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 280,
     imagePath: "/images/menu/items/tost-sandivic-karisik-tost.png",
@@ -489,10 +537,26 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "tost-sandivic",
     order: 250,
     translations: {
-      tr: { name: "Soğuk Sandviç" },
-      en: { name: "Cold Sandwich" },
-      ru: { name: "Холодный Сэндвич" },
-      de: { name: "Kaltes Sandwich" },
+      tr: {
+        name: "Soğuk Sandviç",
+        description:
+          "Labne, siyah zeytin ezmesi, mevsim yeşillikleri, hindi füme, kaşar peyniri, domates ve salatalık.",
+      },
+      en: {
+        name: "Cold Sandwich",
+        description:
+          "Labneh, black olive spread, seasonal greens, smoked turkey, kashar cheese, tomato and cucumber.",
+      },
+      ru: {
+        name: "Холодный Сэндвич",
+        description:
+          "Лабне, паста из чёрных оливок, сезонная зелень, копчёная индейка, сыр кашар, помидор и огурец.",
+      },
+      de: {
+        name: "Kaltes Sandwich",
+        description:
+          "Labneh, schwarze Olivenpaste, saisonale Blattsalate, geräucherte Pute, Kaschar-Käse, Tomate und Gurke.",
+      },
     },
     price: 300,
   }),
@@ -587,10 +651,26 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 380,
     translations: {
-      tr: { name: "Hamburger" },
-      en: { name: "Hamburger" },
-      ru: { name: "Гамбургер" },
-      de: { name: "Hamburger" },
+      tr: {
+        name: "Hamburger",
+        description:
+          "120 g dana köfte, marul, domates, kornişon turşu ve özel sos. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Hamburger",
+        description:
+          "120 g beef patty, lettuce, tomato, gherkins and special sauce. Served with fries.",
+      },
+      ru: {
+        name: "Гамбургер",
+        description:
+          "Говяжья котлета 120 г, листья салата, помидор, корнишоны и фирменный соус. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Hamburger",
+        description:
+          "120-g-Rindfleischpatty, Salat, Tomate, Gewürzgurken und Spezialsauce. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 400,
   }),
@@ -599,24 +679,58 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 390,
     translations: {
-      tr: { name: "Çizburger" },
-      en: { name: "Cheeseburger" },
-      ru: { name: "Чизбургер" },
-      de: { name: "Cheeseburger" },
+      tr: {
+        name: "Çizburger",
+        description:
+          "Dana köfte, cheddar peyniri, marul, domates ve özel sos. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Cheeseburger",
+        description:
+          "Beef patty, cheddar, lettuce, tomato and special sauce. Served with fries.",
+      },
+      ru: {
+        name: "Чизбургер",
+        description:
+          "Говяжья котлета, сыр чеддер, листья салата, помидор и фирменный соус. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Cheeseburger",
+        description:
+          "Rindfleischpatty, Cheddar, Salat, Tomate und Spezialsauce. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 420,
+    imagePath: "/images/menu/items/cizburger.png",
   }),
   createMenuItem({
     id: "flamingo-ozel-lezzetler-citir-tavuk-burger",
     categoryId: "flamingo-ozel-lezzetler",
     order: 400,
     translations: {
-      tr: { name: "Çıtır Tavuk Burger" },
-      en: { name: "Crispy Chicken Burger" },
-      ru: { name: "Хрустящий Куриный Бургер" },
-      de: { name: "Crispy Chicken Burger" },
+      tr: {
+        name: "Çıtır Tavuk Burger",
+        description:
+          "Çıtır tavuk, cheddar peyniri, marul, domates ve kornişon turşu. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Crispy Chicken Burger",
+        description:
+          "Crispy chicken, cheddar, lettuce, tomato and gherkins. Served with fries.",
+      },
+      ru: {
+        name: "Хрустящий Куриный Бургер",
+        description:
+          "Хрустящая курица, сыр чеддер, листья салата, помидор и корнишоны. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Crispy Chicken Burger",
+        description:
+          "Knuspriges Hähnchen, Cheddar, Salat, Tomate und Gewürzgurken. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 390,
+    imagePath: "/images/menu/items/citir-tavuk-burger.png",
   }),
   createMenuItem({
     id: "flamingo-ozel-lezzetler-inegol-kofte",
@@ -660,24 +774,58 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 440,
     translations: {
-      tr: { name: "Köfte Wrap" },
-      en: { name: "Köfte Wrap" },
-      ru: { name: "Кёфте-Рэп" },
-      de: { name: "Köfte Wrap" },
+      tr: {
+        name: "Köfte Wrap",
+        description:
+          "Köfte, karamelize soğan, sotelenmiş yeşil biber, kaşar peyniri ve kekik. Patates kızartmasıyla servis edilir.",
+      },
+      en: {
+        name: "Köfte Wrap",
+        description:
+          "Köfte, caramelized onions, sautéed green peppers, kashar cheese and oregano. Served with fries.",
+      },
+      ru: {
+        name: "Кёфте-Рэп",
+        description:
+          "Кёфте, карамелизированный лук, обжаренный зелёный перец, сыр кашар и орегано. Подаётся с картофелем фри.",
+      },
+      de: {
+        name: "Köfte Wrap",
+        description:
+          "Köfte, karamellisierte Zwiebeln, sautierte grüne Paprika, Kaschar-Käse und Oregano. Dazu werden Pommes frites serviert.",
+      },
     },
     price: 380,
+    imagePath: "/images/menu/items/kofte-wrap.png",
   }),
   createMenuItem({
     id: "flamingo-ozel-lezzetler-tavuk-wrap",
     categoryId: "flamingo-ozel-lezzetler",
     order: 450,
     translations: {
-      tr: { name: "Tavuk Wrap" },
-      en: { name: "Chicken Wrap" },
-      ru: { name: "Куриный Рэп" },
-      de: { name: "Hähnchen-Wrap" },
+      tr: {
+        name: "Tavuk Wrap",
+        description:
+          "Tavuk fileto, karamelize soğan, sotelenmiş yeşil biber, kaşar peyniri, krema, köri ve kekik. Mevsim yeşillikleri ve domatesle servis edilir.",
+      },
+      en: {
+        name: "Chicken Wrap",
+        description:
+          "Chicken fillet, caramelized onions, sautéed green peppers, kashar cheese, cream, curry and oregano. Served with seasonal greens and tomato.",
+      },
+      ru: {
+        name: "Куриный Рэп",
+        description:
+          "Куриное филе, карамелизированный лук, обжаренный зелёный перец, сыр кашар, сливки, карри и орегано. Подаётся с сезонной зеленью и помидором.",
+      },
+      de: {
+        name: "Hähnchen-Wrap",
+        description:
+          "Hähnchenfilet, karamellisierte Zwiebeln, sautierte grüne Paprika, Kaschar-Käse, Sahne, Curry und Oregano. Serviert mit saisonalem Blattsalat und Tomate.",
+      },
     },
     price: 380,
+    imagePath: "/images/menu/items/tavuk-wrap.png",
   }),
   createMenuItem({
     id: "flamingo-ozel-lezzetler-tavuk-parcalari",
@@ -720,25 +868,87 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "manti-makarna-salata-bowl",
     order: 510,
     translations: {
-      tr: { name: "Köfte Bowl" },
-      en: { name: "Meatball Bowl" },
-      ru: { name: "Боул с Кёфте" },
-      de: { name: "Köfte Bowl" },
+      tr: {
+        name: "Köfte Bowl",
+        description:
+          "Köfte, mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+      },
+      en: {
+        name: "Meatball Bowl",
+        description:
+          "Meatballs, seasonal greens, tomato, cucumber, Mexican beans, rice, dried tomatoes and corn.",
+      },
+      ru: {
+        name: "Боул с Кёфте",
+        description:
+          "Кёфте, сезонная зелень, помидор, огурец, мексиканская фасоль, рис, вяленые помидоры и кукуруза.",
+      },
+      de: {
+        name: "Köfte Bowl",
+        description:
+          "Köfte, saisonale Blattsalate, Tomate, Gurke, mexikanische Bohnen, Reis, getrocknete Tomaten und Mais.",
+      },
     },
     price: 450,
     imagePath: "/images/menu/items/manti-makarna-salata-bowl-kofte-bowl.png",
+  }),
+  createMenuItem({
+    id: "manti-makarna-salata-bowl-tavuk-bowl",
+    categoryId: "manti-makarna-salata-bowl",
+    order: 515,
+    translations: {
+      tr: {
+        name: "Tavuk Bowl",
+        description:
+          "Tavuk fileto, mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+      },
+      en: {
+        name: "Chicken Bowl",
+        description:
+          "Chicken fillet, seasonal greens, tomato, cucumber, Mexican beans, rice, dried tomatoes and corn.",
+      },
+      ru: {
+        name: "Боул с курицей",
+        description:
+          "Куриное филе, сезонная зелень, помидор, огурец, мексиканская фасоль, рис, вяленые помидоры и кукуруза.",
+      },
+      de: {
+        name: "Hähnchen-Bowl",
+        description:
+          "Hähnchenfilet, saisonale Blattsalate, Tomate, Gurke, mexikanische Bohnen, Reis, getrocknete Tomaten und Mais.",
+      },
+    },
+    price: 400,
+    imagePath: "/images/menu/items/tavuklu-bowl.png",
   }),
   createMenuItem({
     id: "manti-makarna-salata-bowl-sade-bowl",
     categoryId: "manti-makarna-salata-bowl",
     order: 520,
     translations: {
-      tr: { name: "Sade Bowl" },
-      en: { name: "Plain Bowl" },
-      ru: { name: "Простой Боул" },
-      de: { name: "Einfacher Bowl" },
+      tr: {
+        name: "Sade Bowl",
+        description:
+          "Mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+      },
+      en: {
+        name: "Plain Bowl",
+        description:
+          "Seasonal greens, tomato, cucumber, Mexican beans, rice, dried tomatoes and corn.",
+      },
+      ru: {
+        name: "Простой Боул",
+        description:
+          "Сезонная зелень, помидор, огурец, мексиканская фасоль, рис, вяленые помидоры и кукуруза.",
+      },
+      de: {
+        name: "Einfacher Bowl",
+        description:
+          "Saisonale Blattsalate, Tomate, Gurke, mexikanische Bohnen, Reis, getrocknete Tomaten und Mais.",
+      },
     },
     price: 300,
+    imagePath: "/images/menu/items/sade-bowl.png",
   }),
   createMenuItem({
     id: "manti-makarna-salata-bowl-smoothie-bowl",

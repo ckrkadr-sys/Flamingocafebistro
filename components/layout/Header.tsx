@@ -22,6 +22,7 @@ export function Header({ dictionary, locale }: HeaderProps) {
       brandLabel={site.businessName}
       currentLocale={locale}
       homeHref={getLocalizedPath(locale, "home")}
+      languageNames={dictionary.common.languageNames}
       languageSwitcherLabel={dictionary.common.languageSwitcherLabel}
       logoPath={site.logoPath}
       mobileMenuOpenLabel={dictionary.common.mobileMenuOpenLabel}

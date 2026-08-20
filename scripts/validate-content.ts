@@ -267,6 +267,13 @@ for (const locale of supportedLocales) {
     validateRequiredText(`dictionary ${locale} common ${commonKey}`, dictionary.common[commonKey]);
   }
 
+  for (const languageLocale of supportedLocales) {
+    validateRequiredText(
+      `dictionary ${locale} language name ${languageLocale}`,
+      dictionary.common.languageNames[languageLocale],
+    );
+  }
+
   for (const action of siteConfig.primaryContactActions) {
     validateRequiredText(
       `dictionary ${locale} contact action label ${action.type}`,
