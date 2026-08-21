@@ -307,7 +307,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "kahvalti",
     order: 30,
     translations: {
-      tr: { name: "Menemen" },
+      tr: {
+        name: "Menemen",
+        description: "Domates ve yeşil biberle hazırlanmış çırpılmış yumurta",
+      },
       en: { name: "Menemen (Turkish Scrambled Eggs)" },
       ru: { name: "Менемен (Турецкая Яичница)" },
       de: { name: "Menemen (Türkisches Rührei)" },
@@ -411,7 +414,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "kahvalti",
     order: 180,
     translations: {
-      tr: { name: "Simit Tabağı" },
+      tr: {
+        name: "Simit Tabağı",
+        description:
+          "Beyaz peynir, labne, domates, salatalık, siyah zeytin, yeşil zeytin",
+      },
       en: { name: "Simit Plate" },
       ru: { name: "Тарелка с Симитом" },
       de: { name: "Simit-Teller" },
@@ -424,7 +431,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "kahvalti",
     order: 200,
     translations: {
-      tr: { name: "Pişi Tabağı" },
+      tr: {
+        name: "Pişi Tabağı",
+        description:
+          "Beyaz peynir, domates, salatalık, siyah zeytin, yeşil zeytin",
+      },
       en: { name: "Pişi Plate (Turkish Fried Dough)" },
       ru: { name: "Пиши (Турецкое Жареное Тесто)" },
       de: { name: "Pişi-Teller (Türkisches Schmalzgebäck)" },
@@ -440,7 +451,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Flamingo Tost",
         description:
-          "Sucuk, kaşar peyniri, özel sos, domates ve turşu. Taze domates, salatalık ve patates kızartmasıyla servis edilir.",
+          "Özel sos, kaşar, sucuk, cheddar, domates, turşu",
       },
       en: {
         name: "Flamingo Toast",
@@ -540,7 +551,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Soğuk Sandviç",
         description:
-          "Labne, siyah zeytin ezmesi, mevsim yeşillikleri, hindi füme, kaşar peyniri, domates ve salatalık.",
+          "Labne, zeytin ezmesi, yeşillik, hindi füme, kaşar, domates, salatalık ve cips",
       },
       en: {
         name: "Cold Sandwich",
@@ -602,7 +613,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "atistirmaliklar",
     order: 290,
     translations: {
-      tr: { name: "Peynir Tabağı" },
+      tr: {
+        name: "Peynir Tabağı",
+        description:
+          "Beyaz peynir, kaşar peyniri, çeşitli peynirler, hindi füme, ızgara zeytin, ceviz, kuru üzüm ve galeta",
+      },
       en: { name: "Cheese Plate" },
       ru: { name: "Сырная Тарелка" },
       de: { name: "Käseplatte" },
@@ -626,7 +641,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 360,
     translations: {
-      tr: { name: "Flamingo Combo Tabağı" },
+      tr: {
+        name: "Flamingo Combo Tabağı",
+        description:
+          "Patates kızartması, sosis, sigara böreği, Flamingo çıtır tavuk ve kroket",
+      },
       en: { name: "Flamingo Combo Plate" },
       ru: { name: "Комбо-Тарелка Flamingo" },
       de: { name: "Flamingo Combo-Teller" },
@@ -737,7 +756,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 410,
     translations: {
-      tr: { name: "İnegöl Köfte" },
+      tr: {
+        name: "İnegöl Köfte",
+        description:
+          "Patates kızartması, közlenmiş biber, domates, köfte sosu ve biber turşusu ile",
+      },
       en: { name: "İnegöl Köfte (Turkish Meatballs)" },
       ru: { name: "Кёфте Инегёль (Турецкие Фрикадельки)" },
       de: { name: "İnegöl Köfte (Türkische Frikadellen)" },
@@ -749,7 +772,7 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 420,
     translations: {
-      tr: { name: "Köfte Topları" },
+      tr: { name: "Köfte Topları", description: "Patates kızartması ile" },
       en: { name: "Meatball Bites" },
       ru: { name: "Кёфте-Шарики" },
       de: { name: "Köfte-Bällchen" },
@@ -761,7 +784,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "flamingo-ozel-lezzetler",
     order: 430,
     translations: {
-      tr: { name: "Schnitzel" },
+      tr: {
+        name: "Schnitzel",
+        description:
+          "Patates kızartması, Meksika fasulyesi, taze yeşillik, domates ve salatalık ile",
+      },
       en: { name: "Schnitzel" },
       ru: { name: "Шницель" },
       de: { name: "Schnitzel" },
@@ -777,7 +804,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Köfte Wrap",
         description:
-          "Köfte, karamelize soğan, sotelenmiş yeşil biber, kaşar peyniri ve kekik. Patates kızartmasıyla servis edilir.",
+          "Köfte, karamelize soğan, sotelenmiş biber, kaşar peyniri, kekik, taze yeşillik ve domates ile",
       },
       en: {
         name: "Köfte Wrap",
@@ -806,7 +833,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Tavuk Wrap",
         description:
-          "Tavuk fileto, karamelize soğan, sotelenmiş yeşil biber, kaşar peyniri, krema, köri ve kekik. Mevsim yeşillikleri ve domatesle servis edilir.",
+          "Tavuk fileto, karamelize soğan, sotelenmiş biber, kaşar peyniri, krema, köri, kekik, taze yeşillik ve domates ile",
       },
       en: {
         name: "Chicken Wrap",
@@ -871,7 +898,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Köfte Bowl",
         description:
-          "Köfte, mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+          "Köfte topları, taze yeşillik, domates, salatalık, Meksika fasulyesi, haşlanmış pirinç, kuru domates ve mısır",
       },
       en: {
         name: "Meatball Bowl",
@@ -900,7 +927,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Tavuk Bowl",
         description:
-          "Tavuk fileto, mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+          "Tavuk fileto, taze yeşillik, domates, salatalık, Meksika fasulyesi, haşlanmış pirinç, kuru domates ve mısır",
       },
       en: {
         name: "Chicken Bowl",
@@ -929,7 +956,7 @@ export const menuItems: readonly MenuItem[] = [
       tr: {
         name: "Sade Bowl",
         description:
-          "Mevsim yeşillikleri, domates, salatalık, Meksika fasulyesi, pirinç, kuru domates ve mısır.",
+          "Taze yeşillik, domates, salatalık, Meksika fasulyesi, haşlanmış pirinç, kuru domates ve mısır",
       },
       en: {
         name: "Plain Bowl",
@@ -955,7 +982,11 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "manti-makarna-salata-bowl",
     order: 530,
     translations: {
-      tr: { name: "Smoothie Bowl" },
+      tr: {
+        name: "Smoothie Bowl",
+        description:
+          "Mevsim meyveleri, yulaf, yoğurt veya süt, bal, fıstık ezmesi, ceviz",
+      },
       en: { name: "Smoothie Bowl" },
       ru: { name: "Смузи Боул" },
       de: { name: "Smoothie Bowl" },
@@ -968,7 +999,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "manti-makarna-salata-bowl",
     order: 540,
     translations: {
-      tr: { name: "Tavuklu Fettuccine" },
+      tr: {
+        name: "Tavuklu Fettuccine",
+        description: "Krema, kaşar peyniri, mantar, tavuk ve fesleğen",
+      },
       en: { name: "Chicken Fettuccine" },
       ru: { name: "Феттучине с Курицей" },
       de: { name: "Fettuccine mit Hähnchen" },
@@ -981,7 +1015,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "manti-makarna-salata-bowl",
     order: 550,
     translations: {
-      tr: { name: "Penne Makarna" },
+      tr: {
+        name: "Penne Makarna",
+        description: "Acılı domates sosu, parmesan peyniri ve fesleğen",
+      },
       en: { name: "Penne Pasta" },
       ru: { name: "Паста Пенне" },
       de: { name: "Penne Pasta" },
@@ -993,7 +1030,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "manti-makarna-salata-bowl",
     order: 560,
     translations: {
-      tr: { name: "Napoliten Makarna" },
+      tr: {
+        name: "Napoliten Makarna",
+        description: "Domates sosu, parmesan peyniri ve fesleğen",
+      },
       en: { name: "Napolitan Pasta" },
       ru: { name: "Паста Наполитен" },
       de: { name: "Napolitanische Pasta" },
@@ -1847,7 +1887,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "vitamin",
     order: 1290,
     translations: {
-      tr: { name: "Flamingo Energizer" },
+      tr: {
+        name: "Flamingo Energizer",
+        description: "Çilek, muz ve portakal",
+      },
       en: { name: "Flamingo Energizer" },
       ru: { name: "Энерджайзер Flamingo" },
       de: { name: "Flamingo Energizer" },
@@ -1859,7 +1902,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "vitamin",
     order: 1300,
     translations: {
-      tr: { name: "Taze Sıkılmış Karışık Meyve Suyu" },
+      tr: {
+        name: "Taze Sıkılmış Karışık Meyve Suyu",
+        description: "Elma ve portakal",
+      },
       en: { name: "Fresh Mixed Fruit Juice" },
       ru: { name: "Свежевыжатый Микс Фруктовых Соков" },
       de: { name: "Frisch Gepresster Gemischter Fruchtsaft" },
@@ -1883,7 +1929,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1320,
     translations: {
-      tr: { name: "Çilekli Milkshake" },
+      tr: {
+        name: "Çilekli Milkshake",
+        description: "Çilek, vanilya, çikolata ve muz",
+      },
       en: { name: "Strawberry Milkshake" },
       ru: { name: "Клубничный Милкшейк" },
       de: { name: "Erdbeer-Milkshake" },
@@ -1895,7 +1944,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1330,
     translations: {
-      tr: { name: "Çikolatalı Milkshake" },
+      tr: {
+        name: "Çikolatalı Milkshake",
+        description: "Çilek, vanilya, çikolata ve muz",
+      },
       en: { name: "Chocolate Milkshake" },
       ru: { name: "Шоколадный Милкшейк" },
       de: { name: "Schokoladen-Milkshake" },
@@ -1907,7 +1959,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1340,
     translations: {
-      tr: { name: "Muzlu Milkshake" },
+      tr: {
+        name: "Muzlu Milkshake",
+        description: "Çilek, vanilya, çikolata ve muz",
+      },
       en: { name: "Banana Milkshake" },
       ru: { name: "Банановый Милкшейк" },
       de: { name: "Bananen-Milkshake" },
@@ -1919,7 +1974,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1350,
     translations: {
-      tr: { name: "Vanilyalı Milkshake" },
+      tr: {
+        name: "Vanilyalı Milkshake",
+        description: "Çilek, vanilya, çikolata ve muz",
+      },
       en: { name: "Vanilla Milkshake" },
       ru: { name: "Ванильный Милкшейк" },
       de: { name: "Vanille-Milkshake" },
@@ -1931,7 +1989,7 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1360,
     translations: {
-      tr: { name: "Çilekli Smoothie" },
+      tr: { name: "Çilekli Smoothie", description: "Çilek ve muz" },
       en: { name: "Strawberry Smoothie" },
       ru: { name: "Клубничный Смузи" },
       de: { name: "Erdbeer-Smoothie" },
@@ -1943,7 +2001,7 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1370,
     translations: {
-      tr: { name: "Muzlu Smoothie" },
+      tr: { name: "Muzlu Smoothie", description: "Çilek ve muz" },
       en: { name: "Banana Smoothie" },
       ru: { name: "Банановый Смузи" },
       de: { name: "Bananen-Smoothie" },
@@ -1955,7 +2013,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1380,
     translations: {
-      tr: { name: "Çilekli Frozen" },
+      tr: {
+        name: "Çilekli Frozen",
+        description: "Karpuz, kavun ve çilek",
+      },
       en: { name: "Strawberry Frozen" },
       ru: { name: "Клубничный Фрозен" },
       de: { name: "Erdbeer-Frozen" },
@@ -1967,7 +2028,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1390,
     translations: {
-      tr: { name: "Karpuzlu Frozen" },
+      tr: {
+        name: "Karpuzlu Frozen",
+        description: "Karpuz, kavun ve çilek",
+      },
       en: { name: "Watermelon Frozen" },
       ru: { name: "Арбузный Фрозен" },
       de: { name: "Wassermelonen-Frozen" },
@@ -1979,7 +2043,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1400,
     translations: {
-      tr: { name: "Kavunlu Frozen" },
+      tr: {
+        name: "Kavunlu Frozen",
+        description: "Karpuz, kavun ve çilek",
+      },
       en: { name: "Melon Frozen" },
       ru: { name: "Дынный Фрозен" },
       de: { name: "Melonen-Frozen" },
@@ -2015,7 +2082,10 @@ export const menuItems: readonly MenuItem[] = [
     categoryId: "serinleticiler",
     order: 1430,
     translations: {
-      tr: { name: "Virgin Mojito" },
+      tr: {
+        name: "Virgin Mojito",
+        description: "Sprite, taze nane ve lime",
+      },
       en: { name: "Virgin Mojito" },
       ru: { name: "Virgin Mojito" },
       de: { name: "Virgin Mojito" },
